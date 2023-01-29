@@ -1,6 +1,7 @@
 <?php 
     /*Librerias*/
     require_once('./core/221024ValidacionFormularios.php');
+    require_once('./core/IO/ioxml.php');
     /*Config*/
     require_once('./config/confDBPDO.php');
     /*Modelo*/
@@ -18,7 +19,8 @@
         "micuenta"=>"./controller/cMiCuenta.php",
         "changepassword"=>"./controller/cCambiarPassword.php",
         "wip"=>"./controller/cWIP.php",
-        "error"=>"./controller/cError.php"
+        "error"=>"./controller/cError.php",
+        "rest"=>"./controller/cREST.php"
     ];
     /*Vista*/
     $aVista = [
@@ -31,6 +33,7 @@
         "micuenta"=>"./view/vMiCuenta.php",
         "changepassword"=>"./view/vCambiarPassword.php",
         "wip"=>"./view/vWIP.php",
-        "error"=>"./view/vError.php"
+        "error"=>"./view/vError.php",
+        "rest"=>"./view/vREST.php"
     ];
 ?>

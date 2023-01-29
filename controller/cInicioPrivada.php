@@ -23,6 +23,12 @@ if(isset($_REQUEST['editar'])){
     header('Location: ./index.php');
     exit;
 }
+if(isset($_REQUEST['rest'])){
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = 'rest';
+    header('Location: ./index.php');
+    exit;
+}
 $aRespuestaInicioPrivado=[];
 if(isset($_COOKIE['idioma'])){
     switch ($_COOKIE['idioma']) {
