@@ -1,0 +1,34 @@
+section{
+    display: flex;
+    flex-flow: row wrap;
+  }
+  section>:nth-child(1){
+    flex: 1 1 100%;
+    margin-top: 3%;
+    display:flex;
+    justify-content: center;
+    font-size: 3em;
+    font-weight: lighter;
+  }
+  section>:nth-child(2){
+    flex: 1 1 100%;
+    margin-top: 1%;
+    display:flex;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: lighter;
+    text-decoration: underline;
+  }
+  section>:nth-child(3){
+    margin-top: 16%;
+    flex: 1 1 100%;
+    display:flex;
+    justify-content: end;
+  }
+  section>:nth-child(3)>p{
+    padding:2%;
+    background-color:var(--colorSelecionado);
+    font-weight: lighter;
+    color: white;
+    
+  }

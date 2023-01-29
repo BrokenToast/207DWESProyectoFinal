@@ -1,0 +1,15 @@
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /*volver*/
+  input[name="volver"]{
+    margin: 2% 0;
+  }
+  /*inputs*/
+  fieldset{
+    width: 100%;
+    border: 2px solid black;
+    padding: 2%;
+  }
