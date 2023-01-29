@@ -1,0 +1,73 @@
+*{
+    margin: 0;padding: 0;
+    box-sizing: content-box;
+    font-family: var(--tipografia);
+}
+#root{
+    width: 100vw;height: 100vh;
+    display: flex;
+    flex-flow: column;
+}
+/*Encabezado*/
+header{
+    flex: 0 0 12%;
+    display: flex;
+    justify-content: space-around;
+}
+header>img{
+    width: 150px;
+}
+header>h1{
+    font-size: 6em;
+}
+/*Contenido*/
+main{
+    background-color: var(--colorContenido);
+    flex: 1 1 100%;
+}
+/*Pie de pagina*/
+footer{
+    flex: 0 0 8%;
+    display:flex;
+    justify-content:space-around;
+}
+footer>*{
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorPieMenu);
+}
+/*======================*/
+/*=     ITEMS          =*/
+/*======================*/
+/*Boton generico*/
+.buttom{
+    padding: 1%;
+    border:none;
+    border-radius: 20px;
+    background-color:#134287;
+    color:white;
+    font-weight: bold;
+}
+.buttom:hover{
+    text-decoration:underline 2px;
+}
+/*========Menu==========*/
+#menu{
+    height: 5%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: end;
+    background-color: var(--colorPieMenu);
+}
+.itemMenu{
+    flex: 0 0 4%;
+    padding:0 2%;
+    border:none;
+    background-color: transparent;
+}
+.itemMenu:hover{
+    background-color: var(--colorSelecionado);
+    color:white;
+}

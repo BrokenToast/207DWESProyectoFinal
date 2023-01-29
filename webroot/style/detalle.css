@@ -1,0 +1,53 @@
+/*Boton de cancelar*/
+form{
+  padding: 1%;
+  position: sticky;
+  top: 0;
+}
+/*Globales*/
+article{
+    padding: 2%;
+    display: flex;
+    flex-flow:row wrap;
+    justify-content: center;
+  }
+  article>table{
+    margin: 1% 0;
+  }
+  article>table{
+    flex:1 1 100%;
+  }
+  /*Diseño tabla*/
+  /*Global*/
+  th{
+    position: relative;
+  }
+  table,tbody,thead,tr,td,th{
+    border:none;
+  }
+  table,td,th{
+    border-collapse: separate;
+    border: 1px solid black;
+    font-weight: 600;
+  }
+  /*Enabezados*/
+    th{
+      position: inherit !important;;
+      text-decoration: underline;
+    }
+    /*Nombre*/
+    thead>tr:nth-of-type(1)>th{
+      background-color: black;
+      color: white;
+    }
+    /*apartados*/
+    thead>tr:nth-of-type(2)>th:nth-of-type(1){
+      background-color: grey;
+    }
+    thead>tr:nth-of-type(2)>th:nth-of-type(2){
+      background-color: silver;
+    }
+  /*Cuerpo*/
+  td{
+    background-color:white;
+  }

@@ -1,0 +1,26 @@
+/*Global*/
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  form{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+  }
+  /*Boton de volver*/
+  input[name="volver"]{
+    padding: 1% 3%;
+    margin-bottom: 2%;
+  }
+  /*Formulario de registro*/
+  fieldset{
+    flex: 1 1 100%;
+    border:2px solid black;
+    padding: 2%;
+  }
+  legend{
+    font-size: 1.5em;
+    font-weight: bold;
+  }
