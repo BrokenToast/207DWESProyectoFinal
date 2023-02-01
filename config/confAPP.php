@@ -1,7 +1,6 @@
 <?php 
     /*Librerias*/
     require_once('./core/221024ValidacionFormularios.php');
-    require_once('./core/IO/ioxml.php');
     /*Config*/
     require_once('./config/confDBPDO.php');
     /*Modelo*/
