@@ -1,15 +1,15 @@
 <?php
 class Tiempo{
-    public readonly int $hora;
-    public readonly string $ubicacion;
-    public readonly int $presion;
-    public readonly int $porcentajePrecipitaciones;
-    public readonly int $velocidadViento;
-    public readonly int $velocidadVientoMaxima;
-    public readonly int $temperaturaMinima;
-    public readonly int $temperaturaMaxima;
+    public readonly mixed $hora;
+    public readonly mixed $ubicacion;
+    public readonly mixed $presion;
+    public readonly mixed $porcentajePrecipitaciones;
+    public readonly mixed $velocidadViento;
+    public readonly mixed $velocidadVientoMaxima;
+    public readonly mixed $temperaturaMinima;
+    public readonly mixed $temperaturaMaxima;
     
-    public function __construct(int $hora,string $ubicacion,int $presion,int $porcentajePrecipitaciones,int $velocidadViento,int $velocidadVientoMaxima,int $temperaturaMinima,int $temperaturaMaxima){
+    public function __construct($hora,$ubicacion,$presion,$porcentajePrecipitaciones,$velocidadViento,$velocidadVientoMaxima,$temperaturaMinima,$temperaturaMaxima){
         $this->hora = $hora;
         $this->ubicacion=$ubicacion;
         $this->presion=$presion;

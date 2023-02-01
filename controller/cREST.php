@@ -1,5 +1,6 @@
 <?php
 $aRespuesRest=[];
+$aRespuesRest += ["estaciones" => Rest::pedirEstaciones()];
 if(isset($_REQUEST['volver'])){
     $paginaAnterior=$_SESSION['paginaAnterior'];
     $paginaEnCuerso = $_SESSION['paginaEnCurso'];
@@ -9,9 +10,7 @@ if(isset($_REQUEST['volver'])){
     exit;
 }
 if(isset($_REQUEST['tiempo'])){
-    if(empty(validacionFormularios::comprobarAlfabetico($_REQUEST['ubicacion'],obligatorio:1))){
-        $oRTiempo=Rest::pedirTemperaturaEstacion($_REQUEST['ubicacion']);
-        var_dump($oRTiempo);
+        $oRTiempo=Rest::pedirTemperaturaEstacion($_REQUEST['estacion']);
         $aTiempo = [
             'ubicacion'=>$oRTiempo->ubicacion,
             'presion'=>$oRTiempo->presion,
@@ -22,7 +21,6 @@ if(isset($_REQUEST['tiempo'])){
             'temperaturaMinima'=>$oRTiempo->temperaturaMinima,
         ];
         $aRespuesRest += ['tiempo'=>$aTiempo];
-    }
 }
 
 require_once $aVista['layout'];

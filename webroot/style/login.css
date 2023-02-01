@@ -37,7 +37,7 @@ fieldset:nth-of-type(1)>label{
 }
 fieldset:nth-of-type(1)>input[name="iniciar"]{
   margin:4% 0;
-  font-size: 1.1em;
+  font-size: 1.4em;
 }
 /*Registrarse*/
 fieldset:nth-of-type(2){
@@ -56,7 +56,7 @@ fieldset:nth-of-type(2)>p{
 fieldset:nth-of-type(2)>input{
   flex: 1 1 100%;
   padding: 0;
-  font-size: 2em;
+  font-size: 1.4em;
   font-weight: bold;
 }
 /*cancelar*/

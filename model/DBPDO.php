@@ -17,7 +17,7 @@ class DBPDO{
     /**
      * Metodo que no permite lanzar un quiery y nos devuelve la informacion en una array
      * @param string $query Query que se va a ejecutar.
-     * @throws ErrorLoginLogoff Se lanza cuando hay un error con el query
+     * @throws ErrorApp Se lanza cuando hay un error con el query
      * @return array devuelve una array con la informacion del Quer(Formato: [[tupla1],[tupla..],[tupla..]]) o [tupla] y si no hay resultado devuelve false. 
      */
     public function executeQuery(string $query,array $parametros=null){
@@ -47,7 +47,7 @@ class DBPDO{
                 }
             }
         }catch(Error $error){
-            new ErrorLoginLogoff($error->getCode(),$error->getMessage());
+            new ErrorApp($error->getCode(),$error->getMessage());
         }finally{
             unset($this->oConexionDB);
         }
@@ -97,7 +97,7 @@ class DBPDO{
      * ];
      * @param string $UDI Inserto update o delete 
      * @param array|null $datos Datos del insert.
-     * @throws ErrorLoginLogoff 
+     * @throws ErrorApp
      * @return bool|int Devuelve el numero de tuplas afectadas.
      */
     public function executeUDI(string $UDI,array $datos=null){
@@ -114,7 +114,7 @@ class DBPDO{
                 }
             }
         }catch(PDOException $error){
-            new ErrorLoginLogoff($error->getCode(),$error->getMessage());
+            new ErrorApp($error->getCode(),$error->getMessage());
         }finally{
             unset($this->oConexionDB);
         }
