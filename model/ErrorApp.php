@@ -1,5 +1,5 @@
 <?php
-class ErrorLoginLogoff extends Exception{
+class ErrorApp extends Exception{
     public function __construct(int $code,string $mensaje){
         $this->code=$code;
         $this->message=$mensaje;

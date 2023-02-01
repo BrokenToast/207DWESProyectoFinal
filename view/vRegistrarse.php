@@ -20,10 +20,10 @@
                             <textarea name="descUsuario" id="descUsuario" cols="20" rows="4"><?php echo $_REQUEST['descUsuario']??"" ?></textarea>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td><label>Imagen</label></td>
-                        <td><input type="file" name="imagen" value="<?php echo (isset($_REQUEST['registrar'])) ? $_REQUEST['imagen']:"";?>"></td>
-                    </tr>
+                        <td><input type="file" name="imagen" value="<?php //echo (isset($_REQUEST['registrar'])) ? $_REQUEST['imagen']:"";?>"></td>
+                    </tr> -->
                     <tr id="errores">
                         <td colspan="2">
                             <ul>

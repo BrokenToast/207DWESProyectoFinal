@@ -7,6 +7,7 @@ if(isset($_REQUEST['volver'])){
     header('Location: ./index.php');
     exit;
 }
+Rest::pedirTemperaturaEstacion("Benavente");
 $document = new DOMDocument();
 $document->load("https://www.aemet.es/xml/municipios/localidad_49021.xml");
 $puntero = new DOMXPath($document);
