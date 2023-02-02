@@ -1,14 +1,15 @@
 <?php 
     /*Librerias*/
     require_once('./core/221024ValidacionFormularios.php');
-    require_once('./core/IO/ioxml.php');
     /*Config*/
     require_once('./config/confDBPDO.php');
     /*Modelo*/
     require_once('./model/usuario.php');
     require_once('./model/UsuarioPDO.php');
     require_once('./model/DBPDO.php');
-    require_once './model/ErrorLoginLogoff.php';
+    require_once('./model/ErrorApp.php');
+    require_once('./model/Tiempo.php');
+    require_once('./model/Rest.php');
     /*Controlador*/
     $aControlador = [
         "iniciopublico" => "./controller/cInicioPublico.php",
