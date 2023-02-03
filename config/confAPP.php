@@ -10,6 +10,8 @@
     require_once('./model/ErrorApp.php');
     require_once('./model/Tiempo.php');
     require_once('./model/Rest.php');
+    require_once('./model/Departamento.php');
+    require_once('./model/DepartamentoPDO.php');
     /*Controlador*/
     $aControlador = [
         "iniciopublico" => "./controller/cInicioPublico.php",
@@ -21,7 +23,10 @@
         "changepassword"=>"./controller/cCambiarPassword.php",
         "wip"=>"./controller/cWIP.php",
         "error"=>"./controller/cError.php",
-        "rest"=>"./controller/cREST.php"
+        "rest"=>"./controller/cREST.php",
+        "mtodepartamento"=>"./controller/cMtoDepartamento.php"
+
+        
     ];
     /*Vista*/
     $aVista = [
@@ -35,6 +40,7 @@
         "changepassword"=>"./view/vCambiarPassword.php",
         "wip"=>"./view/vWIP.php",
         "error"=>"./view/vError.php",
-        "rest"=>"./view/vREST.php"
+        "rest"=>"./view/vREST.php",
+        "mtodepartamento"=>"./view/vMtoDepartamento.php"
     ];
 ?>

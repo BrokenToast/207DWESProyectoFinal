@@ -1,15 +1,14 @@
 <?php
+$aRespuestaMtoDepartamento = [];
 if(isset($_REQUEST['volver'])){
     $paginaAnterior=$_SESSION['paginaAnterior'];
     $paginaEnCuerso = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaAnterior'] = $paginaEnCuerso;
     $_SESSION['paginaEnCurso'] = $paginaAnterior;
-    unset($_SESSION['error']);
     header('Location: ./index.php');
     exit;
 }
-$_SESSION['error']->llamarVError();
-$aRespuestaError['code'] = $_SESSION['error']->getCode();
-$aRespuestaError['mensaje'] = $_SESSION['error']->getMessage();
-
+if(isset($_REQUEST['buscar'])){
+    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc($_REQUEST['descripcion']);
+}
 require_once $aVista['layout'];

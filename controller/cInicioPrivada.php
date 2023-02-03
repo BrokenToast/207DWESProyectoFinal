@@ -13,7 +13,7 @@ if(isset($_REQUEST['detalles'])){
 }
 if(isset($_REQUEST['mantenimiento'])){
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'wip';
+    $_SESSION['paginaEnCurso'] = 'mtodepartamento';
     header('Location: ./index.php');
     exit;
 }
