@@ -25,7 +25,8 @@
         "error"=>"./controller/cError.php",
         "rest"=>"./controller/cREST.php",
         "mtodepartamento"=>"./controller/cMtoDepartamento.php",
-        "modificardepartamento"=>"./controller/cModifcarDepartamento.php"
+        "modificardepartamento"=>"./controller/cModifcarDepartamento.php",
+        "tecnologia"=>"./controller/cTecnologias.php"
         
     ];
     /*Vista*/
@@ -42,6 +43,8 @@
         "error"=>"./view/vError.php",
         "rest"=>"./view/vREST.php",
         "mtodepartamento"=>"./view/vMtoDepartamento.php",
-        "modificardepartamento"=>"./view/vModifcarDepartamento.php"
+        "modificardepartamento"=>"./view/vModifcarDepartamento.php",
+        "tecnologia"=>"./view/vTecnologias.php"
+        
     ];
 ?>

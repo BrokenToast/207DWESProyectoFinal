@@ -38,6 +38,12 @@ footer>*{
     align-items: center;
     background-color: var(--colorPieMenu);
 }
+footer button{
+    border: none;
+    background-color: transparent;
+    font-size: 1em;
+    color: #CD2355; 
+}
 /*======================*/
 /*=     ITEMS          =*/
 /*======================*/

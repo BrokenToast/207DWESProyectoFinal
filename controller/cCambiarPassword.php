@@ -1,4 +1,14 @@
 <?php
+// Zona general
+if(isset($_REQUEST['volver'])){
+    $paginaAnterior=$_SESSION['paginaAnterior'];
+    $paginaEnCuerso = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaAnterior'] = $paginaEnCuerso;
+    $_SESSION['paginaEnCurso'] = $paginaAnterior;
+    header('Location: ./index.php');
+    exit;
+}
+//Zona propia
 $aErrores = [];
 $ok="";
 if(isset($_REQUEST['cambiar'])){
@@ -22,14 +32,6 @@ if($ok){
     UsuarioPDO::modificarUsuario($_SESSION['usuarioproyectofinal207'],$_SESSION['usuarioproyectofinal207']->codUsuario);
     $_SESSION['paginaEnCurso']="micuenta";
     header("Location: ./index.php");
-    exit;
-}
-if(isset($_REQUEST['volver'])){
-    $paginaAnterior=$_SESSION['paginaAnterior'];
-    $paginaEnCuerso = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaAnterior'] = $paginaEnCuerso;
-    $_SESSION['paginaEnCurso'] = $paginaAnterior;
-    header('Location: ./index.php');
     exit;
 }
 require_once $aVista['layout'];

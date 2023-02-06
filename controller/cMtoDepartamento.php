@@ -6,6 +6,7 @@ if(isset($_REQUEST['volver'])){
     header('Location: ./index.php');
     exit;
 }
+require_once('cGlobal.php');
 if(isset($_REQUEST['buscar'])){
     $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc($_REQUEST['bdescripcion'],(int)$_REQUEST['estado']);
 }
