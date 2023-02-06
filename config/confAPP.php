@@ -24,8 +24,8 @@
         "wip"=>"./controller/cWIP.php",
         "error"=>"./controller/cError.php",
         "rest"=>"./controller/cREST.php",
-        "mtodepartamento"=>"./controller/cMtoDepartamento.php"
-
+        "mtodepartamento"=>"./controller/cMtoDepartamento.php",
+        "modificardepartamento"=>"./controller/cModifcarDepartamento.php"
         
     ];
     /*Vista*/
@@ -41,6 +41,7 @@
         "wip"=>"./view/vWIP.php",
         "error"=>"./view/vError.php",
         "rest"=>"./view/vREST.php",
-        "mtodepartamento"=>"./view/vMtoDepartamento.php"
+        "mtodepartamento"=>"./view/vMtoDepartamento.php",
+        "modificardepartamento"=>"./view/vModifcarDepartamento.php"
     ];
 ?>

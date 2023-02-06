@@ -44,11 +44,11 @@ class Departamento{
     /**
      * fechaBajaDepartamento
      * 
-     * Fecha de baja logica del deparamento
+     * Fecha de baja logica del deparamento(TiemStamp)
      * 
-     * @var DateTime
+     * @var int|null
      */
-    public readonly DateTime $fechaBajaDepartamento;
+    public readonly int|null $fechaBajaDepartamento;
     /**
      * Summary of __construct
      * 
@@ -65,8 +65,6 @@ class Departamento{
         $fechaCreacion->setTimestamp($fechaCreacionDepartamento);
         $this->fechaCreacionDepartamento=$fechaCreacion;
         $this->volumenNegocio=$volumenNegocio;
-        $fechaBaja = new DateTime();
-        $fechaBaja->setTimestamp($fechaBajaDepartamento);
-        $this->fechaBajaDepartamento=$fechaBaja;
+        $this->fechaBajaDepartamento=$fechaBajaDepartamento;
     }
 }

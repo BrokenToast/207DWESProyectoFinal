@@ -6,14 +6,14 @@ if(isset($_REQUEST['registrar'])){
     $aErrores['password']=validacionFormularios::comprobarAlfaNumerico($_REQUEST['password'],16,3,1);
     foreach($aErrores as $value){
         if(!empty($value)){
-        $ok = false;        
+        $ok = false;
         }
     }
 }
 if ($ok ) {
     if(!UsuarioPDO::validarCodNoExiste($_REQUEST['usuario'])){
         $oUsuario = new Usuario($_REQUEST['usuario'], hash("sha256",$_REQUEST['password']), $_REQUEST['descUsuario'], 1, time(), time(), "usuario");
-        $_SESSION['usuariologinlogoff207'] = $oUsuario;
+        $_SESSION['usuarioproyectofinal207'] = $oUsuario;
         UsuarioPDO::altaUsuario($oUsuario);
         $_SESSION['paginaEnCurso'] = 'inicioprivado';
         header("Location: ./index.php");

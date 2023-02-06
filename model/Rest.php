@@ -1,7 +1,6 @@
 <?php
 require_once('./model/Tiempo.php');
 require_once('./model/ErrorApp.php');
-
 /**
  * Rest
  * 

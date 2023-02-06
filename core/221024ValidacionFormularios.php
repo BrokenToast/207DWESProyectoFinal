@@ -160,7 +160,7 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
         }else{
             if(($obligatorio == 0 && $float!=null) || ($obligatorio == 1 && empty($mensajeError))){//COMPROBAMOS QUE SI ES OPCIONAL, NO ESTÉ VACÍO Y SI ES OBLIGATORIO QUE NO HAYA GUARDADO UN MENSAJE DE ERROR ANTERIOR (QUE EL CAMPO NO ESTÉ VACÍO)   
                 if (!is_numeric($float)) {//SI NO ES UN NÚMERO O STRING NUMÉRICO
-                    $mensajeError = "El campo no es un decimal. (Debe llevar punto(.) entre la parte entera y la parte decimal)";   
+                    $mensajeError = "El campo no es un decimal. (Debe llevar punto(.) entre la parte entera y la parte decimal)";
                 }else{
                     if($float>$max){
                         $mensajeError = $mensajeError."El número no puede ser mayor que ".$max.".";

@@ -30,7 +30,8 @@ class DepartamentoPDO{
             $aDepartamentos = [];
             foreach($aRespuesta as $departamento){
                     array_push($aDepartamentos,new Departamento($departamento['T02_CodDepartamento'], $departamento['T02_DescDepartamento'], $departamento['T02_FechaDeCreacionDepartamento'], $departamento['T02_VolumenDeNegocio'], $departamento['T02_FechaBajaDepartamento']));
-            }   
+            }
+            return $aDepartamentos; 
         } 
     }
     /**
@@ -41,10 +42,15 @@ class DepartamentoPDO{
      * @param string $descrpcion Descripcion del departamento
      * @return Departamento|string Devuelve departamento y si no lo encuentra en un mensaje;
      */
-    public static function bucarDepartamentoPorDesc(string $descrpcion){
+    public static function bucarDepartamentoPorDesc(string $descrpcion, int $estado=null){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        $aRespuesta=$oConexionDB->executeQuery("select * from T02_Departamento where T02_DescDepartamento like '%$descrpcion%';");
-        var_dump($aRespuesta);
+        if($estado<0){
+            $aRespuesta=$oConexionDB->executeQuery("select * from T02_Departamento where T02_DescDepartamento like '%$descrpcion%';");
+        }else if($estado==0){
+            $aRespuesta=$oConexionDB->executeQuery("select * from T02_Departamento where T02_DescDepartamento like '%$descrpcion%'and T02_FechaBajaDepartamento is not null;");
+        }else{
+            $aRespuesta=$oConexionDB->executeQuery("select * from T02_Departamento where T02_DescDepartamento like '%$descrpcion%'and T02_FechaBajaDepartamento is null;");
+        }
         if(!$aRespuesta){
             return "No se a encontrado el departamento";
         }
@@ -54,31 +60,86 @@ class DepartamentoPDO{
             $aDepartamentos = [];
             foreach($aRespuesta as $departamento){
                     array_push($aDepartamentos,new Departamento($departamento['T02_CodDepartamento'], $departamento['T02_DescDepartamento'], $departamento['T02_FechaDeCreacionDepartamento'], $departamento['T02_VolumenDeNegocio'], $departamento['T02_FechaBajaDepartamento']));
-            }   
+            }  
+            return $aDepartamentos;  
         }
     }
+    public static function buscarDepartamentoPorDescPagiado(string $descipcion,int $estado=null){
+        
+    }
+    /**
+     * altaDepartamento
+     * 
+     * Nos permite añadir un nuevo departamento
+     * 
+     * @param Departamento $departamento Departamento a añadir
+     * @return int Devuelve 1 si se ha añadido bien o 0 si se no ha añadido.
+     */
     public static function altaDepartamento(Departamento $departamento){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-
+        return $oConexionDB->executeUDI("insert into T02_Departamento values('".$departamento->codDepartamento."','".$departamento->descDepartamento."',unix_timestamp(),'".$departamento->volumenNegocio."',null);");
     }
-    public static function bajaFisicaDepartamento(string $codigo){
+    /**
+     * bajaFisicaDepartamento
+     * 
+     * Metodo que nos permite realizar una baja fisica(Eliminar el departamento)
+     * 
+     * @return int Devuelve 1 si se a eliminado bien  o 0 si no.
+     */
+    public static function bajaFisicaDepartamento(){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
+        return $oConexionDB->executeUDI("delete from T02_Departamento where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]';");
 
     }
-    public static function bajaLogicaDepartamento(string $codigo){
+    /**
+     * bajaLogicaDepartamento
+     * 
+     * Metodo que nos permite realizar una baja logica
+     * 
+     * @return int Devuelve 1 si se a realizado bien  o 0 si no.
+     */
+    public static function bajaLogicaDepartamento(){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-
+        return $oConexionDB->executeUDI("update T02_Departamento set T02_FechaBajaDepartamento=unix_timestamp() where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]';");
     }
+    /**
+     * modificaDepartamento
+     * 
+     * Metodo que nos permite modificar un departamento
+     * 
+     * @param Departamento $departamento Departamento modificado
+     * @return int Devuelve 1 si se a realizado bien  o 0 si no.
+     */
     public static function modificaDepartamento(Departamento $departamento){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-
+        return $oConexionDB->executeUDI("update T02_Departamento set T02_CodDepartamento='" . $departamento->codDepartamento . "',T02_DescDepartamento='" . $departamento->descDepartamento . "',T02_FechaDeCreacionDepartamento=" . $departamento->fechaCreacionDepartamento->getTimestamp() . ",T02_VolumenDeNegocio=" . $departamento->volumenNegocio . ",T02_FechaBajaDepartamento=" . ($departamento->fechaBajaDepartamento??"null") . " where T02_CodDepartamento='" . $_SESSION['codDepartamentoEnCurso']."'");
     }
-    public static function rehabilitaDepartamento(Departamento $departamento){
+    /**
+     * rehabilitaDepartamento
+     * 
+     * Nos permite hacer una rehabilitacion logica de un departamento
+     * 
+     * @return int Devuelve 1 si se a realizado bien  o 0 si no.
+     */
+    public static function rehabilitaDepartamento(){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-
+        return $oConexionDB->executeUDI("update T02_Departamento set T02_FechaBajaDepartamento=null where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]';");
     }
+    /**
+     * validaCodNoExiste
+     * 
+     * Nos permite comprobar el codigo pasado ya existe.
+     * 
+     * @param string $codigo Codigo de departamento a comprobar
+     * @return bool Devuelve true si no existe y false si existe.
+     */
     public static function validaCodNoExiste(string $codigo){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-
+        $aRespuesta = $oConexionDB->executeQuery("select T02_CodDepartamento from T02_Departamento where T02_CodDepartamento='$codigo';");
+        if(count($aRespuesta)!=0 && isset($aRespuesta['T02_CodDepartamento'])){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

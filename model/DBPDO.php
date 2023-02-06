@@ -80,7 +80,7 @@ class DBPDO{
                 }
             }
         }catch(Error $error){
-            new ErrorApp($error->getCode(),$error->getMessage(),$error->getFile(),$error->getLine());
+            throw new ErrorApp($error->getCode(),$error->getMessage(),$error->getFile(),$error->getLine());
         }finally{
             unset($this->oConexionDB);
         }
@@ -149,7 +149,7 @@ class DBPDO{
                 }
             }
         }catch(PDOException $error){
-            new ErrorApp($error->getCode(),$error->getMessage(),$error->getFile(),$error->getLine());
+            throw new ErrorApp($error->getCode(),$error->getMessage(),$error->getFile(),$error->getLine());
         }finally{
             unset($this->oConexionDB);
         }

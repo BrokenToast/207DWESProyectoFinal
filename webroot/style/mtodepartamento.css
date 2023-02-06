@@ -1,0 +1,88 @@
+input{
+  color: black;
+}
+main{
+  height: 100%;
+  display: grid;
+  grid-template-rows: 2fr 8fr;
+  grid-template-columns:2.5fr 7.5fr;
+  gap:1%;
+}
+/*Buscado*/
+main>form{
+  padding: 1%;
+  display: flex;
+  flex-flow: column;
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+main>form>input{
+  width: 20%;
+  align-self: end;
+}
+main>form>div{
+  margin: 1% 1% 0 0;
+  padding: 1%;
+  border: 2px solid black;
+  background-color: white;
+}
+input[name="bdescripcion"]{
+  width: 30%;
+}
+button[name="buscar"]{
+  width: 20%;
+  margin-top: 1%;
+}
+fieldset{
+  width: 15%;
+  border: 2px solid black;
+  padding: 1%;
+}
+/*Tabla departamentos*/
+table{
+  height: 10%;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  margin: 0 2% 0 0%;
+}
+td,th{
+  border: 2px solid black;
+  background-color: white;
+}
+table input{
+  width: 100%;
+  border: none;
+}
+tr>:nth-child(1){
+  width: 4%;
+}
+tr>:nth-child(2){
+  width: 30%;
+}
+tr>:nth-child(4){
+  width: 4%;
+}
+tr{
+}
+/*Barra lateral*/
+aside{
+  grid-column: 1/1;
+  grid-row: 1/3;
+}
+aside>form{
+  padding: 1%;
+  display: flex;
+  flex-flow: column wrap;
+}
+aside>form>*{
+  margin-top: 2%;
+}
+  /*Añadir*/
+  aside>form>div{
+    display: flex;
+    flex-flow:column;
+    margin-bottom: 10%;
+  }
+  aside>form>div>input{
+    margin-top: 1%;
+  }

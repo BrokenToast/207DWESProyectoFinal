@@ -43,7 +43,7 @@
                             }
                         ?>
                     </tbody>
-                </table> 
+                </table>
                 <?php
             }
                 //Delcaración de un array con todas las superglobales

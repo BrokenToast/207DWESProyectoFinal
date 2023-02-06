@@ -92,24 +92,18 @@ class UsuarioPDO{
     }
     // Part 2
     public static function registrarUltimaConexion(){
-
     }
     public static function buscarUsuarioPorCod(){
-        
     }
     public static function cambiarPasword(){
-        
     }
     public static function crearOpinion(){
-        
     }
     public static function modificarOpinion(){
         
     }
     public static function borrarOpinion(){
-        
     }
     public static function buscarOpinion(){
-        
     }
 }
