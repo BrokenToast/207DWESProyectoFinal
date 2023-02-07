@@ -27,10 +27,8 @@ if(isset($_REQUEST['registrarse'])){
     exit;
 }
 if(isset($_REQUEST['volver'])){
-    $paginaAnterior=$_SESSION['paginaAnterior'];
-    $paginaEnCuerso = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaAnterior'] = $paginaEnCuerso;
-    $_SESSION['paginaEnCurso'] = $paginaAnterior;
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = "iniciopublico";
     header('Location: ./index.php');
     exit;
 }

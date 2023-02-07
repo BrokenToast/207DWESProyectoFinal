@@ -2,14 +2,11 @@
 $aRespuesRest=[];
 $aRespuesRest += ["estaciones" => Rest::pedirEstacionesMeteo()];
 if(isset($_REQUEST['volver'])){
-    $paginaAnterior=$_SESSION['paginaAnterior'];
-    $paginaEnCuerso = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaAnterior'] = $paginaEnCuerso;
-    $_SESSION['paginaEnCurso'] = $paginaAnterior;
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = "inicioprivado";
     header('Location: ./index.php');
     exit;
 }
-
 $document = new DOMDocument();
 $document->load("https://www.aemet.es/xml/municipios/localidad_49021.xml");
 $puntero = new DOMXPath($document);
