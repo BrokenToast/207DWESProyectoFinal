@@ -13,6 +13,20 @@
         <input type="submit" class="buttom" name="import" value="importar">
         <input type="submit" class="buttom" name="export" value="exportar">
     </form>
+        <?php
+            if(!$ok){
+            ?> 
+            <section>
+                <h3>Errores</h3>
+                <?php
+                    foreach($aError as $error){
+                    ?> <p><?php echo $error;?></p> <?php
+                    }
+                ?>
+            </section>
+            <?php
+            }
+        ?>
 </aside>
 <form action="./index.php" method="post">
     <input type="submit" class="buttom" name="volver" value="volver">

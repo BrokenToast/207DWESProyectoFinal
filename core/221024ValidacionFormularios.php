@@ -117,7 +117,7 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
             return "Campo vacio.";
         }else{
             if(!empty($integer)){  
-                if (!is_float($integer)){
+                if (is_float($integer)){
                     return "El campo no es un entero. ";
                 }else{
                     if($integer>$max || $integer<$min){
@@ -150,6 +150,33 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
                 return "El campo no es un decimal. (Debe llevar punto(.) entre la parte entera y la parte decimal)";
             }else{
                 if($float>$max || $float<$min){
+                    return "El numero debe de estar entre $max - $min.";
+                }
+            }
+        }
+        return null;
+    }
+        /**
+     * Funcion comprobarNumber
+     * 
+     * Funcion que compueba si el parametro recibido es un numero decimal.
+     *    
+     * @author Javier Nieto y Cristina Núñez
+     * @since 30/11/2020
+     * @param numeric $number Número entero a comprobar
+     * @param int $max Valor máximo del entero
+     * @param int $min Valor mínimo del entero
+     * @param boolean $obligatorio Valor booleano indicado mediante 1, si es obligatorio o 0 si no lo es.
+     * @return null|string Devuelve null en el caso en el que esté correcto, si no devuelve una cadena con el mensaje de error.
+     */
+    public static function comprobarNumber($number, $max = PHP_FLOAT_MAX, $min = -PHP_FLOAT_MAX, $obligatorio = 0){  //AÑADIDOS VALORES POR DEFECTO Y AHORA DETECTA 0
+        if ($obligatorio == 1 && empty($number)) {
+            return "El campo esta vacio";
+        }else{
+            if (!is_numeric($number)) {
+                return "El campo no es un decimal. (Debe llevar punto(.) entre la parte entera y la parte decimal)";
+            }else{
+                if($number>$max || $number<$min){
                     return "El numero debe de estar entre $max - $min.";
                 }
             }
@@ -296,7 +323,9 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
         if ($obligatorio == 1 && empty($password)){
             return "El Campo esta vacio"; 
         }
-        preg_match($patron,$password);
+        if(!preg_match($patron,$password)){
+            return "No sigue el patron";
+        }
         return null;
     }
 

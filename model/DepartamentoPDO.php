@@ -112,7 +112,8 @@ class DepartamentoPDO{
      */
     public static function modificaDepartamento(Departamento $departamento){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        return $oConexionDB->executeUDI("update T02_Departamento set T02_CodDepartamento='" . $departamento->codDepartamento . "',T02_DescDepartamento='" . $departamento->descDepartamento . "',T02_FechaDeCreacionDepartamento=" . $departamento->fechaCreacionDepartamento->getTimestamp() . ",T02_VolumenDeNegocio=" . $departamento->volumenNegocio . ",T02_FechaBajaDepartamento=" . ($departamento->fechaBajaDepartamento??"null") . " where T02_CodDepartamento='" . $_SESSION['codDepartamentoEnCurso']."'");
+        return $oConexionDB->executeUDI("update T02_Departamento set T02_CodDepartamento='" . $departamento->codDepartamento . "',T02_DescDepartamento='" . $departamento->descDepartamento ."',T02_VolumenDeNegocio=" . $departamento->volumenNegocio ." where T02_CodDepartamento='" . $_SESSION['codDepartamentoEnCurso']."'");
+        
     }
     /**
      * rehabilitaDepartamento

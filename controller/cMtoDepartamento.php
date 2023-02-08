@@ -9,6 +9,8 @@ if(isset($_REQUEST['volver'])){
 if(isset($_REQUEST['buscar'])){
     $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc($_REQUEST['bdescripcion'],(int)$_REQUEST['estado']);
 }else{
+    $aError=[];
+    $ok = true;
     $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc("",-1);
     if(isset($_REQUEST['alta'])){
         $_SESSION ['codDepartamentoEnCurso']=$_REQUEST['alta'];
@@ -20,15 +22,33 @@ if(isset($_REQUEST['buscar'])){
     }
     if(isset($_REQUEST['editar'])){
         $_SESSION ['codDepartamentoEnCurso']=$_REQUEST['editar'];
-        $oFechaCreacion=new DateTime($_REQUEST['mfechaCreacion']);
-        DepartamentoPDO::modificaDepartamento(new Departamento($_REQUEST['mcodDepartamento'],$_REQUEST['mdescDepartamento'],$oFechaCreacion->getTimestamp(),$_REQUEST['mvolumenNegocio']));
+        $aError['codigo'] = validacionFormularios::comprobarAlfabetico($_REQUEST['mcodDepartamento'], 3, 3, 1);
+        $aError['descripcion'] = validacionFormularios::comprobarAlfabetico($_REQUEST['mdescDepartamento'], 255, 0, 1);
+        $aError['volumennegocio'] = validacionFormularios::comprobarNumber($_REQUEST['mvolumenNegocio'], 100000, 0, 1);
+        foreach($aError as $error){
+            if(!empty($error)){
+                $ok = false;
+            }
+        }
+        if($ok){
+            DepartamentoPDO::modificaDepartamento(new Departamento($_REQUEST['mcodDepartamento'],$_REQUEST['mdescDepartamento'],0,$_REQUEST['mvolumenNegocio']));
+        }
     }
     if(isset($_REQUEST['eliminar'])){
         $_SESSION ['codDepartamentoEnCurso']=$_REQUEST['eliminar'];
         DepartamentoPDO::bajaFisicaDepartamento();
     }
     if(isset($_REQUEST['add'])){
-        DepartamentoPDO::altaDepartamento(new Departamento($_REQUEST['acodigo'],$_REQUEST['adescripcion'],time(),$_REQUEST['avolumenNegocio']));
+        $aError['codigo'] = validacionFormularios::comprobarAlfabetico($_REQUEST['acodigo'], 3, 3, 1);
+        $aError['descripcion'] = validacionFormularios::comprobarAlfabetico($_REQUEST['acodigo'], 255, 0, 1);
+        foreach($aError as $error){
+            if(!empty($error)){
+                $ok = false;
+            }
+        }
+        if($ok){
+            DepartamentoPDO::altaDepartamento(new Departamento($_REQUEST['acodigo'],$_REQUEST['adescripcion'],time(),$_REQUEST['avolumenNegocio']));
+        }
     }
     if(isset($_REQUEST['import'])){
     }
