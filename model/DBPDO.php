@@ -35,6 +35,7 @@ class DBPDO{
 
     /**
      * Summary of __construct
+     * 
      * @param mixed $dsn
      * @param mixed $user Usuario de la base de datos
      * @param mixed $password Contraseña del usuario.
@@ -109,11 +110,9 @@ class DBPDO{
      * ":edad"=>"22"
      * ]
      * ];
-     * 
      * 2º Forma
      * Insert:
      * insert into prueba1 VALUES(?,?,?,?)
-     * 
      * Datos:
      * [
      *     [

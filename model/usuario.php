@@ -54,6 +54,7 @@ class Usuario{
     public string $perfil;
     /**
      * Summary of __construct
+     * 
      * @param string $codUsuario Codigo del usuario
      * @param string $password Contraseña en SHA2 del usuario
      * @param string $descUsuario Descripcion del usuario

@@ -7,9 +7,10 @@
             <label for="descripcion">Descripción</label>
             <input type="text" name="adescripcion" id="descripcion">
             <label for="volumenNegocio">Volumen de Negocio</label>
-            <input type="number" name="avolumenNegocio" id="volumenNegocio">
+            <input type="number" name="avolumenNegocio" id="volumenNegocio" value="0">
             <input type="submit" class="buttom" name="add" value="Añadir">
         </div>
+        <input type="file" name="fileimport" id="fileimport">
         <input type="submit" class="buttom" name="import" value="importar">
         <input type="submit" class="buttom" name="export" value="exportar">
     </form>

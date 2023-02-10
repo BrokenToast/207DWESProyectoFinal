@@ -1,5 +1,5 @@
 <?php
- $aErrores = [
+$aErrores = [
     'userName'=>'',
     'descUsuario'=>'',
     'userExist'=>''

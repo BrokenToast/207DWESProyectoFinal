@@ -1,4 +1,6 @@
 <?php
+$aError=[];
+$ok = true;
 $aRespuestaMtoDepartamento = [];
 if(isset($_REQUEST['volver'])){
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
@@ -9,9 +11,6 @@ if(isset($_REQUEST['volver'])){
 if(isset($_REQUEST['buscar'])){
     $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc($_REQUEST['bdescripcion'],(int)$_REQUEST['estado']);
 }else{
-    $aError=[];
-    $ok = true;
-    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc("",-1);
     if(isset($_REQUEST['alta'])){
         $_SESSION ['codDepartamentoEnCurso']=$_REQUEST['alta'];
         DepartamentoPDO::rehabilitaDepartamento();
@@ -54,5 +53,6 @@ if(isset($_REQUEST['buscar'])){
     }
     if(isset($_REQUEST['export'])){
     }
+    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc("",-1);
 }
 require_once $aVista['layout'];

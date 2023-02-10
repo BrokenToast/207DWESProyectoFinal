@@ -26,7 +26,6 @@
         "rest"=>"./controller/cREST.php",
         "mtodepartamento"=>"./controller/cMtoDepartamento.php",
         "modificardepartamento"=>"./controller/cModifcarDepartamento.php",
-        //"tecnologia"=>"./controller/cTecnologias.php"
         
     ];
     /*Vista*/
@@ -44,7 +43,6 @@
         "rest"=>"./view/vREST.php",
         "mtodepartamento"=>"./view/vMtoDepartamento.php",
         "modificardepartamento"=>"./view/vModifcarDepartamento.php",
-        //"tecnologia"=>"./view/vTecnologias.php"
         
     ];
 ?>

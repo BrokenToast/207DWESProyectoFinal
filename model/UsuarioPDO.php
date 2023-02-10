@@ -30,6 +30,7 @@ class UsuarioPDO{
     }
     /**
      * Summary of altaUsuario
+     * 
      * @param Usuario $usuario
      * @return bool|int
      */
@@ -48,6 +49,7 @@ class UsuarioPDO{
     }
     /**
      * Summary of modificarUsuario
+     * 
      * @param Usuario $usuario
      * @param string|null $codUsuario
      * @return bool|int
@@ -69,6 +71,7 @@ class UsuarioPDO{
     }
     /**
      * Summary of borrarUsuario
+     * 
      * @param string $codUsuario
      * @return bool|int
      */
@@ -78,6 +81,7 @@ class UsuarioPDO{
     }
     /**
      * Summary of validarCodNoExiste
+     * 
      * @param string $codUsuario
      * @return bool
      */
