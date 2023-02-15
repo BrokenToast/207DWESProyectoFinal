@@ -23,7 +23,7 @@
         <footer>
             <p>Luis Pérez Astorga® 2022-2023</p>
             <a href="../../index.html"><img src="./webroot/media/img/logo_Casa.png" alt="Pagina Creador" height="50" width="50"></a>
-            <a href="view/vTecnologias.html" target="_blank">Tecnologias</a>
+            <a href="doc/curriculum/curriculum.html" target="_blank"><img src="webroot/media/img/CV.png" alt="Mi curriculum" width="25" height="25"></a>
             <p>Pagina a Copiar:<a href="https://www.raspberrypi.com/" target="_blank">Raspberry Pi</a></p>
             <a href="https://github.com/BrokenToast/207DWESProyectoFinal" target="_blank"><img src="./webroot/media/img/git.png" alt="GitHub" height="50" width="50"></a>
         </footer>

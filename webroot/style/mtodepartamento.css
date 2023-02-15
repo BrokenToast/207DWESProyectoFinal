@@ -86,3 +86,17 @@ aside>form>*{
   aside>form>div>input{
     margin-top: 1%;
   }
+/*Botonos paginación*/
+#paginacion{
+  width: 20%; height: 20px;
+  display: flex;
+  flex-flow: row;
+  position: absolute;
+  bottom: 20%;
+  right: 30%;
+}
+#paginacion>p{
+  width: 100%;
+  display: block;
+  text-align: center;
+}

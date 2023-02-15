@@ -51,7 +51,7 @@ if(isset($_COOKIE['idioma'])){
 if($_SESSION['usuarioproyectofinal207']->numAccesos==1){
     $aRespuestaInicioPrivado['mensajeNumConexiones']='Es tu primera conexion';
 }else{
-    $aRespuestaInicioPrivado['mensajeNumConexiones']=sprintf('Se a conectado %d <br> La ultima conexion fue en %s',$_SESSION['usuarioproyectofinal207']->numAccesos,$_SESSION['usuarioproyectofinal207']->getfechaHoraUltimaConexionAnterior()->format('d-m-Y H:i:s'));
+    $aRespuestaInicioPrivado['mensajeNumConexiones']=sprintf('Se a conectado %d <br> La ultima conexion fue en %s',$_SESSION['usuarioproyectofinal207']->numAccesos,$_SESSION['usuarioproyectofinal207']->fechaHoraUltimaConexionAnterior->format('d-m-Y H:i:s'));
 }
 if(isset($_REQUEST['error'])){
     $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);

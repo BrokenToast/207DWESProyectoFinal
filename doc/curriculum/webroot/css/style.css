@@ -1,0 +1,112 @@
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+ul,ol{
+    list-style: none;
+}
+#root{
+    /* min-width: 650px; */
+    width: 100vw; height: 100vh;
+    display: flex;
+    position: relative;
+}
+/*Contenido de la pagina*/
+/*Datos Personales*/
+aside{
+    flex: 0 0 20%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background-color: gainsboro;
+}
+strong{
+    font-weight: 400;
+}
+aside>img{
+    width: 50%;
+    margin: 2% 0;
+}
+#mensaje{
+    margin: 4%;
+    padding: 2%;
+    padding-right: 5%;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 0%;
+    left: 0;
+    background-color: #CD2355;
+    color: white;
+    font-size: 1.3em;
+}
+#cerrarMensaje{
+    height: 30px; width: 30px;
+    border: 2px solid white;
+    border-radius: 10px;
+    position: absolute;
+    top: 7%;
+    right: 1%;
+    text-align: center;
+}
+/*Apartados*/
+main{
+    flex: 0 0 80%;
+}
+main>*{
+    background-color: gray;
+    margin: 2% 0.5%;
+    color: white;
+}
+section>h1{
+    text-align: center;
+    cursor: pointer;
+}
+article{
+    height: 0;
+    margin: 0.5% 0;
+    display: flex;
+    flex-flow: column;
+    background: gainsboro;
+    color: black;
+    overflow: hidden;
+}
+/*Competencias*/
+#competencias>article{
+    flex-flow: row;
+    justify-content: space-between;
+}
+#competencias ul{
+    width: 30%;
+}
+#competencias>article>ul>li{
+    margin: 3% 0;
+    padding: 0.5%;
+    font-weight: 400;
+    text-decoration: underline;
+}
+/*Permisos*/
+#perCondución ul{
+    justify-content: space-around;
+}
+/*Clases*/
+.open{
+    height: 50%;
+    padding: 1%;
+    transition: height 10s ease-in-out;
+}
+/*Responsi*/
+@media (  width < 600px ) {
+    #root{
+        flex-flow: column;
+    }
+    aside{
+        flex-flow: row;
+        padding: 2%;
+    }
+    aside>img{
+        width: 20% !important;
+        margin-right: 2%;
+    }
+}

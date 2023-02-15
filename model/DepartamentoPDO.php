@@ -100,7 +100,7 @@ class DepartamentoPDO{
      */
     public static function altaDepartamento(Departamento $departamento){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        return $oConexionDB->executeUDI("insert into T02_Departamento values('".$departamento->codDepartamento."','".$departamento->descDepartamento."',unix_timestamp(),'".$departamento->volumenNegocio."',null);");
+        return $oConexionDB->executeUDI("insert into T02_Departamento values('".$departamento->codDepartamento."','".$departamento->descDepartamento."',unix_timestamp(),'".$departamento->volumenNegocio."',$departamento->fechaBajaDepartamento);");
     }
     /**
      * bajaFisicaDepartamento
@@ -112,7 +112,7 @@ class DepartamentoPDO{
      */
     public static function bajaFisicaDepartamento(){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        return $oConexionDB->executeUDI("delete from T02_Departamento where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]';");
+        return $oConexionDB->executeUDI("delete from T02_Departamento where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]' and T02_FechaBajaDepartamento is null;");
 
     }
     /**
@@ -125,7 +125,7 @@ class DepartamentoPDO{
      */
     public static function bajaLogicaDepartamento(){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        return $oConexionDB->executeUDI("update T02_Departamento set T02_FechaBajaDepartamento=unix_timestamp() where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]';");
+        return $oConexionDB->executeUDI("update T02_Departamento set T02_FechaBajaDepartamento=unix_timestamp() where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]' and T02_FechaBajaDepartamento is null;");
     }
     /**
      * modificaDepartamento
@@ -151,7 +151,7 @@ class DepartamentoPDO{
      */
     public static function rehabilitaDepartamento(){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        return $oConexionDB->executeUDI("update T02_Departamento set T02_FechaBajaDepartamento=null where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]';");
+        return $oConexionDB->executeUDI("update T02_Departamento set T02_FechaBajaDepartamento=null where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]' and T02_FechaBajaDepartamento is not null;");
     }
     /**
      * validaCodNoExiste

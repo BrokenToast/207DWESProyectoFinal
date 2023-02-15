@@ -92,5 +92,11 @@
             }
         }
         ?>
-        
     </table>
+    <form action="index.php" method="post" id="paginacion">
+        <input type="submit" value="<<">
+        <input type="submit" value="<">
+        <p>pagina 1 de n</p>
+        <input type="submit" value=">">
+        <input type="submit" value=">>">
+    </form>
