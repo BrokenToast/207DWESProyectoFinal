@@ -2,7 +2,7 @@
 <section>
     <article>
             <form action="./index.php" method="post">
-            <input type="submit" class="buttom" name="volver" value="Volver">
+            <input type="submit" class="button" name="volver" value="Volver">
                 <div>
                     <fieldset>
                         <legend>Editar Perfil</legend>
@@ -47,7 +47,7 @@
                                 ?>
                             </tr>
                             <tr>
-                                <td><input type="submit" class="buttom" name="changeUser" value="Editar perfil"></td>
+                                <td><input type="submit" class="button" name="changeUser" value="Editar perfil"></td>
                             </tr>
                         </table>
                     </fieldset>
@@ -60,8 +60,8 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="submit" class="buttom" name="changePassword" value="Cambiar contraseña"></td>
-                                    <td><input type="submit" class="buttom" name="borrar" value="Borrar Cuenta"></td>
+                                    <td><input type="submit" class="button" name="changePassword" value="Cambiar contraseña"></td>
+                                    <td><input type="submit" class="button" name="borrar" value="Borrar Cuenta"></td>
                                 </tr>
                             </table>
                     </fieldset>

@@ -19,7 +19,7 @@ class Rest{
      * 
      * @param string $codEstacion Codigo de la estación Meteorologica
      * @throws ErrorApp Encaso de que occurra algun error al extraer la información de la AEMET
-     * @return Tiempo
+     * @return Tiempo Objeto que devuelve el tiempo de la estacion pedida.
      */
     public static function pedirTemperaturaEstacionMeto(string $codEstacion){
             //Pedimos la información AEMEt y nos duelve un JSON con informacion sobre la respuesta, la descodigicamos en un array asociativo.

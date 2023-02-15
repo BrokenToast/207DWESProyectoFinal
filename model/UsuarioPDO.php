@@ -17,6 +17,7 @@ class UsuarioPDO{
      * @param string $codUsuario Nombre del usuario.
      * @param string $password Contraseña del usuario
      * @return Usuario|null Devuelve ull su no
+     * @throws ErrorAPP En caso de que ocurra un error con la consulta o con la conexion de la base de datos
      */
     public static function validadUsuario(string $codUsuario,string $password){
         $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
@@ -33,6 +34,7 @@ class UsuarioPDO{
      * 
      * @param Usuario $usuario
      * @return bool|int
+     * @throws ErrorAPP En caso de que ocurra un error con la consulta o con la conexion de la base de datos
      */
     public static function altaUsuario(Usuario $usuario){
         $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
@@ -40,7 +42,7 @@ class UsuarioPDO{
             $usuario->codUsuario,
             $usuario->password,
             $usuario->descUsuario,
-            $usuario->getfechaHoraUltimaConexion()->getTimestamp(),
+            $usuario->fechaHoraUltimaConexion->getTimestamp(),
             $usuario->numAccesos,
             $usuario->perfil,
             0
@@ -53,6 +55,7 @@ class UsuarioPDO{
      * @param Usuario $usuario
      * @param string|null $codUsuario
      * @return bool|int
+     * @throws ErrorAPP En caso de que ocurra un error con la consulta o con la conexion de la base de datos
      */
     public static function modificarUsuario(Usuario $usuario,string $codUsuario=null){
         $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
@@ -60,7 +63,7 @@ class UsuarioPDO{
             "T01_CodUsuario='".$usuario->codUsuario."'",
             "T01_Password='".$usuario->password."'",
             "T01_DescUsuario='".$usuario->descUsuario."'",
-            "T01_FechaHoraUltimaConexion='".$usuario->getfechaHoraUltimaConexion()->getTimestamp()."'",
+            "T01_FechaHoraUltimaConexion='".$usuario->fechaHoraUltimaConexion->getTimestamp()."'",
             "T01_NumConexiones='".$usuario->numAccesos."'",
             "T01_Perfil='".$usuario->perfil."'",
         ];
@@ -74,6 +77,7 @@ class UsuarioPDO{
      * 
      * @param string $codUsuario
      * @return bool|int
+     * @throws ErrorAPP En caso de que ocurra un error con la consulta o con la conexion de la base de datos
      */
     public static function borrarUsuario(string $codUsuario){
         $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
@@ -84,6 +88,7 @@ class UsuarioPDO{
      * 
      * @param string $codUsuario
      * @return bool
+     * @throws ErrorAPP En caso de que ocurra un error con la consulta o con la conexion de la base de datos
      */
     public static function validarCodNoExiste(string $codUsuario){
         $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);

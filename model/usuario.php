@@ -42,8 +42,8 @@ class Usuario{
      */
     public int $numAccesos;
 
-    private DateTime $fechaHoraUltimaConexion;
-    private DateTime $fechaHoraUltimaConexionAnterior;
+    public readonly DateTime $fechaHoraUltimaConexion;
+    public readonly DateTime $fechaHoraUltimaConexionAnterior;
     /**
      * Summary of perfil
      * 
@@ -64,7 +64,6 @@ class Usuario{
      * @param string $perfil Tiepo de Perfil;
      */
     public function __construct(string $codUsuario,string $password,string $descUsuario, int $numAccesos,int $fechaHoraUltimaConexion,int $fechaHoraUltimaConexionAnterior,string $perfil){
-        
         $this->codUsuario=$codUsuario;
         $this->password=$password;
         $this->descUsuario=$descUsuario;
@@ -77,21 +76,4 @@ class Usuario{
         $this->fechaHoraUltimaConexionAnterior=$fechaAnterior;
         $this->perfil=$perfil;
     }
-    /**
-     * Summary of getfechaHoraUltimaConexion
-     * 
-     * @return DateTime Fecha de la conexion actual
-     */
-    public function getfechaHoraUltimaConexion(){
-        return $this->fechaHoraUltimaConexion;
-    }
-    /**
-     * Summary of getfechaHoraUltimaConexionAnterior
-     * 
-     * @return DateTime Fecha de la ultima conexion
-     */
-    public function getfechaHoraUltimaConexionAnterior(){
-      return $this->fechaHoraUltimaConexionAnterior;
-    }
-
 }

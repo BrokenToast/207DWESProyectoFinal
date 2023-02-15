@@ -89,10 +89,11 @@ class DBPDO{
     /**
      * ExecuteUDI
      * 
-     * executeUDI: Sirve para ejecutar un inserción o update o delete:
+     * Sirve para ejecutar un inserción o update o delete:
      * En la inserción podemos hacer un query paremetizado esto nos abre la posibilidad para pasarle una array que contenga datos sobre la inserción
      * pero debe respetar uno de los siguientes formatos la array de datos:
      * Requisitos: la array de datos contiene otras arraya que almacenan las tuplas.
+     * 
      * 1º forma
      * Insert:
      * insert into prueba1 VALUES(:codigo,:nombre,:apellidos,:edad)

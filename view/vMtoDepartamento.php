@@ -8,11 +8,11 @@
             <input type="text" name="adescripcion" id="descripcion">
             <label for="volumenNegocio">Volumen de Negocio</label>
             <input type="number" name="avolumenNegocio" id="volumenNegocio" value="0">
-            <input type="submit" class="buttom" name="add" value="Añadir">
+            <input type="submit" class="button" name="add" value="Añadir">
         </div>
         <input type="file" name="fileimport" id="fileimport">
-        <input type="submit" class="buttom" name="import" value="importar">
-        <input type="submit" class="buttom" name="export" value="exportar">
+        <input type="submit" class="button" name="import" value="importar">
+        <input type="submit" class="button" name="export" value="exportar">
     </form>
         <?php
             if(!$ok){
@@ -30,28 +30,28 @@
         ?>
 </aside>
 <form action="./index.php" method="post">
-    <input type="submit" class="buttom" name="volver" value="volver">
+    <input type="submit" class="button" name="volver" value="volver">
     <div>
         <label for="descDepartamento">Descripción</label>
-        <input type="text" name="bdescripcion" id="descDepartamento">
+        <input type="text" name="bdescripcion" id="descDepartamento" value="<?php echo (!empty($_SESSION['busqueda']['descripcion'])? $_SESSION['busqueda']['descripcion'] : "" )?>">
         <fieldset>
             <legend>Estado:</legend>
             <label for="alta">Alta</label>
-            <input type="radio" name="estado" id="alta" value="1">
+            <input type="radio" name="estado" id="alta" value="-1" <?php echo ($_SESSION['busqueda']['estado']==-1)? "checked" : "" ?>>
             <label for="baja">Baja</label>
-            <input type="radio" name="estado" id="baja" value="0">
+            <input type="radio" name="estado" id="baja" value="0" <?php echo ($_SESSION['busqueda']['estado']==0)? "checked" : "" ?>>
             <label for="todos">Todos</label>
-            <input type="radio" name="estado" id="todos" value="-1" checked> 
+            <input type="radio" name="estado" id="todos" value="1" <?php echo ($_SESSION['busqueda']['estado']==1)? "checked" : "" ?>> 
         </fieldset>
-        <button submit name="buscar" class="buttom" value="buscar">Buscar</button>
+        <button submit name="buscar" class="button" value="buscar">Buscar</button>
     </div>
 </form>
     <table>
         <tr>
-            <th>Cod</th>
-            <th>Desc</th>
+            <th>Codigo</th>
+            <th>Descripcion</th>
             <th>Creacion</th>
-            <th>Volumen</th>
+            <th>Volumen Negocio</th>
             <th>Fecha Baja</th>
             <th>Operaciones</th>
         </tr>
@@ -75,15 +75,22 @@
                 </form>
             <?php
         }
-        if (!empty($aRespuestaMtoDepartamento['departamentos'])) {
+        if(is_string($aRespuestaMtoDepartamento['departamentos'])){
+            ?> 
+            <tr>
+                <td colspan="7"><?php print $aRespuestaMtoDepartamento['departamentos'];?></td>
+            </tr>
+            <?php
+            
+        }else{
             if(isset($aRespuestaMtoDepartamento['departamentos']->codDepartamento)){
                 printDepartamento($aRespuestaMtoDepartamento['departamentos']);
             }else{
                 foreach ($aRespuestaMtoDepartamento['departamentos'] as $departamento) {
-                printDepartamento($departamento);
+                    printDepartamento($departamento);
                 }
             }
-        }  
+        }
         ?>
         
     </table>

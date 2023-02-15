@@ -1,7 +1,15 @@
 <?php
 $aError=[];
 $ok = true;
-$aRespuestaMtoDepartamento = [];
+$aRespuestaMtoDepartamento = [
+    'departamentos'=>null
+];
+if(!isset($_SESSION["busqueda"])){
+    $_SESSION["busqueda"]=[
+        'descripcion'=>"",
+        'estado'=>1
+    ];
+}
 if(isset($_REQUEST['volver'])){
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = "inicioprivado";
@@ -10,6 +18,8 @@ if(isset($_REQUEST['volver'])){
 }
 if(isset($_REQUEST['buscar'])){
     $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc($_REQUEST['bdescripcion'],(int)$_REQUEST['estado']);
+    $_SESSION['busqueda']['descripcion']=$_REQUEST['bdescripcion'];
+    $_SESSION['busqueda']['estado']=(int)$_REQUEST['estado'];
 }else{
     if(isset($_REQUEST['alta'])){
         $_SESSION ['codDepartamentoEnCurso']=$_REQUEST['alta'];
@@ -50,9 +60,12 @@ if(isset($_REQUEST['buscar'])){
         }
     }
     if(isset($_REQUEST['import'])){
+        var_dump($_FILES);
     }
     if(isset($_REQUEST['export'])){
+        DepartamentoPDO::exportarDepartamento();
     }
-    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc("",-1);
+    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc("",1);
 }
+
 require_once $aVista['layout'];
