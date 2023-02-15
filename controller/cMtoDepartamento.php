@@ -4,8 +4,8 @@ $ok = true;
 $aRespuestaMtoDepartamento = [
     'departamentos'=>null
 ];
-if(!isset($_SESSION["busqueda"])){
-    $_SESSION["busqueda"]=[
+if(!isset($_SESSION["criterioBusquedaDepartamento"])){
+    $_SESSION["criterioBusquedaDepartamento"]=[
         'descripcion'=>"",
         'estado'=>1
     ];
@@ -18,8 +18,8 @@ if(isset($_REQUEST['volver'])){
 }
 if(isset($_REQUEST['buscar'])){
     $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc($_REQUEST['bdescripcion'],(int)$_REQUEST['estado']);
-    $_SESSION['busqueda']['descripcion']=$_REQUEST['bdescripcion'];
-    $_SESSION['busqueda']['estado']=(int)$_REQUEST['estado'];
+    $_SESSION['criterioBusquedaDepartamento']['descripcion']=$_REQUEST['bdescripcion'];
+    $_SESSION['criterioBusquedaDepartamento']['estado']=(int)$_REQUEST['estado'];
 }else{
     if(isset($_REQUEST['alta'])){
         $_SESSION ['codDepartamentoEnCurso']=$_REQUEST['alta'];

@@ -26,7 +26,6 @@
         "rest"=>"./controller/cREST.php",
         "mtodepartamento"=>"./controller/cMtoDepartamento.php",
         "modificardepartamento"=>"./controller/cModifcarDepartamento.php",
-        
     ];
     /*Vista*/
     $aVista = [
@@ -43,6 +42,5 @@
         "rest"=>"./view/vREST.php",
         "mtodepartamento"=>"./view/vMtoDepartamento.php",
         "modificardepartamento"=>"./view/vModifcarDepartamento.php",
-        
     ];
 ?>
