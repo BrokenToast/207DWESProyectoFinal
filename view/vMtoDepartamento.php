@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="./webroot/style/mtodepartamento.css">
 <aside>
-    <form action="./index.php" method="post">
+    <form enctype="multipart/form-data" action="./index.php" method="post">
         <div>
             <label for="codigo">Codigo</label>
             <input type="text" name="acodigo" id="codigo">
@@ -94,9 +94,9 @@
         ?>
     </table>
     <form action="index.php" method="post" id="paginacion">
-        <input type="submit" value="<<">
-        <input type="submit" value="<">
-        <p>pagina 1 de n</p>
-        <input type="submit" value=">">
-        <input type="submit" value=">>">
+        <input type="submit" name="principio" value="<<">
+        <input type="submit" name="anterior" value="<">
+        <p>pagina <?php echo (int)$_SESSION['numPaginacionDepartamentos']/4;?> de <?php echo (int)$_SESSION['cantidadDepartamentos']/4;?></p>
+        <input type="submit" name="siguiente" value=">">
+        <input type="submit" name="ultima" value=">>">
     </form>

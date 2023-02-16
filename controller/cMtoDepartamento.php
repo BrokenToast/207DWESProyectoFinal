@@ -4,6 +4,9 @@ $ok = true;
 $aRespuestaMtoDepartamento = [
     'departamentos'=>null
 ];
+if(!isset($_SESSION['numPaginacionDepartamentos'])){
+    $_SESSION['numPaginacionDepartamentos']=0;
+}
 if(!isset($_SESSION["criterioBusquedaDepartamento"])){
     $_SESSION["criterioBusquedaDepartamento"]=[
         'descripcion'=>"",
@@ -17,7 +20,7 @@ if(isset($_REQUEST['volver'])){
     exit;
 }
 if(isset($_REQUEST['buscar'])){
-    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc($_REQUEST['bdescripcion'],(int)$_REQUEST['estado']);
+    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDescPagiado($_REQUEST['bdescripcion'],(int)$_REQUEST['estado']);
     $_SESSION['criterioBusquedaDepartamento']['descripcion']=$_REQUEST['bdescripcion'];
     $_SESSION['criterioBusquedaDepartamento']['estado']=(int)$_REQUEST['estado'];
 }else{
@@ -49,7 +52,7 @@ if(isset($_REQUEST['buscar'])){
     }
     if(isset($_REQUEST['add'])){
         $aError['codigo'] = validacionFormularios::comprobarAlfabetico($_REQUEST['acodigo'], 3, 3, 1);
-        $aError['descripcion'] = validacionFormularios::comprobarAlfabetico($_REQUEST['acodigo'], 255, 0, 1);
+        $aError['descripcion'] = validacionFormularios::comprobarAlfabetico($_REQUEST['adescripcion'], 255, 0, 1);
         foreach($aError as $error){
             if(!empty($error)){
                 $ok = false;
@@ -60,12 +63,28 @@ if(isset($_REQUEST['buscar'])){
         }
     }
     if(isset($_REQUEST['import'])){
-        var_dump($_FILES);
+        DepartamentoPDO::importarDepartamentos($_FILES['fileimport']);
     }
     if(isset($_REQUEST['export'])){
         DepartamentoPDO::exportarDepartamento();
     }
-    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDesc("",1);
+    if(isset($_REQUEST['principio'])){
+        $_SESSION['numPaginacionDepartamentos']=0;
+    }
+    if(isset($_REQUEST['anterior'])){
+        if($_SESSION['numPaginacionDepartamentos']>=0){
+            $_SESSION['numPaginacionDepartamentos']=-4;
+        }
+    }
+    if(isset($_REQUEST['siguiente'])){
+        if($_SESSION['numPaginacionDepartamentos']<=$_SESSION['cantidadDepartamentos']){
+            $_SESSION['numPaginacionDepartamentos']=+4;
+        }
+    }
+    if(isset($_REQUEST['ultima'])){
+        $_SESSION['numPaginacionDepartamentos']=$_SESSION['cantidadDepartamentos'];
+    }
+    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDescPagiado($_SESSION['criterioBusquedaDepartamento']['descripcion'],$_SESSION['criterioBusquedaDepartamento']['estado']);
 }
 
 require_once $aVista['layout'];
