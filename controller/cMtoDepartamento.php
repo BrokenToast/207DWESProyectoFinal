@@ -88,6 +88,7 @@ if(isset($_REQUEST['buscar'])){
         $_SESSION['numPaginacionDepartamentos']=$_SESSION['cantidadDepartamentos'];
     }
     $aRespuestaMtoDepartamento['departamentos']=[];
+
     foreach (DepartamentoPDO::bucarDepartamentoPorDescPagiado($_SESSION['criterioBusquedaDepartamento']['descripcion'],$_SESSION['criterioBusquedaDepartamento']['estado']) as $departamento) {
         array_push($aRespuestaMtoDepartamento['departamentos'],[
             'codDepartamento'=>$departamento->codDepartamento,
@@ -97,5 +98,6 @@ if(isset($_REQUEST['buscar'])){
             'fechaBajaDepartamento'=>$departamento->fechaBajaDepartamento
         ]);
     }
+    var_dump($aRespuestaMtoDepartamento['departamentos']);
 }
 require_once $aVista['layout'];
