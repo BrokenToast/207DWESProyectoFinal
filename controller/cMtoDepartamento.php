@@ -5,7 +5,7 @@ $aRespuestaMtoDepartamento = [
     'departamentos'=>null
 ];
 if(!isset($_SESSION['numPaginacionDepartamentos'])){
-    $_SESSION['numPaginacionDepartamentos']=0;
+    $_SESSION['numPaginacionDepartamentos']=4;
 }
 if(!isset($_SESSION["criterioBusquedaDepartamento"])){
     $_SESSION["criterioBusquedaDepartamento"]=[
@@ -69,11 +69,14 @@ if(isset($_REQUEST['buscar'])){
         DepartamentoPDO::exportarDepartamento();
     }
     if(isset($_REQUEST['principio'])){
-        $_SESSION['numPaginacionDepartamentos']=0;
+        $_SESSION['numPaginacionDepartamentos']=4;
     }
     if(isset($_REQUEST['anterior'])){
-        if($_SESSION['numPaginacionDepartamentos']>=0){
+        if($_SESSION['numPaginacionDepartamentos']>4){
             $_SESSION['numPaginacionDepartamentos']=-4;
+            if($_SESSION['numPaginacionDepartamentos']<4){
+                $_SESSION['numPaginacionDepartamentos']=4;
+            }
         }
     }
     if(isset($_REQUEST['siguiente'])){
@@ -84,7 +87,15 @@ if(isset($_REQUEST['buscar'])){
     if(isset($_REQUEST['ultima'])){
         $_SESSION['numPaginacionDepartamentos']=$_SESSION['cantidadDepartamentos'];
     }
-    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDescPagiado($_SESSION['criterioBusquedaDepartamento']['descripcion'],$_SESSION['criterioBusquedaDepartamento']['estado']);
+    $aRespuestaMtoDepartamento['departamentos']=[];
+    foreach (DepartamentoPDO::bucarDepartamentoPorDescPagiado($_SESSION['criterioBusquedaDepartamento']['descripcion'],$_SESSION['criterioBusquedaDepartamento']['estado']) as $departamento) {
+        array_push($aRespuestaMtoDepartamento['departamentos'],[
+            'codDepartamento'=>$departamento->codDepartamento,
+            'descDepartamento'=>$departamento->descDepartamento,
+            'fechaCreacionDepartamento'=>$departamento->fechaCreacionDepartamento,
+            'volumenNegocio'=>$departamento->volumenNegocio,
+            'fechaBajaDepartamento'=>$departamento->fechaBajaDepartamento
+        ]);
+    }
 }
-
 require_once $aVista['layout'];

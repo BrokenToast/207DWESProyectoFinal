@@ -71,7 +71,7 @@ class DepartamentoPDO{
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD); 
         $_SESSION['cantidadDepartamentos']=$oConexionDB->executeQuery('select count(*) from T02_Departamento')['count(*)'];
         $query="select * from T02_Departamento where T02_DescDepartamento like '%$descripcion%'";
-        $paginacion="order by T02_CodDepartamento ASC LIMIT 4 OFFSET $_SESSION[numPaginacionDepartamentos]";
+        $paginacion="order by T02_CodDepartamento ASC LIMIT 4 OFFSET ".$_SESSION['numPaginacionDepartamentos']-4;
         if($estado>0){
             $aRespuesta=$oConexionDB->executeQuery($query. $paginacion);
         }else if($estado==0){

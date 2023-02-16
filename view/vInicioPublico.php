@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="./webroot/style/inicioPublico.css">
 <nav>
-    <label for="banderaIdiomas">⚐</label>
+    <!-- <label for="banderaIdiomas">⚐</label>
     <input type="checkbox" name="bandera" id="banderaIdiomas">
-    <!-- <div id="selectLenguage">
+    <div id="selectLenguage">
         <form action="./index.php" method="post">
             <input type="radio" name="idioma" id="es" value="es" checked>
             <label for="es" class="bandera"><img src="./webroot/media/img/banderas/espana.png" alt="es"></label>
