@@ -2,7 +2,7 @@
 <nav>
     <label for="banderaIdiomas">⚐</label>
     <input type="checkbox" name="bandera" id="banderaIdiomas">
-    <div id="selectLenguage">
+    <!-- <div id="selectLenguage">
         <form action="./index.php" method="post">
             <input type="radio" name="idioma" id="es" value="es" checked>
             <label for="es" class="bandera"><img src="./webroot/media/img/banderas/espana.png" alt="es"></label>
@@ -14,7 +14,7 @@
             <label for="pt" class="bandera"><img src="./webroot/media/img/banderas/portuges.png" alt="pt"></label>
             <input type="submit" name="guardaridioma" value="guardar">
         </form>
-    </div>
+    </div> -->
     <form id="login" action="./index.php" method="post">
         <input type="submit" name="login" value="Login">
     </form>
@@ -22,9 +22,7 @@
 <section>
     <article id="carrito">
         <button onclick="before()"><</button>
-        <div>
-            <a href="" id="actual" target="_blank"><img src="./webroot/media/img/carrito/diagrama_clase.png" alt=""></a>
-        </div>
+        <a href="" id="actual" target="_blank"><img src="./webroot/media/img/carrito/diagrama_clase.png" alt=""></a>
         <button onclick="after()">></button>
     </article>
 </section>

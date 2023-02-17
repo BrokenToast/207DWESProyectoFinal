@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./webroot/style/detalle.css">
 <section>
     <form action="./index.php" method="post">
-        <input type="submit" name="volver" class="buttom" value="volver">
+        <input type="submit" name="volver" class="button" value="volver">
     </form>
     <article>
         <?php
@@ -43,7 +43,7 @@
                             }
                         ?>
                     </tbody>
-                </table> 
+                </table>
                 <?php
             }
                 //Delcaración de un array con todas las superglobales

@@ -11,7 +11,7 @@ if (isset($_REQUEST['iniciar'])) {
     if ($ok) {
         $oUsuario = UsuarioPDO::validadUsuario($_REQUEST['usuario'], $_REQUEST['password']);
         if (!is_null($oUsuario)){
-            $_SESSION['usuariologinlogoff207'] = $oUsuario;
+            $_SESSION['usuarioproyectofinal207'] = $oUsuario;
             $oUsuario->numAccesos += 1;
             UsuarioPDO::modificarUsuario($oUsuario);
             $_SESSION['paginaEnCurso'] = 'inicioprivado';
@@ -27,10 +27,8 @@ if(isset($_REQUEST['registrarse'])){
     exit;
 }
 if(isset($_REQUEST['volver'])){
-    $paginaAnterior=$_SESSION['paginaAnterior'];
-    $paginaEnCuerso = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaAnterior'] = $paginaEnCuerso;
-    $_SESSION['paginaEnCurso'] = $paginaAnterior;
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = "iniciopublico";
     header('Location: ./index.php');
     exit;
 }

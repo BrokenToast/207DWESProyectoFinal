@@ -1,0 +1,11 @@
+main>section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+main article{
+    margin: 1%;
+    display: flex;
+    flex: 1 1 300px;
+    flex-flow: column; 
+}

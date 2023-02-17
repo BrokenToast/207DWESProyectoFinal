@@ -1,9 +1,18 @@
 <?php
+/**
+ * Summary of ErrorApp
+ * 
+ * Clase que representan los errores de la APP
+ * @author luispatb luispatb@gmail.com
+ * @version 1.0.0
+ * @package model
+ */
 class ErrorApp extends Exception{
-    public function __construct(int $code,string $mensaje){
+    public function __construct(int $code, string $mensaje, string $file, int $lineError){
         $this->code=$code;
         $this->message=$mensaje;
-        $this->llamarVError();
+        $this->line = $lineError;
+        $this->file = $file;
     }
     public function llamarVError(){
         $_SESSION['error'] = $this;

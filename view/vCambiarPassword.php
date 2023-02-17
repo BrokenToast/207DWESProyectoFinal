@@ -2,7 +2,7 @@
 <section>
     <article>
         <form action="./index.php" method="post">
-            <input type="submit" class="buttom" name="volver" value="volver">
+            <input type="submit" class="button" name="volver" value="volver">
             <fieldset>
                 <legend>Cambiar Contraseña</legend>
                 <table>
@@ -30,7 +30,7 @@
                         ?>
                     </tr>
                     <tr>
-                        <td><input type="submit" class="buttom" name="cambiar" value="Cambiar Contraseña"></td>
+                        <td><input type="submit" class="button" name="cambiar" value="Cambiar Contraseña"></td>
                     </tr>
                 </table>
             </fieldset>

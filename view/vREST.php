@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="./webroot/style/rest.css">
 <form action="./index.php" method="post">
-    <input type="submit" class="buttom" name="volver" value="volver">
+    <input type="submit" class="button" name="volver" value="volver">
 </form>
 <h1>REST(AEMET)</h1>
 <form action="./index.php">

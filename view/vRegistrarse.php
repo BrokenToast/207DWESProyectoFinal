@@ -2,7 +2,7 @@
 <section>
     <article>
     <form action="./index.php" method="post">
-        <input type="submit" class="buttom" name="volver" value="volver">
+        <input type="submit" class="button" name="volver" value="volver">
             <fieldset>
                 <legend>Registrarse</legend>
                 <table id="tableForm">
@@ -38,7 +38,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><input type="submit" class="buttom" name="registrar" value="registrar"></td>
+                        <td><input type="submit" class="button" name="registrar" value="registrar"></td>
                     </tr>
                 </table>
             </fieldset>

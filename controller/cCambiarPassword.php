@@ -1,4 +1,12 @@
 <?php
+// Zona general
+if(isset($_REQUEST['volver'])){
+    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+    $_SESSION['paginaEnCurso'] = "micuenta";
+    header('Location: ./index.php');
+    exit;
+}
+//Zona propia
 $aErrores = [];
 $ok="";
 if(isset($_REQUEST['cambiar'])){
@@ -8,7 +16,7 @@ if(isset($_REQUEST['cambiar'])){
     if($_REQUEST['newPassword']!=$_REQUEST['repitPassword']){
         $aErrores['iguales'] = "No son iguales";
     }
-    if(hash("sha256",$_REQUEST['newPassword']) == $_SESSION['usuariologinlogoff207']->password){
+    if(hash("sha256",$_REQUEST['newPassword']) == $_SESSION['usuarioproyectofinal207']->password){
         $aErrores['lastPassword'] = "Es igual a la contraseña anterior";
     }
     foreach($aErrores as $value){
@@ -18,18 +26,10 @@ if(isset($_REQUEST['cambiar'])){
     }
 }
 if($ok){
-    $_SESSION['usuariologinlogoff207']->password=hash("sha256",$_REQUEST['newPassword']);
-    UsuarioPDO::modificarUsuario($_SESSION['usuariologinlogoff207'],$_SESSION['usuariologinlogoff207']->codUsuario);
+    $_SESSION['usuarioproyectofinal207']->password=hash("sha256",$_REQUEST['newPassword']);
+    UsuarioPDO::modificarUsuario($_SESSION['usuarioproyectofinal207'],$_SESSION['usuarioproyectofinal207']->codUsuario);
     $_SESSION['paginaEnCurso']="micuenta";
     header("Location: ./index.php");
-    exit;
-}
-if(isset($_REQUEST['volver'])){
-    $paginaAnterior=$_SESSION['paginaAnterior'];
-    $paginaEnCuerso = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaAnterior'] = $paginaEnCuerso;
-    $_SESSION['paginaEnCurso'] = $paginaAnterior;
-    header('Location: ./index.php');
     exit;
 }
 require_once $aVista['layout'];

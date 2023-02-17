@@ -58,35 +58,36 @@ input[type="radio"]{
   color: white;
 }
 /*carrito*/
-#carrito{
-  margin-top: 1%;
-  display:flex;
+section{
+  display: flex;
+  flex-flow: column;
   justify-content: center;
-  overflow: inherit;
 }
-#carrito>*{
-  display: inline-block; 
-}
-/*Flechas carito*/
-#carrito>button{
-  height: 50px; width: 50px;
-  border-radius: 50px;
+#carrito{
+  height: 500px; width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  align-self: center;
+  position: relative;
+}
+/*Imagen*/
+#carrito a{
+  display: flex;
+  justify-content: center;
+}
+#carrito img{
+  height: 100%;
+}
+/*Botones*/
+#carrito>button{
   position: absolute;
-  background: grey;
-  color: white;
+  border: none;
+  font-size: 3em;
+  color:black;
+  text-shadow: 5px 5px gray;
 }
 #carrito>button:nth-of-type(1){
-    left:10%;
+  left: 10%; top: 50%;
 }
 #carrito>button:nth-of-type(2){
-   right:10%;
-}
-/*Imges*/
-#carrito>div{
-  height: 600px;
-  overflow: hidden;
+  top: 50%; right: 10%;
 }

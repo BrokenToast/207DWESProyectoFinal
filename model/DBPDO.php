@@ -1,21 +1,55 @@
 <?php
+/**
+ * DBPDO
+ * 
+ * Clase que nos permite hacer un manteimmiento a un base de datos
+ * 
+ * @author Luispatb luispatb@gmail.com
+ * @version 1.0.0
+ * @package model
+ */
 class DBPDO{
     /**
-     * Clase que nos permite gestionar una base de datos.
+     * Summary of dsn
      * 
+     * @var string
      */
     public string $dsn;
+    /**
+     * Summary of user
+     * 
+     * Usuario de la base de datos
+     * 
+     * @var string
+     */
     public string $user;
+    /**
+     * Summary of password
+     * 
+     * Contraseña del usuario.
+     * 
+     * @var string
+     */
     public string $password;
     private PDO $oConexionDB;
 
+    /**
+     * Summary of __construct
+     * 
+     * @param mixed $dsn
+     * @param mixed $user Usuario de la base de datos
+     * @param mixed $password Contraseña del usuario.
+     */
     public function __construct($dsn,$user,$password){
         $this->dsn=$dsn;
         $this->user=$user;
         $this->password = $password;
     }
     /**
+     * ExecuteQuery
+     * 
      * Metodo que no permite lanzar un quiery y nos devuelve la informacion en una array
+     * 
      * @param string $query Query que se va a ejecutar.
      * @throws ErrorApp Se lanza cuando hay un error con el query
      * @return array devuelve una array con la informacion del Quer(Formato: [[tupla1],[tupla..],[tupla..]]) o [tupla] y si no hay resultado devuelve false. 
@@ -47,20 +81,22 @@ class DBPDO{
                 }
             }
         }catch(Error $error){
-            new ErrorApp($error->getCode(),$error->getMessage());
+            throw new ErrorApp($error->getCode(),$error->getMessage(),$error->getFile(),$error->getLine());
         }finally{
             unset($this->oConexionDB);
         }
     }
     /**
-     * executeUDI: Sirve para ejecutar un inserción o update o delete:
+     * ExecuteUDI
+     * 
+     * Sirve para ejecutar un inserción o update o delete:
      * En la inserción podemos hacer un query paremetizado esto nos abre la posibilidad para pasarle una array que contenga datos sobre la inserción
      * pero debe respetar uno de los siguientes formatos la array de datos:
      * Requisitos: la array de datos contiene otras arraya que almacenan las tuplas.
+     * 
      * 1º forma
      * Insert:
      * insert into prueba1 VALUES(:codigo,:nombre,:apellidos,:edad)
-     * 
      * Datos:
      * [[
      * ":codigo"=>"kjfh",
@@ -75,11 +111,9 @@ class DBPDO{
      * ":edad"=>"22"
      * ]
      * ];
-     * 
      * 2º Forma
      * Insert:
      * insert into prueba1 VALUES(?,?,?,?)
-     * 
      * Datos:
      * [
      *     [
@@ -95,26 +129,27 @@ class DBPDO{
      *         21
      *     ]
      * ];
-     * @param string $UDI Inserto update o delete 
+     * 
+     * @param string $udi Inserto update o delete 
      * @param array|null $datos Datos del insert.
      * @throws ErrorApp
      * @return bool|int Devuelve el numero de tuplas afectadas.
      */
-    public function executeUDI(string $UDI,array $datos=null){
+    public function executeUDI(string $udi,array $datos=null){
         try{
             $this->__wakeup();
             if(is_null($datos)){
-                return $oResultado=$this->oConexionDB->exec($UDI);
+                return $oResultado=$this->oConexionDB->exec($udi);
             }else{
                 if(is_array($datos[0])){
-                    $prepareUDI=$this->oConexionDB->prepare($UDI);
+                    $prepareUDI=$this->oConexionDB->prepare($udi);
                     foreach($datos as $tupla){
                         $prepareUDI->execute($tupla);
                     }
                 }
             }
         }catch(PDOException $error){
-            new ErrorApp($error->getCode(),$error->getMessage());
+            throw new ErrorApp($error->getCode(),$error->getMessage(),$error->getFile(),$error->getLine());
         }finally{
             unset($this->oConexionDB);
         }

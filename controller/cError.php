@@ -8,6 +8,7 @@ if(isset($_REQUEST['volver'])){
     header('Location: ./index.php');
     exit;
 }
+$_SESSION['error']->llamarVError();
 $aRespuestaError['code'] = $_SESSION['error']->getCode();
 $aRespuestaError['mensaje'] = $_SESSION['error']->getMessage();
 
