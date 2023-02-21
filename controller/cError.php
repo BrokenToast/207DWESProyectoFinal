@@ -1,15 +1,13 @@
 <?php
 if(isset($_REQUEST['volver'])){
-    $paginaAnterior=$_SESSION['paginaAnterior'];
-    $paginaEnCuerso = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaAnterior'] = $paginaEnCuerso;
-    $_SESSION['paginaEnCurso'] = $paginaAnterior;
+    $_SESSION['paginaEnCurso'] = $_SESSION['error']->paginaSiguiente;
     unset($_SESSION['error']);
     header('Location: ./index.php');
     exit;
 }
-$_SESSION['error']->llamarVError();
 $aRespuestaError['code'] = $_SESSION['error']->getCode();
 $aRespuestaError['mensaje'] = $_SESSION['error']->getMessage();
+$aRespuestaError['linia'] = $_SESSION['error']->getLine();
+$aRespuestaError['fichero'] = $_SESSION['error']->getFile();
 
 require_once $aVista['layout'];

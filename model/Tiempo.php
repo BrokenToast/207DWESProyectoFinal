@@ -13,7 +13,7 @@ class Tiempo{
      * 
      * Hora de la información climatica
      * 
-     * @var DateTime
+     * @var DateTime|null
      */
     public readonly DateTime $hora;
     /**
@@ -21,57 +21,57 @@ class Tiempo{
      * 
      * Ubicacion de la estación
      * 
-     * @var string
+     * @var string|null
      */
-    public readonly string $ubicacion;
+    public readonly ?string $ubicacion;
     /**
      * Summary of presion
      * 
      * Presion
      * 
-     * @var int
+     * @var int|null
      */
-    public readonly int $presion;
+    public readonly ?int $presion;
     /**
      * Summary of porcentajePrecipitaciones
      * 
      * Porcentaje de Precipitaciones
      * 
-     * @var int
+     * @var int|null
      */
-    public readonly int $porcentajePrecipitaciones;
+    public readonly ?int $porcentajePrecipitaciones;
     /**
      * Summary of velocidadViento
      * 
      * Velocidad del viento
      * 
-     * @var int
+     * @var int|null
      */
-    public readonly int $velocidadViento;
+    public readonly ?int $velocidadViento;
     /**
      * Summary of velocidadVientoMaxima
      * 
      * Velocidad Maxima del viento
      * 
-     * @var int
+     * @var int|null
      */
-    public readonly int $velocidadVientoMaxima;
+    public readonly ?int $velocidadVientoMaxima;
     /**
      * Summary of temperaturaMinima
      * 
      * Temperatura Minima
      * 
-     * @var int
+     * @var int|null
      */
-    public readonly int $temperaturaMinima;
+    public readonly ?int $temperaturaMinima;
     /**
      * Summary of temperaturaMaxima
      * 
      * Temperatura Maxima
      * 
-     * @var int
+     * @var int|null
      */
-    public readonly int $temperaturaMaxima;
+    public readonly ?int $temperaturaMaxima;
          /**
           * Summary of __construct
           * @param DateTime|null $hora Hora de la información climatica

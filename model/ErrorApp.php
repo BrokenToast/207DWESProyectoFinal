@@ -8,16 +8,20 @@
  * @package model
  */
 class ErrorApp extends Exception{
-    public function __construct(int $code, string $mensaje, string $file, int $lineError){
+    /**
+     * paginaSiguiente
+     * 
+     * Propiedad donde almacenamos la pagina que a generado el error
+     * 
+     * @var string
+     */
+    public readonly string $paginaSiguiente;
+    public function __construct(int $code, string $mensaje, string $file, int $lineError, string $paginaSiguiente){
         $this->code=$code;
         $this->message=$mensaje;
         $this->line = $lineError;
         $this->file = $file;
-    }
-    public function llamarVError(){
+        $this->paginaSiguiente=$paginaSiguiente;
         $_SESSION['error'] = $this;
-        $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-        $_SESSION['paginaEnCurso'] = "error";
-        header('Location: ./index.php');
     }
 }

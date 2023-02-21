@@ -55,7 +55,13 @@ if($_SESSION['usuarioproyectofinal207']->numAccesos==1){
 }
 if(isset($_REQUEST['error'])){
     $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
-    $conexion->executeUDI("INSERT INTO T01_Usuario values(?,?,?,?,?,?,?)");
+    try{
+        $conexion->executeUDI("INSERT INTO T01_Usuario values(?,?,?,?,?,?,?)");
+    }catch(ErrorApp $error){
+        $_SESSION['paginaEnCurso'] = "error";
+        header('Location: ./index.php');
+        exit();
+    }
 }
 $aRespuestaInicioPrivado['descripcionUsuario']=$_SESSION['usuarioproyectofinal207']->descUsuario;
 require_once $aVista['layout'];

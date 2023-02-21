@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="./webroot/style/inicioPublico.css">
 <nav>
-    <!-- <label for="banderaIdiomas">⚐</label>
+    <!--<label for="banderaIdiomas">⚐</label>
     <input type="checkbox" name="bandera" id="banderaIdiomas">
-    <div id="selectLenguage">
+     <div id="selectLenguage">
         <form action="./index.php" method="post">
             <input type="radio" name="idioma" id="es" value="es" checked>
             <label for="es" class="bandera"><img src="./webroot/media/img/banderas/espana.png" alt="es"></label>
@@ -20,10 +20,11 @@
     </form>
 </nav>
 <section>
-    <article id="carrito">
-        <button onclick="before()"><</button>
-        <a href="" id="actual" target="_blank"><img src="./webroot/media/img/carrito/diagrama_clase.png" alt=""></a>
-        <button onclick="after()">></button>
+    <article id="carrusel">
+        <button id="atras" class="movimiento"><</button>
+        <a href="" id="enlace" target="_blank"></a>
+        <button id="delante" class="movimiento">></button>
     </article>
 </section>
+
 <script defer src="./webroot/javascript/inicioPublico.js"></script>

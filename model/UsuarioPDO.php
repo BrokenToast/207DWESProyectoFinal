@@ -26,7 +26,7 @@ class UsuarioPDO{
             return null;
         }else{
             $fechaUltimaConexion = time();
-            return new Usuario($aUsuario['T01_CodUsuario'],$aUsuario['T01_Password'],$aUsuario['T01_DescUsuario'],$aUsuario['T01_NumConexiones'],$fechaUltimaConexion,$aUsuario['T01_FechaHoraUltimaConexion'],$aUsuario['T01_Perfil']);
+            return new Usuario($aUsuario[0]['T01_CodUsuario'],$aUsuario[0]['T01_Password'],$aUsuario[0]['T01_DescUsuario'],$aUsuario[0]['T01_NumConexiones'],$fechaUltimaConexion,$aUsuario[0]['T01_FechaHoraUltimaConexion'],$aUsuario[0]['T01_Perfil']);
         }
     }
     /**
@@ -100,19 +100,30 @@ class UsuarioPDO{
         }
     }
     // Part 2
-    public static function registrarUltimaConexion(){
+    public static function registrarUltimaConexion(string $codUsuario, ){
+        $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
+        return $conexion->executeUDI("update T01_Usuario set string T01_FechaHoraUltimaConexion='".time()."'  where T01_CodUsuario='$codUsuario'");
     }
-    public static function buscarUsuarioPorCod(){
+    public static function buscarUsuarioPorCod(string $codUsuario){
+        $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
+        $aUsuario=$conexion->executeUDI("select * from T01_Usuario where T01_CodUsuario='$codUsuario';");
+        $fechaUltimaConexion = time();
+        return new Usuario($aUsuario[0]['T01_CodUsuario'],$aUsuario[0]['T01_Password'],$aUsuario[0]['T01_DescUsuario'],$aUsuario[0]['T01_NumConexiones'],$fechaUltimaConexion,$aUsuario[0]['T01_FechaHoraUltimaConexion'],$aUsuario[0]['T01_Perfil']);
     }
-    public static function cambiarPasword(){
+    public static function cambiarPasword(string $codUsuario,string $password){
+        $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
+        return $conexion->executeUDI("update T01_Usuario set T01_Password='$password'  where T01_CodUsuario='$codUsuario'");
     }
-    public static function crearOpinion(){
+    public static function crearOpinion(string $codUsuario){
+
     }
-    public static function modificarOpinion(){
+    public static function modificarOpinion(string $codUsuario){
+
+    }
+    public static function borrarOpinion(string $codUsuario){
+
+    }
+    public static function buscarOpinion(string $codUsuario){
         
-    }
-    public static function borrarOpinion(){
-    }
-    public static function buscarOpinion(){
     }
 }

@@ -1,31 +1,50 @@
-function before() {
-    --posicion;
-    if(posicion<0){
-        posicion=enlaces.length-1;
-    }
-    let enlace=document.getElementById("actual");
-    let imagen=enlace.children[0];
-    enlace.attributes[0].textContent=enlaces[posicion][0];
-    imagen.attributes[0].textContent=enlaces[posicion][1];
-}
-function after() {
-    ++posicion;
-    if(posicion>=enlaces.length){
-        posicion=0;
-    }
-    let enlace=document.getElementById("actual");
-    let imagen=enlace.children[0];
-    enlace.attributes[0].textContent=enlaces[posicion][0];
-    imagen.attributes[0].textContent=enlaces[posicion][1];
-}
-let enlace=document.getElementById("actual");
-let imagen=enlace.children[0];
-document.write(enlace.getAttribute("href"));
-var enlaces=[
-    ["./webroot/multimedia/230110DiagramaDeClasesLoginLogoffMulticapaPOO.pdf","./webroot/media/img/carrito/diagrama_clase.png"],
-    ["./webroot/multimedia/230115LoginLogoffRelaciónDeFicheros.pdf","./webroot/media/img/carrito/diagramaArchivos.png"],
-    ["./webroot/multimedia/230110DiagramaDeClasesGenéricoMulticapaPOO.pdf","./webroot/media/img/carrito/diagramageneral.png"],
-    ["./webroot/multimedia/230110ArbolDeNavegaciónLoginLogoffMulticapaPOO.pdf","./webroot/media/img/carrito/diagramaNavegacion.png"]
-];
+/*Carrusel*/
 var posicion=0;
-setInterval(after,6000);
+var enlaces=[
+    ["./webroot/Planos_Aplicacion/230129ArbolDeNavegación.pdf","./webroot/Planos_Aplicacion/230129ArbolDeNavegación.png"],
+    ["./webroot/Planos_Aplicacion/CasosDeUso.pdf","./webroot/Planos_Aplicacion/CasosDeUso.png"],
+    ["./webroot/Planos_Aplicacion/CatalogoDeRequisitos.pdf","./webroot/Planos_Aplicacion/CatalogoDeRequisitos.png"],
+    ["./webroot/Planos_Aplicacion/diagrama_de_clases.png","./webroot/Planos_Aplicacion/diagrama_de_clases.png"],
+    ["./webroot/Planos_Aplicacion/modelo_Datos.png","./webroot/Planos_Aplicacion/modelo_Datos.png"],
+    ["./webroot/Planos_Aplicacion/RelacionDeFicheros.pdf","./webroot/Planos_Aplicacion/RelacionDeFicheros.png"],
+    //["./webroot/Planos_Aplicacion/.pdf","./webroot/Planos_Aplicacion/.png"],
+    //["./webroot/Planos_Aplicacion/.pdf","./webroot/Planos_Aplicacion/.png"],
+];
+let imagen=document.createElement("img");
+let enlace=document.getElementById("enlace");
+let idTemporizador;
+imagen.setAttribute("src","");
+enlace.appendChild(imagen);
+function ponerTemporizador() {
+    clearInterval(idTemporizador);
+    idTemporizador=setInterval(()=>{
+        carrusel(1);
+    },6000);
+}
+function carrusel(movimiento) {
+    if(movimiento){
+        ++posicion;
+        if(posicion>=enlaces.length){
+            posicion=0;
+        }
+        enlace.attributes[0].textContent=enlaces[posicion][0];
+        imagen.attributes[0].textContent=enlaces[posicion][1];
+        ponerTemporizador()
+    }else{
+        --posicion;
+        if(posicion<0){
+            posicion=enlaces.length-1;
+        }
+        enlace.attributes[0].textContent=enlaces[posicion][0];
+        imagen.attributes[0].textContent=enlaces[posicion][1];
+        ponerTemporizador()
+    }
+}
+carrusel(1);
+document.getElementById("delante").addEventListener("click",()=>{
+    carrusel(1);
+});
+document.getElementById("atras").addEventListener("click",()=>{
+    carrusel(0);
+});
+ponerTemporizador();
