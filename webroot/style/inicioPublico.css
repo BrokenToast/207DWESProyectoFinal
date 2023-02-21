@@ -57,37 +57,39 @@ input[type="radio"]{
   background-color: var(--colorSelecionado);
   color: white;
 }
-/*carrito*/
+
+/*Contenido*/
 section{
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-}
-#carrito{
-  height: 500px; width: 100%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-/*Imagen*/
-#carrito a{
-  display: flex;
-  justify-content: center;
-}
-#carrito img{
+  width: 100%;
   height: 100%;
 }
-/*Botones*/
-#carrito>button{
+/*carrusel*/
+#carrusel{
+  width: 100%; height: 60%;
+  position: relative;
+  overflow: hidden;
+}
+#carrusel img{
+  width: 100%;
+  object-fit:contain;
+  z-index: 1;
+}
+#enlace{
+  width: 100%; height: 100%;
+  display: block;
   position: absolute;
+}
+.movimiento{
+  width:10%;height: 100%;
   border: none;
-  font-size: 3em;
-  color:black;
-  text-shadow: 5px 5px gray;
+  position: absolute;
+  background-color: #1341876e;
+  font-size:3.5em;
+  cursor: pointer;
+  z-index: 10;
+  color: white;
 }
-#carrito>button:nth-of-type(1){
-  left: 10%; top: 50%;
-}
-#carrito>button:nth-of-type(2){
-  top: 50%; right: 10%;
+#delante{
+  right:0;
+  top:0;
 }

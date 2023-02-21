@@ -52,39 +52,20 @@ class DBPDO{
      * 
      * @param string $query Query que se va a ejecutar.
      * @throws ErrorApp Se lanza cuando hay un error con el query
-     * @return array devuelve una array con la informacion del Quer(Formato: [[tupla1],[tupla..],[tupla..]]) o [tupla] y si no hay resultado devuelve false. 
+     * @return array devuelve una array con la informacion del Quer(Formato: [[tupla1],[tupla..],[tupla..]]) y si no hay resultado devuelve false. 
      */
     public function executeQuery(string $query,array $parametros=null){
-        try{    
-            if(is_null($parametros) || count($parametros)==0){
-                $this->__wakeup();
-                $oResultado=$this->oConexionDB->query($query);
-                if($oResultado->rowCount()>1){
-                    $aresultado = [];
-                    $tupla=$oResultado->fetch(PDO::FETCH_ASSOC);
-                    while(!is_bool($tupla)){
-                        array_push($aresultado, $tupla);
-                        $tupla=$oResultado->fetch(PDO::FETCH_ASSOC);
-                    }
-                    return $aresultado;
-                }else{
-                    return $oResultado->fetch(PDO::FETCH_ASSOC);
-                }
-            }else{
-                $oResultado=$this->oConexionDB->prepare($query);
-                if(is_array($parametros[0])){
-                    foreach($parametros as $tupla){
-                        $oResultado->execute($tupla);
-                    }
-                }else{
-                    $oResultado->execute($parametros);
-                }
-            }
-        }catch(Error $error){
-            throw new ErrorApp($error->getCode(),$error->getMessage(),$error->getFile(),$error->getLine());
+        $this->__wakeup();
+        $aresultado = [];
+        try{
+            $oresultado=$this->oConexionDB->query($query);
+            $aresultado=$oresultado->fetchAll();
+        }catch(PDOException $error){
+            throw new ErrorApp($error->getCode(),$error->getMessage(),$error->getFile(),$error->getLine(),$_SESSION['paginaEnCurso']);
         }finally{
-            unset($this->oConexionDB);
+            unset($oPrepareSQL);
         }
+        return $aresultado;
     }
     /**
      * ExecuteUDI
@@ -136,8 +117,8 @@ class DBPDO{
      * @return bool|int Devuelve el numero de tuplas afectadas.
      */
     public function executeUDI(string $udi,array $datos=null){
+        $this->__wakeup();
         try{
-            $this->__wakeup();
             if(is_null($datos)){
                 return $oResultado=$this->oConexionDB->exec($udi);
             }else{
@@ -149,7 +130,7 @@ class DBPDO{
                 }
             }
         }catch(PDOException $error){
-            throw new ErrorApp($error->getCode(),$error->getMessage(),$error->getFile(),$error->getLine());
+            throw new ErrorApp($error->getCode(),$error->getMessage(),$error->getFile(),$error->getLine(),$_SESSION['paginaEnCurso']);
         }finally{
             unset($this->oConexionDB);
         }

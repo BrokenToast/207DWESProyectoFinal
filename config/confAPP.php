@@ -25,7 +25,8 @@
         "error"=>"./controller/cError.php",
         "rest"=>"./controller/cREST.php",
         "mtodepartamento"=>"./controller/cMtoDepartamento.php",
-        "modificardepartamento"=>"./controller/cModifcarDepartamento.php",
+        "eliminardepartamento"=>"./controller/cEliminarDepartamento.php",
+        "tecnologias"=>"./controller/cTecnologias.php",
     ];
     /*Vista*/
     $aVista = [
@@ -41,6 +42,8 @@
         "error"=>"./view/vError.php",
         "rest"=>"./view/vREST.php",
         "mtodepartamento"=>"./view/vMtoDepartamento.php",
-        "modificardepartamento"=>"./view/vModifcarDepartamento.php",
+        "eliminardepartamento"=>"./view/vEliminarDepartamento.php",
+        "tecnologias"=>"./view/vTecnologias.php",
+
     ];
 ?>

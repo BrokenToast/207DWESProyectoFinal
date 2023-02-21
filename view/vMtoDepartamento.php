@@ -8,11 +8,11 @@
             <input type="text" name="adescripcion" id="descripcion">
             <label for="volumenNegocio">Volumen de Negocio</label>
             <input type="number" name="avolumenNegocio" id="volumenNegocio" value="0">
-            <input type="submit" class="button" name="add" value="Añadir">
+            <input type="submit" class="button" name="boton" value="add">
         </div>
         <input type="file" name="fileimport" id="fileimport">
-        <input type="submit" class="button" name="import" value="importar">
-        <input type="submit" class="button" name="export" value="exportar">
+        <input type="submit" class="button" name="boton" value="importar">
+        <input type="submit" class="button" name="boton" value="exportar">
     </form>
         <?php
             if(!$ok){
@@ -30,7 +30,7 @@
         ?>
 </aside>
 <form action="./index.php" method="post">
-    <input type="submit" class="button" name="volver" value="volver">
+    <input type="submit" class="button" name="boton" value="volver">
     <div>
         <label for="descDepartamento">Descripción</label>
         <input type="text" name="bdescripcion" id="descDepartamento" value="<?php echo (!empty($_SESSION['criterioBusquedaDepartamento']['descripcion'])? $_SESSION['criterioBusquedaDepartamento']['descripcion'] : "" )?>">
@@ -43,24 +43,32 @@
             <label for="todos">Todos</label>
             <input type="radio" name="estado" id="todos" value="1" <?php echo ($_SESSION['criterioBusquedaDepartamento']['estado']==1)? "checked" : "" ?>> 
         </fieldset>
-        <button submit name="buscar" class="button" value="buscar">Buscar</button>
+        <button submit name="boton" class="button" value="buscar">Buscar</button>
     </div>
 </form>
-    <table>
+<table>
+    <tr>
+        <th>Codigo</th>
+        <th>Descripcion</th>
+        <th>Creacion</th>
+        <th>Volumen Negocio</th>
+        <th>Fecha Baja</th>
+        <th>Operaciones</th>
+    </tr>
+    <?php
+    if(is_string($aRespuestaMtoDepartamento['departamentos'])){
+        ?> 
         <tr>
-            <th>Codigo</th>
-            <th>Descripcion</th>
-            <th>Creacion</th>
-            <th>Volumen Negocio</th>
-            <th>Fecha Baja</th>
-            <th>Operaciones</th>
+            <td colspan="7"><?php print $aRespuestaMtoDepartamento['departamentos'];?></td>
         </tr>
         <?php
-        function printDepartamento($departamento){
-            ?> 
+        
+    }else{
+            foreach ($aRespuestaMtoDepartamento['departamentos'] as $departamento) {
+                ?> 
                 <form action="./index.php" method="post" class="itemdep">
                     <tr>
-                        <td><input type="text" name="mcodDepartamento" value="<?php echo $departamento->codDepartamento;?>"></td>
+                        <td><?php echo $departamento->codDepartamento;?></td>
                         <td><input type="text" name="mdescDepartamento" value="<?php echo $departamento->descDepartamento;?>"></td>
                         <td><?php echo $departamento->fechaCreacionDepartamento->format('d-m-Y H:i:s');?></td>
                         <td><input type="number" name="mvolumenNegocio" value="<?php echo $departamento->volumenNegocio;?>"></td>
@@ -74,29 +82,18 @@
                     </tr>
                 </form>
             <?php
-        }
-        if(is_string($aRespuestaMtoDepartamento['departamentos'])){
-            ?> 
-            <tr>
-                <td colspan="7"><?php print $aRespuestaMtoDepartamento['departamentos'];?></td>
-            </tr>
-            <?php
-            
-        }else{
-            if(isset($aRespuestaMtoDepartamento['departamentos']->codDepartamento)){
-                printDepartamento($aRespuestaMtoDepartamento['departamentos']);
-            }else{
-                foreach ($aRespuestaMtoDepartamento['departamentos'] as $departamento) {
-                    printDepartamento($departamento);
-                }
             }
-        }
-        ?>
-    </table>
-    <form action="index.php" method="post" id="paginacion">
-        <input type="submit" name="principio" value="<<">
-        <input type="submit" name="anterior" value="<">
-        <p>pagina <?php echo (int)$_SESSION['numPaginacionDepartamentos']/4;?> de <?php echo (int)$_SESSION['cantidadDepartamentos']/4;?></p>
-        <input type="submit" name="siguiente" value=">">
-        <input type="submit" name="ultima" value=">>">
-    </form>
+    }
+    ?>
+</table>
+<form action="index.php" method="post" id="paginacion">
+    <input type="submit" name="principio" value="<<">
+    <input type="submit" name="anterior" value="<">
+    <p>pagina <?php echo $_SESSION['paginacionDepartamento']['paginaActual']+1;?> de <?php echo $_SESSION['paginacionDepartamento']['maximo'];?></p>
+    <input type="submit" name="siguiente" value=">">
+    <input type="submit" name="ultima" value=">>">
+</form> 
+<div id="popup">
+    <p>Puedes modificar departamneto dando en los campos en verde y luego dando al boton de modificar <strong id="cerrarpopup">x</strong></p>
+</div>
+<script defer src="./webroot/javascript/mtoDepartamento.js"></script>

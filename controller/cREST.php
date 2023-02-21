@@ -1,13 +1,22 @@
 <?php
 $aRespuesRest=[];
-$aRespuesRest += ["estaciones" => Rest::pedirEstacionesMeteo()];
+try{
+    $aRespuesRest += ["estaciones" => Rest::pedirEstacionesMeteo()];
+}catch(ErrorApp $error){
+    $_SESSION['paginaEnCurso'] = "error";
+    header('Location: ./index.php');
+    exit();
+}
+
 if(isset($_REQUEST['volver'])){
     $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     $_SESSION['paginaEnCurso'] = "inicioprivado";
     header('Location: ./index.php');
     exit;
 }
-if(isset($_REQUEST['tiempo'])){
+
+try{
+    if(isset($_REQUEST['tiempo'])){
         $oRTiempo=Rest::pedirTemperaturaEstacionMeto($_REQUEST['estacion']);
         $aTiempo = [
             'ubicacion'=>$oRTiempo->ubicacion,
@@ -19,5 +28,10 @@ if(isset($_REQUEST['tiempo'])){
             'temperaturaMinima'=>$oRTiempo->temperaturaMinima,
         ];
         $aRespuesRest += ['tiempo'=>$aTiempo];
+    }
+}catch(ErrorApp $error){
+    $_SESSION['paginaEnCurso'] = "error";
+    header('Location: ./index.php');
+    exit();
 }
 require_once $aVista['layout'];

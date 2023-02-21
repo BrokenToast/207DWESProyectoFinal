@@ -26,14 +26,14 @@ class Rest{
             $datosTiempo = json_decode(file_get_contents("https://opendata.aemet.es/opendata/api/observacion/convencional/datos/estacion/$codEstacion?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsdWlzcGF0YkBnbWFpbC5jb20iLCJqdGkiOiI4ZmJhZmY1Mi0yMGRjLTRmMGUtYjYyZi0xMTAzNDE1NzY1YjYiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY3NDk4Mjk2NSwidXNlcklkIjoiOGZiYWZmNTItMjBkYy00ZjBlLWI2MmYtMTEwMzQxNTc2NWI2Iiwicm9sZSI6IiJ9.gxAthEAW4Gp6n3ZYAvKm-R316fuINhmmdEy-75ZfLRI"), true);
             if($datosTiempo['estado']!=200){
                 // Si la respuesta tiene un error lanza un ErrorApp
-                throw new ErrorApp($datosTiempo['estado'], $datosTiempo['descripcion'],"https://opendata.aemet.es/opendata/api/observacion/convencional/datos/estacion/$codEstacion?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsdWlzcGF0YkBnbWFpbC5jb20iLCJqdGkiOiI4ZmJhZmY1Mi0yMGRjLTRmMGUtYjYyZi0xMTAzNDE1NzY1YjYiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY3NDk4Mjk2NSwidXNlcklkIjoiOGZiYWZmNTItMjBkYy00ZjBlLWI2MmYtMTEwMzQxNTc2NWI2Iiwicm9sZSI6IiJ9.gxAthEAW4Gp6n3ZYAvKm-R316fuINhmmdEy-75ZfLRI",0);
+                throw new ErrorApp($datosTiempo['estado'], $datosTiempo['descripcion'],"https://opendata.aemet.es/opendata/api/observacion/convencional/datos/estacion/$codEstacion?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsdWlzcGF0YkBnbWFpbC5jb20iLCJqdGkiOiI4ZmJhZmY1Mi0yMGRjLTRmMGUtYjYyZi0xMTAzNDE1NzY1YjYiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY3NDk4Mjk2NSwidXNlcklkIjoiOGZiYWZmNTItMjBkYy00ZjBlLWI2MmYtMTEwMzQxNTc2NWI2Iiwicm9sZSI6IiJ9.gxAthEAW4Gp6n3ZYAvKm-R316fuINhmmdEy-75ZfLRI",0,$_SESSION['paginaEnCurso']);;
             } else {
                 //descoficamos los datos del la estacion;
-                $aValoresTimpo = json_decode(file_get_contents($datosTiempo['datos']), true)[0];
+                $aValoresTimpo = json_decode(iconv("ISO-8859-15","UTF-8",file_get_contents($datosTiempo['datos'])),true)[0];
                 // Creamos un datetime con la fecha de los datos.
                 $hora = new DateTime($aValoresTimpo['fint']);
                 // Creamos el objeto Tiempo y lo devolvemos.
-                return new Tiempo($hora, $aValoresTimpo['ubi'] ?? "No hay datos", $aValoresTimpo['pres'] ?? "No hay datos", $aValoresTimpo['prec'] ?? "No hay datos", $aValoresTimpo['vv'] ?? "No hay datos", $aValoresTimpo['vmax'] ?? "No hay datos", $aValoresTimpo['tamin'] ?? "No hay datos", $aValoresTimpo['tamax'] ?? "No hay datos");
+                return new Tiempo($hora, $aValoresTimpo['ubi'] ?? null, $aValoresTimpo['pres'] ?? null, $aValoresTimpo['prec'] ?? null, $aValoresTimpo['vv'] ?? null, $aValoresTimpo['vmax'] ?? null, $aValoresTimpo['tamin'] ?? null, $aValoresTimpo['tamax'] ?? null);
             }
         }
     /**
@@ -50,7 +50,7 @@ class Rest{
         $datosEstaciones=json_decode(file_get_contents("https://opendata.aemet.es/opendata/api/valores/climatologicos/inventarioestaciones/todasestaciones?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsdWlzcGF0YkBnbWFpbC5jb20iLCJqdGkiOiI4ZmJhZmY1Mi0yMGRjLTRmMGUtYjYyZi0xMTAzNDE1NzY1YjYiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY3NDk4Mjk2NSwidXNlcklkIjoiOGZiYWZmNTItMjBkYy00ZjBlLWI2MmYtMTEwMzQxNTc2NWI2Iiwicm9sZSI6IiJ9.gxAthEAW4Gp6n3ZYAvKm-R316fuINhmmdEy-75ZfLRI"),true);
         if($datosEstaciones['estado']!=200){
             // Si la respuesta tiene un error lanza un ErrorApp
-            throw new ErrorApp($datosEstaciones['estado'], $datosEstaciones['descripcion'],"https://opendata.aemet.es/opendata/api/valores/climatologicos/inventarioestaciones/todasestaciones?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsdWlzcGF0YkBnbWFpbC5jb20iLCJqdGkiOiI4ZmJhZmY1Mi0yMGRjLTRmMGUtYjYyZi0xMTAzNDE1NzY1YjYiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY3NDk4Mjk2NSwidXNlcklkIjoiOGZiYWZmNTItMjBkYy00ZjBlLWI2MmYtMTEwMzQxNTc2NWI2Iiwicm9sZSI6IiJ9.gxAthEAW4Gp6n3ZYAvKm-R316fuINhmmdEy-75ZfLRI",0);
+            throw new ErrorApp($datosEstaciones['estado'], $datosEstaciones['descripcion'],"https://opendata.aemet.es/opendata/api/valores/climatologicos/inventarioestaciones/todasestaciones?api_key=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsdWlzcGF0YkBnbWFpbC5jb20iLCJqdGkiOiI4ZmJhZmY1Mi0yMGRjLTRmMGUtYjYyZi0xMTAzNDE1NzY1YjYiLCJpc3MiOiJBRU1FVCIsImlhdCI6MTY3NDk4Mjk2NSwidXNlcklkIjoiOGZiYWZmNTItMjBkYy00ZjBlLWI2MmYtMTEwMzQxNTc2NWI2Iiwicm9sZSI6IiJ9.gxAthEAW4Gp6n3ZYAvKm-R316fuINhmmdEy-75ZfLRI",0,$_SESSION['paginaEnCurso']);
         }else{
             // Sacamos la lista de las Estaciones Meteorologico. 
             // Cambiamos la codifacion de la AEMET a UFT-8 con ICONV ,https://www.php.net/manual/es/function.iconv

@@ -2,10 +2,10 @@ input{
   color: black;
 }
 main{
-  height: 50%;
+  padding-bottom: 8%;
   display: grid;
-  grid-template-rows: 2fr 8fr;
-  grid-template-columns:2.5fr 7.5fr;
+  grid-template-rows: 30% 70%;
+  grid-template-columns:25% 75%;
   gap:1%;
 }
 /*Buscado*/
@@ -55,14 +55,23 @@ table input{
 }
 tr>:nth-child(1){
   width: 4%;
+  background-color: rgba(255, 0, 0, 0.500);
 }
 tr>:nth-child(2){
   width: 30%;
+  background-color: rgba(0, 128, 0, 0.500);
+}
+tr>:nth-child(3){
+  width: 20%;
+  background-color: rgba(255, 0, 0, 0.500);
 }
 tr>:nth-child(4){
-  width: 4%;
+  width: 10%;
+  background-color: rgba(0, 128, 0, 0.500);
 }
-tr{
+tr>:nth-child(5){
+  width: 20%;
+  background-color: rgba(255, 0, 0, 0.500);
 }
 /*Barra lateral*/
 aside{
@@ -99,4 +108,28 @@ aside>form>*{
   width: 100%;
   display: block;
   text-align: center;
+}
+/*PopUP informativo*/
+#popup{
+  width: 30%;
+  padding: 2%;
+  border-radius: 20px;
+  display: none;
+  position: fixed;
+  bottom: 10%;
+  left: 3%;
+  background-color: #CD2355;
+}
+#popup>p{
+  color: white;
+}
+#cerrarpopup{
+  width:25px; height: 25px;
+  position: absolute;
+  border: 2px solid white;
+  border-radius: 10px;
+  right: 6%; top: 5%;
+  color: white;
+  text-align: center;
+  font-size: 1.4em;
 }
