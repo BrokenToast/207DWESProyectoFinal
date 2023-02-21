@@ -66,7 +66,6 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
         }
         return null;
     }
-
     /**
      * Funcion comprobarAlfaNumerico
      * 
