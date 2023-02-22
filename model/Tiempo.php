@@ -3,6 +3,7 @@
  * Tiempo
  * 
  * Clase que representa el tiempo
+ * 
  *  @author Luispatb luispatb@gmail.com
  *  @version 1.0.0
  *  @package model

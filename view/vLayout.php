@@ -27,6 +27,7 @@
             <form action="index.php" method="post">
                 <input type="submit" name="tecnologias" value="tecnologias">
             </form>
+            <a href="doc/phpdoc/build/index.html">PHPDOC</a>
             <p>Pagina a Copiar:<a href="https://www.raspberrypi.com/" target="_blank">Raspberry Pi</a></p>
             <a href="https://github.com/BrokenToast/207DWESProyectoFinal" target="_blank"><img src="./webroot/media/img/git.png" alt="GitHub" height="50" width="50"></a>
         </footer>
