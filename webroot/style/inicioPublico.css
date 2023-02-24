@@ -93,3 +93,7 @@ section{
   right:0;
   top:0;
 }
+/*Reloj*/
+#reloj img{
+  width: 5%;
+}
