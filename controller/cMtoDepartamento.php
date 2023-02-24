@@ -56,22 +56,10 @@ try{
             DepartamentoPDO::bajaLogicaDepartamento($_REQUEST['baja']);
         }else if(isset($_REQUEST['editar'])){
             $_SESSION ['codDepartamentoEnCurso']=$_REQUEST['editar'];
-            $aError['descripcion'] = validacionFormularios::comprobarAlfabetico($_REQUEST['mdescDepartamento'], 255, 0, 1);
-            $aError['volumennegocio'] = validacionFormularios::comprobarNumber($_REQUEST['mvolumenNegocio'], 100000, 0, 1);
-            foreach($aError as $error){
-                if(!empty($error)){
-                    $ok = false;
-                }
-            }
-            if($ok){
-                DepartamentoPDO::modificaDepartamento(new Departamento($_REQUEST['editar'],$_REQUEST['mdescDepartamento'],0,$_REQUEST['mvolumenNegocio']),$_REQUEST['editar']);
-            }
+            cambiarPagina("modificardepartamento");
         }else if(isset($_REQUEST['eliminar'])){
             $_SESSION ['codDepartamentoEnCurso']=$_REQUEST['eliminar'];
-            $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-            $_SESSION['paginaEnCurso'] =  "eliminardepartamento";
-            header('Location: ./index.php');
-            exit;
+            cambiarPagina("eliminardepartamento");
         }
     }
     if(isset($_REQUEST['principio'])){

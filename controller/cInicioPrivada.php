@@ -1,53 +1,24 @@
 <?php
-if(isset($_REQUEST['salir'])){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'iniciopublico';
-    header('Location: ./index.php');
-    exit;
-}
-if(isset($_REQUEST['detalles'])){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'detalles';
-    header('Location: ./index.php');
-    exit;
-}
-if(isset($_REQUEST['mantenimiento'])){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'mtodepartamento';
-    header('Location: ./index.php');
-    exit;
-}
-if(isset($_REQUEST['editar'])){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'micuenta';
-    header('Location: ./index.php');
-    exit;
-}
-if(isset($_REQUEST['rest'])){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'rest';
-    header('Location: ./index.php');
-    exit;
+switch ($_REQUEST['boton']?? null) {
+    case 'salir':
+        cambiarPagina('iniciopublico');
+        break;
+    case 'detalles':
+        cambiarPagina('detalles');
+        break;
+    case 'mantenimiento':
+        cambiarPagina('mtodepartamento');
+        break;
+    case 'editar':
+        cambiarPagina('micuenta');
+        break;
+    case 'rest':
+        cambiarPagina('rest');
+        break;
 }
 $aRespuestaInicioPrivado=[];
-if(isset($_COOKIE['idioma'])){
-    switch ($_COOKIE['idioma']) {
-        case 'es':
-            $aRespuestaInicioPrivado['idioma']="Bienvenido ".$_SESSION['usuarioproyectofinal207']->codUsuario;
-            break;
-        case 'pt':
-            $aRespuestaInicioPrivado['idioma']="Bem-vindo".$_SESSION['usuarioproyectofinal207']->codUsuario;
-            break;
-        case 'ct':
-            $aRespuestaInicioPrivado['idioma']="Benvingut".$_SESSION['usuarioproyectofinal207']->codUsuario;
-            break;
-        case 'gl':
-            $aRespuestaInicioPrivado['idioma']="Benvido".$_SESSION['usuarioproyectofinal207']->codUsuario;
-            break;
-    }
-}else{
-    $aRespuestaInicioPrivado['idioma']="Bienvenido ".$_SESSION['usuarioproyectofinal207']->codUsuario;
-}
+$aRespuestaInicioPrivado['idioma']="Bienvenido ".$_SESSION['usuarioproyectofinal207']->codUsuario;
+$aRespuestaInicioPrivado['descripcionUsuario']=$_SESSION['usuarioproyectofinal207']->descUsuario;
 if($_SESSION['usuarioproyectofinal207']->numAccesos==1){
     $aRespuestaInicioPrivado['mensajeNumConexiones']='Es tu primera conexion';
 }else{
@@ -63,5 +34,4 @@ if(isset($_REQUEST['error'])){
         exit();
     }
 }
-$aRespuestaInicioPrivado['descripcionUsuario']=$_SESSION['usuarioproyectofinal207']->descUsuario;
 require_once $aVista['layout'];

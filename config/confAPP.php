@@ -44,8 +44,7 @@
         "rest"=>"./view/vREST.php",
         "mtodepartamento"=>"./view/vMtoDepartamento.php",
         "eliminardepartamento"=>"./view/vEliminarDepartamento.php",
-        "modificardepartamento"=>"./controller/cTecnologias.php",
-        "tecnologias"=>"./view/vModificarDepartamento.php",
-
+        "modificardepartamento"=>"./view/vModificarDepartamento.php",
+        "tecnologias"=>"./view/vTecnologias.php",
     ];
 ?>

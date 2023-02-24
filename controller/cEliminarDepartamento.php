@@ -1,9 +1,6 @@
 <?php
 function volver(){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] =  "mtodepartamento";
-    header('Location: ./index.php');
-    exit;
+    cambiarPagina("mtodepartamento");
 }
 if(isset($_REQUEST['volver']) || isset($_REQUEST['no']) ){
     volver();

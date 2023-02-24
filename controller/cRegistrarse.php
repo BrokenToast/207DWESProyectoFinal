@@ -15,17 +15,12 @@ if ($ok ) {
         $oUsuario = new Usuario($_REQUEST['usuario'], hash("sha256",$_REQUEST['password']), $_REQUEST['descUsuario'], 1, time(), time(), "usuario");
         $_SESSION['usuarioproyectofinal207'] = $oUsuario;
         UsuarioPDO::altaUsuario($oUsuario);
-        $_SESSION['paginaEnCurso'] = 'inicioprivado';
-        header("Location: ./index.php");
-        exit;
+        cambiarPagina('inicioprivado');
     }else{
         $aErrores['usuario'] = "ya existe";
     }
 }
 if(isset($_REQUEST['volver'])){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = "login";
-    header('Location: ./index.php');
-    exit;
+    cambiarPagina("login");
 }
 require_once $aVista['layout'];

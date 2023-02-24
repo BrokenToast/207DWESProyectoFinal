@@ -1,10 +1,7 @@
 <?php
 // Zona general
 if(isset($_REQUEST['volver'])){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = "micuenta";
-    header('Location: ./index.php');
-    exit;
+    cambiarPagina("micuenta");
 }
 //Zona propia
 $aErrores = [];
@@ -28,8 +25,6 @@ if(isset($_REQUEST['cambiar'])){
 if($ok){
     $_SESSION['usuarioproyectofinal207']->password=hash("sha256",$_REQUEST['newPassword']);
     UsuarioPDO::modificarUsuario($_SESSION['usuarioproyectofinal207'],$_SESSION['usuarioproyectofinal207']->codUsuario);
-    $_SESSION['paginaEnCurso']="micuenta";
-    header("Location: ./index.php");
-    exit;
+    cambiarPagina("micuenta");
 }
 require_once $aVista['layout'];

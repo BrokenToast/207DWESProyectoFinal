@@ -33,24 +33,16 @@ if($ok){
         $okPassword = true;
     }
     if(isset($_REQUEST['changePassword']) && $okPassword){
-        $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-        $_SESSION['paginaEnCurso'] = 'changepassword';
-        header("Location: ./index.php");
+        cambiarPagina('changepassword');
     }
     if(isset($_REQUEST['borrar']) && $okPassword){
         if(UsuarioPDO::borrarUsuario($_SESSION['usuarioproyectofinal207']->codUsuario)==1){
-            $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-            $_SESSION['paginaEnCurso'] = 'iniciopublico';
-            header("Location: ./index.php");
-            exit;
+            cambiarPagina('iniciopublico');
         }
     }
 }
 if(isset($_REQUEST['volver'])){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = "inicioprivado";
-    header('Location: ./index.php');
-    exit;
+    cambiarPagina("inicioprivado");  
 }
 $aRespuestaMiCuenta = [];
 $aRespuestaMiCuenta['codUsuario']=$_SESSION['usuarioproyectofinal207']->codUsuario;
