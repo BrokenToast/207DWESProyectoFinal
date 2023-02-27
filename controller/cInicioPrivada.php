@@ -15,6 +15,16 @@ switch ($_REQUEST['boton']?? null) {
     case 'rest':
         cambiarPagina('rest');
         break;
+    case 'error':
+        $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
+        try{
+            $conexion->executeUDI("INSERT INTO T01_Usuario values(?,?,?,?,?,?,?)");
+        }catch(ErrorApp $error){
+            $_SESSION['paginaEnCurso'] = "error";
+            header('Location: ./index.php');
+            exit();
+        }
+        break;
 }
 $aRespuestaInicioPrivado=[];
 $aRespuestaInicioPrivado['idioma']="Bienvenido ".$_SESSION['usuarioproyectofinal207']->codUsuario;
@@ -23,15 +33,5 @@ if($_SESSION['usuarioproyectofinal207']->numAccesos==1){
     $aRespuestaInicioPrivado['mensajeNumConexiones']='Es tu primera conexion';
 }else{
     $aRespuestaInicioPrivado['mensajeNumConexiones']=sprintf('Se a conectado %d <br> La ultima conexion fue en %s',$_SESSION['usuarioproyectofinal207']->numAccesos,$_SESSION['usuarioproyectofinal207']->fechaHoraUltimaConexionAnterior->format('d-m-Y H:i:s'));
-}
-if(isset($_REQUEST['error'])){
-    $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
-    try{
-        $conexion->executeUDI("INSERT INTO T01_Usuario values(?,?,?,?,?,?,?)");
-    }catch(ErrorApp $error){
-        $_SESSION['paginaEnCurso'] = "error";
-        header('Location: ./index.php');
-        exit();
-    }
 }
 require_once $aVista['layout'];
