@@ -23,17 +23,7 @@ try{
                 $_SESSION['criterioBusquedaDepartamento']['estado']=(int)$_REQUEST['estado'];
                 break;
             case 'add':
-                $aError['codigo'] = validacionFormularios::comprobarAlfabetico($_REQUEST['acodigo'], 3, 3, 1);
-                $aError['descripcion'] = validacionFormularios::comprobarAlfabetico($_REQUEST['adescripcion'], 255, 0, 1);
-                $aError['volumennegocio'] = validacionFormularios::comprobarNumber($_REQUEST['avolumenNegocio'], 100000, 0, 1);
-                foreach($aError as $error){
-                    if(!empty($error)){
-                        $ok = false;
-                    }
-                }
-                if($ok){
-                    DepartamentoPDO::altaDepartamento(new Departamento($_REQUEST['acodigo'],$_REQUEST['adescripcion'],time(),$_REQUEST['avolumenNegocio']));
-                }
+                cambiarPagina("añadirdepartamento");
                 break;
             case 'importar':
                 if(!empty($_FILES['fileimport']['name'])){
@@ -44,10 +34,7 @@ try{
                 DepartamentoPDO::exportarDepartamento();
                 break;
             case 'volver':
-                    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-                    $_SESSION['paginaEnCurso'] = "inicioprivado";
-                    header('Location: ./index.php');
-                    exit;
+                cambiarPagina("inicioprivado");
         }
     }else{
         if(isset($_REQUEST['alta'])){
@@ -78,10 +65,11 @@ try{
     if(isset($_REQUEST['ultima'])){
         $_SESSION['paginacionDepartamento']['paginaActual']=$_SESSION['paginacionDepartamento']['maximo']-1;
     }
-    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDescPagiado($_SESSION['criterioBusquedaDepartamento']['descripcion'],$_SESSION['criterioBusquedaDepartamento']['estado']);
+    $aRespuestaMtoDepartamento['departamentos']=objetosArrays(DepartamentoPDO::bucarDepartamentoPorDescPagiado($_SESSION['criterioBusquedaDepartamento']['descripcion'],$_SESSION['criterioBusquedaDepartamento']['estado']));
 }catch(ErrorApp $errorAPP){
     $_SESSION['paginaEnCurso'] = "error";
     header('Location: ./index.php');
     exit();
 }
+
 require_once $aVista['layout'];

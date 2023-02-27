@@ -8,6 +8,17 @@
         header('Location: ./index.php');
         exit;
     }
+    function objetosArrays(array $arrayObjetos){
+        $aObjetos=[];
+        foreach ($arrayObjetos as $objeto) {
+            $aobjeto=[];
+            foreach ($objeto as $propiedad) {
+                array_push($aobjeto,$propiedad);
+            }
+            array_push($aObjetos,$aobjeto);
+        }
+        return $aObjetos;
+    }
     if(!isset($_SESSION['paginaEnCurso'])){
         $_SESSION['paginaEnCurso'] = "iniciopublico";
     }

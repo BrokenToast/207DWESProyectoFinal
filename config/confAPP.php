@@ -27,6 +27,7 @@
         "mtodepartamento"=>"./controller/cMtoDepartamento.php",
         "eliminardepartamento"=>"./controller/cEliminarDepartamento.php",
         "modificardepartamento"=>"./controller/cModificarDepartamento.php",
+        "añadirdepartamento"=>"./controller/cAñadirDepartamento.php",
         "tecnologias"=>"./controller/cTecnologias.php",
     ];
     /*Vista*/
@@ -45,6 +46,7 @@
         "mtodepartamento"=>"./view/vMtoDepartamento.php",
         "eliminardepartamento"=>"./view/vEliminarDepartamento.php",
         "modificardepartamento"=>"./view/vModificarDepartamento.php",
+        "añadirdepartamento"=>"./view/vAñadirDepartamento.php",
         "tecnologias"=>"./view/vTecnologias.php",
     ];
 ?>

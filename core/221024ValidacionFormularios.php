@@ -144,10 +144,10 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
         if ($obligatorio && empty($float)) {
             return "El campo esta vacio";
         }else{
-            $float= str_replace('.', ',', $float);
-            if (!is_float($float)) {
+            if(!preg_match("/^\w+[,\.]\w+$/",$float)) {
                 return "El campo no es un decimal. (Debe llevar punto(.) entre la parte entera y la parte decimal)";
             }else{
+                $float=(float)$float;
                 if($float>$max || $float<$min){
                     return "El numero debe de estar entre $max - $min.";
                 }

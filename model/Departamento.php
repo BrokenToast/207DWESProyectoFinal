@@ -38,9 +38,9 @@ class Departamento{
      * 
      * Volumen del negocio
      * 
-     * @var int
+     * @var float
      */
-    public readonly int $volumenNegocio;
+    public readonly float $volumenNegocio;
     /**
      * fechaBajaDepartamento
      * 
@@ -58,7 +58,7 @@ class Departamento{
      * @param int $volumenNegocio Volumen del negocio
      * @param int|null $fechaBajaDepartamento Timestap de la baja logica del departamento
      */
-    public function __construct(string $codDepartamento,string$descDepartamento,int $fechaCreacionDepartamento,int $volumenNegocio,int $fechaBajaDepartamento=null){
+    public function __construct(string $codDepartamento, string $descDepartamento,int $fechaCreacionDepartamento,float $volumenNegocio,int $fechaBajaDepartamento=null){
         $this->codDepartamento=$codDepartamento;
         $this->descDepartamento=$descDepartamento;
         $fechaCreacion = new DateTime();

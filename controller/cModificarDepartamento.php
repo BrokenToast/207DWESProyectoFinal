@@ -1,22 +1,16 @@
 <?php
 $ok=true;
-$departamento=DepartamentoPDO::buscarDepartamentoPorCod($_SESSION ['codDepartamentoEnCurso']);
+$departamento=DepartamentoPDO::buscarDepartamentoPorCod($_SESSION ['codDepartamentoEnCurso'])[0];
 $aRespuestaVista=[
-    "codigo"=>$departamento[0]->codDepartamento,
-    "descripcion"=>$departamento[0]->descDepartamento,
-    "volumenNegocio"=>$departamento[0]->volumenNegocio,
-    "fechaCreacion"=>$departamento[0]->fechaCreacionDepartamento->format('d-m-Y H:i:s'),
-    "fechaBaja"=>date('d-m-Y H:i:s',$departamento[0]->fechaBajaDepartamento)
+    "codigo"=>$departamento->codDepartamento,
+    "descripcion"=>$departamento->descDepartamento,
+    "volumenNegocio"=>$departamento->volumenNegocio,
+    "fechaCreacion"=>$departamento->fechaCreacionDepartamento->format('d-m-Y H:i:s'),
+    "fechaBaja"=>date('d-m-Y H:i:s',$departamento->fechaBajaDepartamento)
 ];
 if(isset($_REQUEST['cancelar'])){
-    $paginaAnterior=$_SESSION['paginaAnterior'];
-    $paginaEnCuerso = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaAnterior'] = $paginaEnCuerso;
-    $_SESSION['paginaEnCurso'] = $paginaAnterior;
-    header('Location: ./index.php');
-    exit;
+    cambiarPagina('mtodepartamento');
 }else if(isset($_REQUEST['editar'])){
-    $aError['codigo'] = validacionFormularios::comprobarAlfabetico($_REQUEST['codDepartamento'], 3, 3, 1);
     $aError['descripcion'] = validacionFormularios::comprobarAlfabetico($_REQUEST['descDepartamento'], 255, 1, 1);
     $aError['volumenNegocio'] = validacionFormularios::comprobarFloat($_REQUEST['volumenNegocio'], 100000, 1, 1);
     foreach($aError as $error){
@@ -25,7 +19,8 @@ if(isset($_REQUEST['cancelar'])){
         }
     }
     if($ok){
-        DepartamentoPDO::modificaDepartamento(new Departamento($_REQUEST['editar'],$_REQUEST['mdescDepartamento'],0,$_REQUEST['mvolumenNegocio']),$_SESSION ['codDepartamentoEnCurso']);
-    }
+        DepartamentoPDO::modificaDepartamento(new Departamento($_SESSION ['codDepartamentoEnCurso'],$_REQUEST['descDepartamento'],0,$_REQUEST['volumenNegocio']),$_SESSION ['codDepartamentoEnCurso']);
+        //cambiarPagina('mtodepartamento');
+    } 
 }
 require_once $aVista['layout'];
