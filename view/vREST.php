@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="./webroot/style/rest.css">
+<h2>Rest</h2>
 <form action="./index.php" method="post">
     <input type="submit" class="button" name="volver" value="volver">
 </form>
-<h1>REST(AEMET)</h1>
+<h3>AEMET</h3>
 <form action="./index.php">
     <label for="estacion">Estaciones</label>
     <select name="estacion" id="estacion">

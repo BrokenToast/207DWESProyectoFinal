@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./webroot/style/registro.css">
+<h2>Registrarse</h2>
 <section>
     <article>
     <form action="./index.php" method="post">

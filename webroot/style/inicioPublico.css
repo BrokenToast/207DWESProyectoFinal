@@ -8,21 +8,6 @@ nav{
   align-items: center;
   gap: 60%;
 }
-/*Login*/
-#login{
-  height: 100%;
-  display:flex;
-}
-#login>input{
-  border:none;
-  padding: 0 60%;
-  height: 100%;
-  font-size: 1.2em;
-}
-#login>input:hover{
-  background-color: var(--colorSelecionado);
-  color: white;
-}
 
 /*Contenido*/
 section{
@@ -62,4 +47,8 @@ section{
 /*Reloj*/
 #reloj img{
   width: 5%;
+}
+/*menu*/
+#menu{
+  justify-content: space-around
 }

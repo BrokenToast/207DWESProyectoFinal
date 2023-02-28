@@ -6,8 +6,8 @@ switch ($_REQUEST['boton']?? null) {
     case 'detalles':
         cambiarPagina('detalles');
         break;
-    case 'mantenimiento':
-        cambiarPagina('Mantenimiento Departamentos');
+    case 'Mantenimiento Departamentos':
+        cambiarPagina('mtodepartamento');
         break;
     case 'editar':
         cambiarPagina('micuenta');
@@ -25,8 +25,8 @@ switch ($_REQUEST['boton']?? null) {
             exit();
         }
         break;
-    case 'mtousuario':
-        cambiarPagina('Mantenimiento Usuarios');
+    case 'Mantenimiento Usuarios':
+        cambiarPagina('mtousuario');
         break;
 }
 $aRespuestaInicioPrivado=[];

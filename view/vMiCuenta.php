@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./webroot/style/miCuenta.css">
+<h2>Editar mi cuenta</h2>
 <section>
     <article>
             <form action="./index.php" method="post">

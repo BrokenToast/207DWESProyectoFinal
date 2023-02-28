@@ -2,6 +2,7 @@
 <form enctype="multipart/form-data" action="./index.php" method="post">
     <input type="submit" class="button" name="boton" value="volver" id="volver">
 </form>
+<h2>Mantenimiento Usuario</h2>
 <form action="./index.php" method="post" id="busqueda">
     <label for="descDepartamento">Descripción</label>
     <input type="text" name="bdescripcion" id="descDepartamento" value="<?php echo (!empty($_SESSION['criterioBusquedaDepartamento']['descripcion'])? $_SESSION['criterioBusquedaDepartamento']['descripcion'] : "" )?>">

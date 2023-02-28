@@ -1,11 +1,8 @@
 <link rel="stylesheet" href="./webroot/style/inicioPublico.css">
-<nav>
-    
-    <form id="login" action="./index.php" method="post">
-        <input type="submit" name="boton" value="RSS">
-        <input type="submit" name="boton" value="Login">
-    </form>
-</nav>
+<form id="menu" action="./index.php" method="post">
+    <input type="submit" name="boton" value="RSS" class="itemMenu">
+    <input type="submit" name="boton" value="Login" class="itemMenu">
+</form>
 <section>
     <article id="carrusel">
         <button id="atras" class="movimiento"><</button>

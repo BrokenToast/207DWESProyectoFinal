@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./webroot/style/tecnologias.css">
+<h2>Tecnologias</h2>
 <form action="index.php" method="post">
     <input type="submit" name="volver" value="volver" class="button">
 </form>

@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./webroot/style/detalle.css">
+<h2>Detalles</h2>
 <section>
     <form action="./index.php" method="post">
         <input type="submit" name="volver" class="button" value="volver">
