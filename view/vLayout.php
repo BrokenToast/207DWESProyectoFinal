@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="././webroot/style/reset.css">
     <link rel="stylesheet" href="./webroot/style/variables.css">
+    <link rel="stylesheet" href="./webroot/style/clases.css">
     <link rel="stylesheet" href="./webroot/style/base.css">
     <title>LoginLogoff</title>
 </head>

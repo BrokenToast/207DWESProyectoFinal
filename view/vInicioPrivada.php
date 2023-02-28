@@ -1,7 +1,15 @@
 <link rel="stylesheet" href="./webroot/style/inicioPrivado.css">
 <form method="./programa.php" id="menu" method="post">
     <input type="submit" class="itemMenu" name="boton" value="detalles">
-    <input type="submit" class="itemMenu" name="boton" value="mantenimiento">
+    <input type="submit" class="itemMenu" name="boton" value="Mantenimiento Departamentos">
+    <?php
+        if($aRespuestaInicioPrivado['perfil']=="administrador"){
+            ?> 
+                    <input type="submit" class="itemMenu" name="boton" value="Mantenimiento Usuarios">
+            <?php
+        }
+    ?>
+
     <input type="submit" class="itemMenu" name="boton" value="rest">
     <input type="submit" class="itemMenu" name="boton" value="error">
     <input type="submit" class="itemMenu" name="boton" value="editar">

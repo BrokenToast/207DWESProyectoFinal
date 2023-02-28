@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Fecha: 13/01/2022.
+Descripbcion Noticas del pais.
+Documento: RSS
+-->
+<rss version="2.0">
+    <channel>
+        <title>ProyectoFinal-Luis Pérez Astorga</title>
+        <link>http://daw101.ieslossauces.es/index.html</link>
+        <description>Canal RSS de los ejericios de lenguajes de marcas</description>
+        <language>es</language>
+        <item>
+            <title>1.4</title>
+            <link>http://daw101.ieslossauces.es/index.html</link>
+            <description>Inaguración de la versión 1.0 de la pagina</description>
+            <pubDate>2022-03-21T00:49:00-01:00</pubDate>
+            <author>@Luispatb</author>
+        </item>
+    </channel>
+</rss>

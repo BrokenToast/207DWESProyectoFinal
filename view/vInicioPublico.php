@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="./webroot/style/inicioPublico.css">
 <nav>
+    
     <form id="login" action="./index.php" method="post">
-        <input type="submit" name="login" value="Login">
+        <input type="submit" name="boton" value="RSS">
+        <input type="submit" name="boton" value="Login">
     </form>
 </nav>
 <section>

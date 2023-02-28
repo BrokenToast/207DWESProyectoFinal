@@ -65,7 +65,8 @@ try{
     if(isset($_REQUEST['ultima'])){
         $_SESSION['paginacionDepartamento']['paginaActual']=$_SESSION['paginacionDepartamento']['maximo']-1;
     }
-    $aRespuestaMtoDepartamento['departamentos']=objetosArrays(DepartamentoPDO::bucarDepartamentoPorDescPagiado($_SESSION['criterioBusquedaDepartamento']['descripcion'],$_SESSION['criterioBusquedaDepartamento']['estado']));
+    $aRespuesta=DepartamentoPDO::bucarDepartamentoPorDescPagiado($_SESSION['criterioBusquedaDepartamento']['descripcion'],$_SESSION['criterioBusquedaDepartamento']['estado']);
+    $aRespuestaMtoDepartamento['departamentos']=(is_array($aRespuesta))?objetosArrays($aRespuesta):$aRespuesta;
 }catch(ErrorApp $errorAPP){
     $_SESSION['paginaEnCurso'] = "error";
     header('Location: ./index.php');

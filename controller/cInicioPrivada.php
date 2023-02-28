@@ -7,7 +7,7 @@ switch ($_REQUEST['boton']?? null) {
         cambiarPagina('detalles');
         break;
     case 'mantenimiento':
-        cambiarPagina('mtodepartamento');
+        cambiarPagina('Mantenimiento Departamentos');
         break;
     case 'editar':
         cambiarPagina('micuenta');
@@ -25,10 +25,14 @@ switch ($_REQUEST['boton']?? null) {
             exit();
         }
         break;
+    case 'mtousuario':
+        cambiarPagina('Mantenimiento Usuarios');
+        break;
 }
 $aRespuestaInicioPrivado=[];
 $aRespuestaInicioPrivado['idioma']="Bienvenido ".$_SESSION['usuarioproyectofinal207']->codUsuario;
 $aRespuestaInicioPrivado['descripcionUsuario']=$_SESSION['usuarioproyectofinal207']->descUsuario;
+$aRespuestaInicioPrivado['perfil']=$_SESSION['usuarioproyectofinal207']->perfil;
 if($_SESSION['usuarioproyectofinal207']->numAccesos==1){
     $aRespuestaInicioPrivado['mensajeNumConexiones']='Es tu primera conexion';
 }else{

@@ -121,7 +121,7 @@ class DepartamentoPDO{
      */
     public static function bajaLogicaDepartamento(string $codigo){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        return $oConexionDB->executeUDI("update T02_Departamento set T02_FechaBajaDepartamento=unix_timestamp() where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]' and T02_FechaBajaDepartamento is null;");
+        return $oConexionDB->executeUDI("update T02_Departamento set T02_FechaBajaDepartamento=unix_timestamp() where T02_CodDepartamento='$codigo' and T02_FechaBajaDepartamento is null;");
     }
     /**
      * modificaDepartamento

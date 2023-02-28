@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="./webroot/style/tecnologias.css">
 <form action="index.php" method="post">
-    <input type="submit" name="volver" value="volver">
+    <input type="submit" name="volver" value="volver" class="button">
 </form>
 <section>
     <article>
@@ -34,6 +34,13 @@
     </article>
     <article>
         <h3>Planos aplicación</h3>
-        <a href=""></a>
+        <a href="./doc/Planos_Aplicacion/CatalogoDeRequisitos.pdf">Catalogo de Requisitos</a>
+        <a href="./doc/Planos_Aplicacion/CasosDeUso.pdf">Diagrama de casos de uso</a>
+        <a href="./doc/Planos_Aplicacion/diagrama_de_clases.png">Diagrama de clases actualizado</a>
+        <a href="./doc/Planos_Aplicacion/230129ArbolDeNavegación.pdf">Arbol de navegación</a>
+        <a href="./doc/Planos_Aplicacion/RelacionDeFicheros.pdf">Relación de ficheros</a>
+        <a href="./doc/Planos_Aplicacion/modelo_Datos.png">Modelo fisico de datos</a>
+        <a href="./doc/Planos_Aplicacion/EstructuraAlmacenamiento.pdf">Estructura de Almacenamiento</a>
+        
     </article>
 </section>

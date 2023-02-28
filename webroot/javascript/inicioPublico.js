@@ -1,14 +1,13 @@
 /*Carrusel*/
 var posicion=0;
 var enlaces=[
-    ["./webroot/Planos_Aplicacion/230129ArbolDeNavegación.pdf","./webroot/Planos_Aplicacion/230129ArbolDeNavegación.png"],
-    ["./webroot/Planos_Aplicacion/CasosDeUso.pdf","./webroot/Planos_Aplicacion/CasosDeUso.png"],
-    ["./webroot/Planos_Aplicacion/CatalogoDeRequisitos.pdf","./webroot/Planos_Aplicacion/CatalogoDeRequisitos.png"],
-    ["./webroot/Planos_Aplicacion/diagrama_de_clases.png","./webroot/Planos_Aplicacion/diagrama_de_clases.png"],
-    ["./webroot/Planos_Aplicacion/modelo_Datos.png","./webroot/Planos_Aplicacion/modelo_Datos.png"],
-    ["./webroot/Planos_Aplicacion/RelacionDeFicheros.pdf","./webroot/Planos_Aplicacion/RelacionDeFicheros.png"],
-    //["./webroot/Planos_Aplicacion/.pdf","./webroot/Planos_Aplicacion/.png"],
-    //["./webroot/Planos_Aplicacion/.pdf","./webroot/Planos_Aplicacion/.png"],
+    ["./doc/Planos_Aplicacion/230129ArbolDeNavegación.pdf","./webroot/Planos_Aplicacion/230129ArbolDeNavegación.png"],
+    ["./doc/Planos_Aplicacion/CasosDeUso.pdf","./webroot/Planos_Aplicacion/CasosDeUso.png"],
+    ["./doc/Planos_Aplicacion/CatalogoDeRequisitos.pdf","./webroot/Planos_Aplicacion/CatalogoDeRequisitos.png"],
+    ["./doc/Planos_Aplicacion/diagrama_de_clases.png","./webroot/Planos_Aplicacion/diagrama_de_clases.png"],
+    ["./doc/Planos_Aplicacion/modelo_Datos.png","./webroot/Planos_Aplicacion/modelo_Datos.png"],
+    ["./doc/Planos_Aplicacion/RelacionDeFicheros.pdf","./webroot/Planos_Aplicacion/RelacionDeFicheros.png"],
+    ["./doc/Planos_Aplicacion/RelacionDeFicheros.pdf","./webroot/Planos_Aplicacion/RelacionDeFicheros.png"],
 ];
 let imagen=document.createElement("img");
 let enlace=document.getElementById("enlace");

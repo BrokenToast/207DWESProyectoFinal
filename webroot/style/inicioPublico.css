@@ -8,44 +8,10 @@ nav{
   align-items: center;
   gap: 60%;
 }
-  /*selector idiomas*/
-label{
-  padding: 0 1%;
-  font-size: 3em;
-}
-label[for="banderaIdiomas"]:hover{
-  background-color: var(--colorSelecionado);
-  color:white;
-}
-#banderaIdiomas{
-  display: none;
-}
-#banderaIdiomas:checked~#selectLenguage{
-  left: 4%;
-}
-/*Sub ventana selector Idioma*/
-#selectLenguage{
-  width: 10%;
-  padding: 6px;
-  position: absolute;
-  top: 100%; left:-15%;
-  background-color: var(--colorSelecionado);
-  transition: all 0.4s ease-in-out;
-}
-#selectLenguage>form{
-  display: flex;
-  flex-direction: column;
-}
-
-.bandera>img{
-  width: 30px;
-}
-input[type="radio"]{
-  display: none;
-}
-/*Boton Login*/
+/*Login*/
 #login{
   height: 100%;
+  display:flex;
 }
 #login>input{
   border:none;

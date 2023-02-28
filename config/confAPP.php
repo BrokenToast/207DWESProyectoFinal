@@ -29,6 +29,8 @@
         "modificardepartamento"=>"./controller/cModificarDepartamento.php",
         "añadirdepartamento"=>"./controller/cAñadirDepartamento.php",
         "tecnologias"=>"./controller/cTecnologias.php",
+        "rss"=>"./controller/cRss.php",
+        "mtousuario"=>"./controller/cMtoUsuario.php"
     ];
     /*Vista*/
     $aVista = [
@@ -48,5 +50,7 @@
         "modificardepartamento"=>"./view/vModificarDepartamento.php",
         "añadirdepartamento"=>"./view/vAñadirDepartamento.php",
         "tecnologias"=>"./view/vTecnologias.php",
+        "rss"=>"./view/vRss.php",
+        "mtousuario"=>"./view/vMtoUsuario.php"
     ];
 ?>
