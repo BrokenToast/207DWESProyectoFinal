@@ -14,17 +14,17 @@
         <input type="text" name="fechaBaja" id="fechaBaja" disabled>
         <?php 
             if(isset($aError)){
-                if(isset($aError['codigo'])){
+                if(!empty($aError['codigo'])){
                     ?>  
                     <p>Codigo Departamento:<?php echo $aError['codigo'] ?></p>
                     <?php
                 }
-                if(isset($aError['descripcion'])){
+                if(!empty($aError['descripcion'])){
                     ?>  
                     <p>Descripción del Departamento:<?php echo $aError['descripcion'] ?></p>
                     <?php
                 }
-                if(isset($aError['volumenNegocio'])){
+                if(!empty($aError['volumenNegocio'])){
                     ?>  
                     <p>Volumen del Negocio:<?php echo $aError['volumenNegocio'] ?></p>
                     <?php

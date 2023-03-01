@@ -17,7 +17,7 @@
     </fieldset>
     <div>
         <button submit name="boton" class="button" value="buscar">Buscar</button>
-        <input type="submit" class="button" name="boton" value="Añadir">
+        <button submit name="boton" class="button" value="add">Añadir</button>
         <div>
             <input type="submit" class="button" name="boton" value="exportar">
             <input type="submit" class="button" name="boton" value="importar">

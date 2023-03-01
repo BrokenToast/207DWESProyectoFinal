@@ -11,7 +11,7 @@
                             <tr>
                                 <td>Usuario:</td>
                                 <td>
-                                    <input type="text" name="userName" id="userName" value="<?php echo $aRespuestaMiCuenta['codUsuario'];?>">
+                                    <input disabled type="text" name="userName" id="userName" value="<?php echo $aRespuestaMiCuenta['codUsuario'];?>">
                                 </td>
                             </tr>
                             <tr>

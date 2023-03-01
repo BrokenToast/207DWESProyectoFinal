@@ -30,7 +30,7 @@ fPassword.addEventListener("blur",(event)=>{
 fDescUsuario.addEventListener("blur",(event)=>{
     erroreCorrecto(Validadacion.validarAlfaNumerico,event.target,250,2);
 });
-registrar.addEventListener("click",function(event) {
+function registrar(event) {
     event.preventDefault();
     if(document.querySelectorAll(".correcto").length==3){
         captchaCreate();
@@ -38,7 +38,8 @@ registrar.addEventListener("click",function(event) {
     }else{
         document.getElementById("captcha").style.display="none";
     }
-});
+}
+registrar.addEventListener("click",registrar);
 
 /*Capchat*/
 res1.setAttribute("draggable","true");
@@ -95,7 +96,9 @@ resultado.addEventListener("drop",(event)=>{
         res3.attributes.removeNamedItem("draggable");
         setTimeout(()=>{
             document.getElementById("captcha").nodeValue="ENHORABUENA, NO ERES UN ROBOT";
-            setTimeout(()=>document.forms[0].submit(),2000);
+            setTimeout(()=>{
+                document.forms[0].submit;
+            },2000);
         },2000);
         
     }else{

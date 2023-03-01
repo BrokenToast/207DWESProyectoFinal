@@ -51,4 +51,17 @@
             </tr>
         </table>
     </div>
+    <h3>Red Electrica</h3>
+    <table>
+        <?php
+        foreach ($aElecctridiadGenerada as $value) {
+            ?> 
+            <tr>
+                <td><?php echo ((array)((array)$value)['attributes'])['title']?></td>
+                <td><?php echo ((array)((array)((array)((array)$value)['attributes'])['values'])[0])['percentage']*100?>%</td>
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
 </form>

@@ -1,12 +1,11 @@
 <?php
 $ok = "";
-var_dump($_REQUEST);
-if(isset($_REQUEST['registrar'])){
+if(isset($_REQUEST['usuario']) && isset($_REQUEST['descUsuario']) && isset($_REQUEST['password'])){
     $ok = true;
-    $aErrores['usuario']=validacionFormularios::comprobarAlfabetico($_REQUEST['usuario'],30,2,1);
     if(!UsuarioPDO::validarCodNoExiste($_REQUEST['usuario'])){
         $aErrores['usuario']="El usuario ya existe";
     }
+    $aErrores['usuario']=validacionFormularios::comprobarAlfabetico($_REQUEST['usuario'],30,2,1);
     $aErrores['password']=validacionFormularios::comprobarAlfaNumerico($_REQUEST['password'],16,3,1);
     $aErrores['descUsuario']=validacionFormularios::comprobarAlfaNumerico($_REQUEST['descUsuario'],250,2,1);
     foreach($aErrores as $value){

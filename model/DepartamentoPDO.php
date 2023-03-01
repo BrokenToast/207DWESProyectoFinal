@@ -160,8 +160,10 @@ class DepartamentoPDO{
     public static function validaCodNoExiste(string $codigo){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
         $aRespuesta = $oConexionDB->executeQuery("select T02_CodDepartamento from T02_Departamento where T02_CodDepartamento='$codigo';");
-        if(is_bool($aRespuesta)){
+        if(!$aRespuesta){
             return true;
+        }else{
+            return false;
         }
     }
     /**

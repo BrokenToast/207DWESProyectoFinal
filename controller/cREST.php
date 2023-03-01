@@ -5,11 +5,9 @@ try{
 }catch(ErrorApp $error){
     cambiarPagina("error");
 }
-
 if(isset($_REQUEST['volver'])){
     cambiarPagina("inicioprivado");
 }
-
 try{
     if(isset($_REQUEST['tiempo'])){
         $oRTiempo=Rest::pedirTemperaturaEstacionMeto($_REQUEST['estacion']);
@@ -27,4 +25,5 @@ try{
 }catch(ErrorApp $error){
     cambiarPagina("error");
 }
+$aElecctridiadGenerada=((array)Rest::generacionElectricaAyer())['included'];
 require_once $aVista['layout'];
