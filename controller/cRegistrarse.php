@@ -1,6 +1,6 @@
 <?php
 $ok = "";
-if(isset($_REQUEST['usuario']) && isset($_REQUEST['descUsuario']) && isset($_REQUEST['password'])){
+if(!empty($_REQUEST)){
     $ok = true;
     if(!UsuarioPDO::validarCodNoExiste($_REQUEST['usuario'])){
         $aErrores['usuario']="El usuario ya existe";

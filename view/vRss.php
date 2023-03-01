@@ -3,4 +3,4 @@
 <form action="./index.php" method="post">
     <input type="submit" class="button" name="volver" value="volver">
 </form>
-<a href="./doc/rss.xml">Link RSS</a>
+<a target="_blank" href="./doc/rss.xml">Link RSS</a>
