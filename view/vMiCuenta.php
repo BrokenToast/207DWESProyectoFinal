@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./webroot/style/miCuenta.css">
+<h2>Editar mi cuenta</h2>
 <section>
     <article>
             <form action="./index.php" method="post">
@@ -10,7 +11,7 @@
                             <tr>
                                 <td>Usuario:</td>
                                 <td>
-                                    <input type="text" name="userName" id="userName" value="<?php echo $aRespuestaMiCuenta['codUsuario'];?>">
+                                    <input disabled type="text" name="userName" id="userName" value="<?php echo $aRespuestaMiCuenta['codUsuario'];?>">
                                 </td>
                             </tr>
                             <tr>

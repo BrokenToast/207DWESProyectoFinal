@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./webroot/style/registro.css">
+<h2>Registrarse</h2>
 <section>
     <article>
     <form action="./index.php" method="post">
@@ -40,7 +41,25 @@
                     <tr>
                         <td><input type="submit" class="button" name="registrar" value="registrar"></td>
                     </tr>
+                    <tr>
+                        <td id="captcha" colspan="2">
+                            <div>
+                                <div id="num1" class="itemCaptcha"></div>
+                                <p>+</p>
+                                <div id="num2" class="itemCaptcha"></div>
+                                <p>=</p>
+                                <div id="resultado" class="itemCaptcha"></div>
+                            </div>
+                            <div>
+                                <div id="res1" class="itemCaptcha"></div>
+                                <div id="res2" class="itemCaptcha"></div>
+                                <div id="res3" class="itemCaptcha"></div>
+                            </div>
+                        </td>
+                    </tr>
                 </table>
             </fieldset>
+        </form>
     </article>
 </section>
+<script type="module" defer src="./webroot/javascript/registrarse.js"></script>

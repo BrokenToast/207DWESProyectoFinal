@@ -14,22 +14,14 @@ if (isset($_REQUEST['iniciar'])) {
             $_SESSION['usuarioproyectofinal207'] = $oUsuario;
             $oUsuario->numAccesos += 1;
             UsuarioPDO::modificarUsuario($oUsuario);
-            $_SESSION['paginaEnCurso'] = 'inicioprivado';
-            header("Location: ./index.php");
-            exit;
+            cambiarPagina('inicioprivado');
         }
     }
 }
 if(isset($_REQUEST['registrarse'])){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = 'registrarse';
-    header('Location: ./index.php');
-    exit;
+    cambiarPagina('registrarse');
 }
 if(isset($_REQUEST['volver'])){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = "iniciopublico";
-    header('Location: ./index.php');
-    exit;
+    cambiarPagina("iniciopublico");
 }
 require_once $aVista['layout'];

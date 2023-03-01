@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./webroot/style/cambiarContrasena.css">
+<h2>Cambiar Contraseña</h2>
 <section>
     <article>
         <form action="./index.php" method="post">

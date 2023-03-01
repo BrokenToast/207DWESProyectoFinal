@@ -8,55 +8,6 @@ nav{
   align-items: center;
   gap: 60%;
 }
-  /*selector idiomas*/
-label{
-  padding: 0 1%;
-  font-size: 3em;
-}
-label[for="banderaIdiomas"]:hover{
-  background-color: var(--colorSelecionado);
-  color:white;
-}
-#banderaIdiomas{
-  display: none;
-}
-#banderaIdiomas:checked~#selectLenguage{
-  left: 4%;
-}
-/*Sub ventana selector Idioma*/
-#selectLenguage{
-  width: 10%;
-  padding: 6px;
-  position: absolute;
-  top: 100%; left:-15%;
-  background-color: var(--colorSelecionado);
-  transition: all 0.4s ease-in-out;
-}
-#selectLenguage>form{
-  display: flex;
-  flex-direction: column;
-}
-
-.bandera>img{
-  width: 30px;
-}
-input[type="radio"]{
-  display: none;
-}
-/*Boton Login*/
-#login{
-  height: 100%;
-}
-#login>input{
-  border:none;
-  padding: 0 60%;
-  height: 100%;
-  font-size: 1.2em;
-}
-#login>input:hover{
-  background-color: var(--colorSelecionado);
-  color: white;
-}
 
 /*Contenido*/
 section{
@@ -92,4 +43,12 @@ section{
 #delante{
   right:0;
   top:0;
+}
+/*Reloj*/
+#reloj img{
+  width: 5%;
+}
+/*menu*/
+#menu{
+  justify-content: space-around
 }

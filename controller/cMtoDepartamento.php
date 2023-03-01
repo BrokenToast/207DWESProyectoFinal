@@ -17,23 +17,12 @@ try{
     if(isset($_REQUEST["boton"])){
         switch ($_REQUEST["boton"]) {
             case 'buscar':
-                $_SESSION['paginacionDepartamento']['paginaActual']=0;
                 $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDescPagiado($_REQUEST['bdescripcion'],(int)$_REQUEST['estado']);
                 $_SESSION['criterioBusquedaDepartamento']['descripcion']=$_REQUEST['bdescripcion'];
                 $_SESSION['criterioBusquedaDepartamento']['estado']=(int)$_REQUEST['estado'];
                 break;
             case 'add':
-                $aError['codigo'] = validacionFormularios::comprobarAlfabetico($_REQUEST['acodigo'], 3, 3, 1);
-                $aError['descripcion'] = validacionFormularios::comprobarAlfabetico($_REQUEST['adescripcion'], 255, 0, 1);
-                $aError['volumennegocio'] = validacionFormularios::comprobarNumber($_REQUEST['avolumenNegocio'], 100000, 0, 1);
-                foreach($aError as $error){
-                    if(!empty($error)){
-                        $ok = false;
-                    }
-                }
-                if($ok){
-                    DepartamentoPDO::altaDepartamento(new Departamento($_REQUEST['acodigo'],$_REQUEST['adescripcion'],time(),$_REQUEST['avolumenNegocio']));
-                }
+                cambiarPagina("añadirdepartamento");
                 break;
             case 'importar':
                 if(!empty($_FILES['fileimport']['name'])){
@@ -44,10 +33,7 @@ try{
                 DepartamentoPDO::exportarDepartamento();
                 break;
             case 'volver':
-                    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-                    $_SESSION['paginaEnCurso'] = "inicioprivado";
-                    header('Location: ./index.php');
-                    exit;
+                cambiarPagina("inicioprivado");
         }
     }else{
         if(isset($_REQUEST['alta'])){
@@ -56,22 +42,10 @@ try{
             DepartamentoPDO::bajaLogicaDepartamento($_REQUEST['baja']);
         }else if(isset($_REQUEST['editar'])){
             $_SESSION ['codDepartamentoEnCurso']=$_REQUEST['editar'];
-            $aError['descripcion'] = validacionFormularios::comprobarAlfabetico($_REQUEST['mdescDepartamento'], 255, 0, 1);
-            $aError['volumennegocio'] = validacionFormularios::comprobarNumber($_REQUEST['mvolumenNegocio'], 100000, 0, 1);
-            foreach($aError as $error){
-                if(!empty($error)){
-                    $ok = false;
-                }
-            }
-            if($ok){
-                DepartamentoPDO::modificaDepartamento(new Departamento($_REQUEST['editar'],$_REQUEST['mdescDepartamento'],0,$_REQUEST['mvolumenNegocio']),$_REQUEST['editar']);
-            }
+            cambiarPagina("modificardepartamento");
         }else if(isset($_REQUEST['eliminar'])){
             $_SESSION ['codDepartamentoEnCurso']=$_REQUEST['eliminar'];
-            $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-            $_SESSION['paginaEnCurso'] =  "eliminardepartamento";
-            header('Location: ./index.php');
-            exit;
+            cambiarPagina("eliminardepartamento");
         }
     }
     if(isset($_REQUEST['principio'])){
@@ -90,10 +64,12 @@ try{
     if(isset($_REQUEST['ultima'])){
         $_SESSION['paginacionDepartamento']['paginaActual']=$_SESSION['paginacionDepartamento']['maximo']-1;
     }
-    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDescPagiado($_SESSION['criterioBusquedaDepartamento']['descripcion'],$_SESSION['criterioBusquedaDepartamento']['estado']);
+    $aRespuesta=DepartamentoPDO::bucarDepartamentoPorDescPagiado($_SESSION['criterioBusquedaDepartamento']['descripcion'],$_SESSION['criterioBusquedaDepartamento']['estado']);
+    $aRespuestaMtoDepartamento['departamentos']=(is_array($aRespuesta))?objetosArrays($aRespuesta):$aRespuesta;
 }catch(ErrorApp $errorAPP){
     $_SESSION['paginaEnCurso'] = "error";
     header('Location: ./index.php');
     exit();
 }
+
 require_once $aVista['layout'];

@@ -9,7 +9,6 @@ $codUsuarioAnterior=$_SESSION['usuarioproyectofinal207']->codUsuario;
 $usuario = "";
 if(isset($_REQUEST['changeUser'])){
     $ok = true;
-    $aErrores['userName']=validacionFormularios::comprobarAlfabetico($_REQUEST['userName'], 30, 2, 1);
     $aErrores['descUsuario'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['descUsuario'], 250, 2, 1);
     foreach($aErrores as $error){
         if(!empty($error)){
@@ -19,11 +18,6 @@ if(isset($_REQUEST['changeUser'])){
 }
 if($ok){
     $_SESSION['usuarioproyectofinal207']->descUsuario=$_REQUEST['descUsuario'];
-    if(!UsuarioPDO::validarCodNoExiste("$_REQUEST[userName]")){
-        $_SESSION['usuarioproyectofinal207']->codUsuario = $_REQUEST['userName'];
-    }else{
-        $aErrores["codUser"] = "El nombre de usuario no esta disponible";
-    }
     UsuarioPDO::modificarUsuario($_SESSION['usuarioproyectofinal207'], $codUsuarioAnterior);
     header("Location: ./index.php");
     exit;
@@ -33,24 +27,16 @@ if($ok){
         $okPassword = true;
     }
     if(isset($_REQUEST['changePassword']) && $okPassword){
-        $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-        $_SESSION['paginaEnCurso'] = 'changepassword';
-        header("Location: ./index.php");
+        cambiarPagina('changepassword');
     }
     if(isset($_REQUEST['borrar']) && $okPassword){
         if(UsuarioPDO::borrarUsuario($_SESSION['usuarioproyectofinal207']->codUsuario)==1){
-            $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-            $_SESSION['paginaEnCurso'] = 'iniciopublico';
-            header("Location: ./index.php");
-            exit;
+            cambiarPagina('iniciopublico');
         }
     }
 }
 if(isset($_REQUEST['volver'])){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] = "inicioprivado";
-    header('Location: ./index.php');
-    exit;
+    cambiarPagina("inicioprivado");  
 }
 $aRespuestaMiCuenta = [];
 $aRespuestaMiCuenta['codUsuario']=$_SESSION['usuarioproyectofinal207']->codUsuario;

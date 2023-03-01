@@ -92,12 +92,7 @@ class UsuarioPDO{
      */
     public static function validarCodNoExiste(string $codUsuario){
         $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        $usuario = $conexion->executeQuery("SELECT T01_CodUsuario FROM T01_Usuario WHERE T01_CodUsuario='$codUsuario'");
-        if($usuario){
-            return true;
-        }else{
-            return false;
-        }
+        return $conexion->executeQuery("SELECT T01_CodUsuario FROM T01_Usuario WHERE T01_CodUsuario='$codUsuario'");
     }
     // Part 2
     public static function registrarUltimaConexion(string $codUsuario, ){
@@ -106,13 +101,17 @@ class UsuarioPDO{
     }
     public static function buscarUsuarioPorCod(string $codUsuario){
         $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        $aUsuario=$conexion->executeUDI("select * from T01_Usuario where T01_CodUsuario='$codUsuario';");
+        $aUsuario=$conexion->executeQuery("select * from T01_Usuario where T01_CodUsuario='$codUsuario';");
         $fechaUltimaConexion = time();
-        return new Usuario($aUsuario[0]['T01_CodUsuario'],$aUsuario[0]['T01_Password'],$aUsuario[0]['T01_DescUsuario'],$aUsuario[0]['T01_NumConexiones'],$fechaUltimaConexion,$aUsuario[0]['T01_FechaHoraUltimaConexion'],$aUsuario[0]['T01_Perfil']);
+        if(!$aUsuario){
+            return "Usuario no existe";
+        }else{
+            return new Usuario($aUsuario[0]['T01_CodUsuario'],$aUsuario[0]['T01_Password'],$aUsuario[0]['T01_DescUsuario'],$aUsuario[0]['T01_NumConexiones'],$fechaUltimaConexion,$aUsuario[0]['T01_FechaHoraUltimaConexion'],$aUsuario[0]['T01_Perfil']);
+        }
     }
     public static function cambiarPasword(string $codUsuario,string $password){
         $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        return $conexion->executeUDI("update T01_Usuario set T01_Password='$password'  where T01_CodUsuario='$codUsuario'");
+        return $conexion->executeUDI("update T01_Usuario set T01_Password=SHA2('$password',256)  where T01_CodUsuario='$codUsuario'");
     }
     public static function crearOpinion(string $codUsuario){
 

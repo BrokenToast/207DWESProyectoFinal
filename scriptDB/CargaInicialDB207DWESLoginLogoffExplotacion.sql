@@ -1,5 +1,6 @@
 use dbs9174075;
 INSERT INTO T01_Usuario VALUES
+    ('admin',SHA2('paso',256),'administrador',UNIX_TIMESTAMP(),0,'administrador',null),
     ('luis',SHA2('paso',256),'administrador',UNIX_TIMESTAMP(),0,'administrador',null),
     ('david',SHA2('paso',256),'Usuario estandar',unix_timestamp(),0,'usuario',null),
     ('manuel',SHA2('paso',256),'Usuario estandar',unix_timestamp(),0,'usuario',null),

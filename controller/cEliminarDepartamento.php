@@ -1,15 +1,17 @@
 <?php
-function volver(){
-    $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
-    $_SESSION['paginaEnCurso'] =  "mtodepartamento";
-    header('Location: ./index.php');
-    exit;
+$departamento=DepartamentoPDO::buscarDepartamentoPorCod($_SESSION ['codDepartamentoEnCurso'])[0];
+$aRespuestaVista=[
+    "codigo"=>$departamento->codDepartamento,
+    "descripcion"=>$departamento->descDepartamento,
+    "volumenNegocio"=>$departamento->volumenNegocio,
+    "fechaCreacion"=>$departamento->fechaCreacionDepartamento->format('d-m-Y H:i:s'),
+    "fechaBaja"=>date('d-m-Y H:i:s',$departamento->fechaBajaDepartamento),
+];
+if(isset($_REQUEST['cancelar'])){
+    cambiarPagina("mtodepartamento");
 }
-if(isset($_REQUEST['volver']) || isset($_REQUEST['no']) ){
-    volver();
-}
-if (isset($_REQUEST['si']) ) {
+if (isset($_REQUEST['eliminar']) ) {
     DepartamentoPDO::bajaFisicaDepartamento();
-    volver();
+    cambiarPagina("mtodepartamento");
 }
 require_once $aVista['layout'];

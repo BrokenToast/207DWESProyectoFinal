@@ -63,4 +63,10 @@ class Rest{
             return $nombreEstaciones;
         }
     }
+    public static function generacionElectricaAyer(){
+        $fechaAyer=new DateTime();
+        $fechaAyer->setTimestamp($fechaAyer->getTimestamp()-8640000);
+        $sfechaAyer=$fechaAyer->format('Y-m-d');
+        return json_decode(file_get_contents("https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=".$sfechaAyer."T00:00&end_date=".$sfechaAyer."T23:59&time_trunc=day&tecno_select=all"));
+    }
 }

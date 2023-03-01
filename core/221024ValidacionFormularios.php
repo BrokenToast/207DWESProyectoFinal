@@ -141,13 +141,13 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
      * @return null|string Devuelve null en el caso en el que esté correcto, si no devuelve una cadena con el mensaje de error.
      */
     public static function comprobarFloat($float, $max = PHP_FLOAT_MAX, $min = -PHP_FLOAT_MAX, $obligatorio = 0){  //AÑADIDOS VALORES POR DEFECTO Y AHORA DETECTA 0
-        if ($obligatorio == 1 && empty($float)) {
+        if ($obligatorio && empty($float)) {
             return "El campo esta vacio";
         }else{
-            $float= str_replace('.', ',', $float);
-            if (!is_float($float)) {
+            if(!preg_match("/^\w+[,\.]\w+$/",$float)) {
                 return "El campo no es un decimal. (Debe llevar punto(.) entre la parte entera y la parte decimal)";
             }else{
+                $float=(float)$float;
                 if($float>$max || $float<$min){
                     return "El numero debe de estar entre $max - $min.";
                 }

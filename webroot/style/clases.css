@@ -1,0 +1,42 @@
+.error{
+    border: 2px solid red;
+}
+.correcto{
+    border: 2px solid green;
+}
+/*======================*/
+/*=     ITEMS          =*/
+/*======================*/
+/*Boton generico*/
+.button{
+    padding: 1%;
+    border:none;
+    border-radius: 20px;
+    background-color:#134287;
+    color:white;
+    font-weight: bold;
+}
+.buttom:hover{
+    text-decoration:underline 2px;
+}
+/*========Menu==========*/
+#menu{
+    min-height: 40px;
+    height: 5%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: end;
+    background-color: var(--colorPieMenu);
+}
+.itemMenu{
+    flex: 0 0 4%;
+    padding:0 2%;
+    border:none;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 1em;
+}
+.itemMenu:hover{
+    background-color: var(--colorSelecionado);
+    color:white;
+}

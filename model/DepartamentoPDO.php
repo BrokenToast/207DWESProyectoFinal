@@ -60,7 +60,7 @@ class DepartamentoPDO{
      * 
      * @param  string $descripcion
      * @param  int $estado
-     * @return void
+     * @return array|string Devuelve una array con los departamento o string si no hay departamento;
      */
     public static function bucarDepartamentoPorDescPagiado(string $descripcion,int $estado=1){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
@@ -121,7 +121,7 @@ class DepartamentoPDO{
      */
     public static function bajaLogicaDepartamento(string $codigo){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        return $oConexionDB->executeUDI("update T02_Departamento set T02_FechaBajaDepartamento=unix_timestamp() where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]' and T02_FechaBajaDepartamento is null;");
+        return $oConexionDB->executeUDI("update T02_Departamento set T02_FechaBajaDepartamento=unix_timestamp() where T02_CodDepartamento='$codigo' and T02_FechaBajaDepartamento is null;");
     }
     /**
      * modificaDepartamento
@@ -134,7 +134,7 @@ class DepartamentoPDO{
      */
     public static function modificaDepartamento(Departamento $departamento, string $codigo){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        return $oConexionDB->executeUDI("update T02_Departamento set T02_CodDepartamento='" . $departamento->codDepartamento . "',T02_DescDepartamento='" . $departamento->descDepartamento ."',T02_VolumenDeNegocio=" . $departamento->volumenNegocio ." where T02_CodDepartamento='" . $_SESSION['codDepartamentoEnCurso']."'");
+        return $oConexionDB->executeUDI("update T02_Departamento set T02_DescDepartamento='" . $departamento->descDepartamento ."',T02_VolumenDeNegocio=" . $departamento->volumenNegocio ." where T02_CodDepartamento='".$codigo."'");
     }
     /**
      * rehabilitaDepartamento
@@ -160,8 +160,10 @@ class DepartamentoPDO{
     public static function validaCodNoExiste(string $codigo){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
         $aRespuesta = $oConexionDB->executeQuery("select T02_CodDepartamento from T02_Departamento where T02_CodDepartamento='$codigo';");
-        if(is_bool($aRespuesta)){
+        if(!$aRespuesta){
             return true;
+        }else{
+            return false;
         }
     }
     /**

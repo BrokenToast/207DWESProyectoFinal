@@ -9,3 +9,6 @@ main article{
     flex: 1 1 300px;
     flex-flow: column; 
 }
+footer input[name="tecnologias"]{
+  display: none;
+}

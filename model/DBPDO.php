@@ -65,7 +65,7 @@ class DBPDO{
         }finally{
             unset($oPrepareSQL);
         }
-        return $aresultado;
+        return (empty($aresultado))?false:$aresultado;
     }
     /**
      * ExecuteUDI
