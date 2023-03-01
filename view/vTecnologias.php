@@ -42,6 +42,7 @@
         <a href="./doc/Planos_Aplicacion/RelacionDeFicheros.pdf">Relación de ficheros</a>
         <a href="./doc/Planos_Aplicacion/modelo_Datos.png">Modelo fisico de datos</a>
         <a href="./doc/Planos_Aplicacion/EstructuraAlmacenamiento.pdf">Estructura de Almacenamiento</a>
+        <a href="./doc/Planos_Aplicacion/usodeSession.pdf">Uso de $_Session</a>
         
     </article>
 </section>

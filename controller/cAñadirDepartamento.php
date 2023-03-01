@@ -15,7 +15,7 @@ if(isset($_REQUEST['cancelar'])){
     if($ok){
         DepartamentoPDO::altaDepartamento(new Departamento($_REQUEST['codDepartamento'],$_REQUEST['codDepartamento'],0,$_REQUEST['volumenNegocio']));
     }
-    //cambiarPagina('mtodepartamento');
+    cambiarPagina('mtodepartamento');
     
 }
 require_once $aVista['layout'];

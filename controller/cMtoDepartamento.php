@@ -17,13 +17,9 @@ try{
     if(isset($_REQUEST["boton"])){
         switch ($_REQUEST["boton"]) {
             case 'buscar':
-                if(empty(validacionFormularios::comprobarAlfaNumerico($_REQUEST['bdescripcion'],250,1,1))){
-                    $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDescPagiado($_REQUEST['bdescripcion'],(int)$_REQUEST['estado']);
-                    $_SESSION['criterioBusquedaDepartamento']['descripcion']=$_REQUEST['bdescripcion'];
-                    $_SESSION['criterioBusquedaDepartamento']['estado']=(int)$_REQUEST['estado'];
-                }else{
-                    $_SESSION['criterioBusquedaDepartamento']['descripcion']="";
-                }
+                $aRespuestaMtoDepartamento['departamentos']=DepartamentoPDO::bucarDepartamentoPorDescPagiado($_REQUEST['bdescripcion'],(int)$_REQUEST['estado']);
+                $_SESSION['criterioBusquedaDepartamento']['descripcion']=$_REQUEST['bdescripcion'];
+                $_SESSION['criterioBusquedaDepartamento']['estado']=(int)$_REQUEST['estado'];
                 break;
             case 'add':
                 cambiarPagina("añadirdepartamento");

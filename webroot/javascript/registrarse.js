@@ -19,7 +19,7 @@ let res3=document.getElementById("res3");
 let fUsuario=form.namedItem("usuario");
 let fPassword=form.namedItem("password");
 let fDescUsuario=form.namedItem("descUsuario");
-let registrar=form.namedItem("registrar");
+let registra=form.namedItem("registrar");
 
 fUsuario.addEventListener("blur",(event)=>{
     erroreCorrecto(Validadacion.validarAlfabetico,event.target,30,2);
@@ -39,7 +39,7 @@ function registrar(event) {
         document.getElementById("captcha").style.display="none";
     }
 }
-registrar.addEventListener("click",registrar);
+registra.addEventListener("click",registrar);
 
 /*Capchat*/
 res1.setAttribute("draggable","true");
@@ -95,12 +95,8 @@ resultado.addEventListener("drop",(event)=>{
         res2.attributes.removeNamedItem("draggable");
         res3.attributes.removeNamedItem("draggable");
         setTimeout(()=>{
-            document.getElementById("captcha").nodeValue="ENHORABUENA, NO ERES UN ROBOT";
-            setTimeout(()=>{
-                document.forms[0].submit;
-            },2000);
+            document.forms[0].submit();
         },2000);
-        
     }else{
         event.target.classList.remove("correcto");
         event.target.classList.add("error");

@@ -21,9 +21,12 @@
     }
     if(!isset($_SESSION['paginaEnCurso'])){
         $_SESSION['paginaEnCurso'] = "iniciopublico";
+        $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
     }
     if(isset($_REQUEST['tecnologias'])){
-        cambiarPagina("tecnologias");
+        $_SESSION['paginaEnCurso'] = "tecnologias";
+        header('Location: ./index.php');
+        exit;
     }
     require_once $aControlador[$_SESSION['paginaEnCurso']];
     ob_end_flush();

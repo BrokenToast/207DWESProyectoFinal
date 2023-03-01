@@ -7,7 +7,8 @@ var enlaces=[
     ["./doc/Planos_Aplicacion/diagrama_de_clases.png","./doc/Planos_Aplicacion/diagrama_de_clases.png"],
     ["./doc/Planos_Aplicacion/modelo_Datos.png","./doc/Planos_Aplicacion/modelo_Datos.png"],
     ["./doc/Planos_Aplicacion/RelacionDeFicheros.pdf","./doc/Planos_Aplicacion/RelacionDeFicheros.png"],
-    ["./doc/Planos_Aplicacion/RelacionDeFicheros.pdf","./doc/Planos_Aplicacion/RelacionDeFicheros.png"],
+    ["./doc/Planos_Aplicacion/EstructuraAlmacenamiento.pdf","./doc/Planos_Aplicacion/EstructuraAlmacenamiento.png"],
+    ["./doc/Planos_Aplicacion/usodeSession.pdf","./doc/Planos_Aplicacion/usodeSession.png"],
 ];
 let imagen=document.createElement("img");
 let enlace=document.getElementById("enlace");
