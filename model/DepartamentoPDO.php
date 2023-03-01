@@ -109,7 +109,7 @@ class DepartamentoPDO{
      */
     public static function bajaFisicaDepartamento(){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        return $oConexionDB->executeUDI("delete from T02_Departamento where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]' and T02_FechaBajaDepartamento is null;");
+        return $oConexionDB->executeUDI("delete from T02_Departamento where T02_CodDepartamento='$_SESSION[codDepartamentoEnCurso]';");
     }
     /**
      * bajaLogicaDepartamento
