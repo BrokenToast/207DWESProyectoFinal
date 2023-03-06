@@ -1,6 +1,6 @@
 export class Validadacion{
     static validarAlfabetico(texto="",max,min) {
-        let patron=new RegExp(`^[a-záéíóúäëïöüàèìòùñ\s]{${min},${max}}$`,"i");
+        let patron=new RegExp(`^[a-záéíóúäëïöüàèìòùñ\\S]{${min},${max}}$`,"i");
         if(texto==""){
             return "Campo vacio";
         }
@@ -9,7 +9,7 @@ export class Validadacion{
         }
     }
     static validarAlfaNumerico(texto="",max,min) {
-        let patron=new RegExp(`^[a-záéíóúäëïöüàèìòùñ\s0-9]{${min},${max}}$`,"i");
+        let patron=new RegExp(`^[a-záéíóúäëïöüàèìòùñ0-9\\s]{${min},${max}}$`,"gim");
         if(texto==""){
             return "Campo vacio";
         }
