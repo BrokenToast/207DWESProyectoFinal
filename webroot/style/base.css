@@ -1,16 +1,16 @@
 *{
     margin: 0;padding: 0;
-    box-sizing: content-box;
+    box-sizing: border-box;
     font-family: var(--tipografia);
 }
 #root{
     width: 100%;height: 100vh;
     display: flex;
-    flex-flow: column;
+    flex-flow: column nowrap;
 }
 /*Encabezado*/
 header{
-    flex: 0 0 12%;
+    flex: 0 0 10%;
     display: flex;
     justify-content: space-around;
 }
@@ -22,24 +22,15 @@ header>h1{
 }
 /*Contenido*/
 main{
+    flex: 1 0 78%;
+    padding-bottom: 2%;
     background-color: var(--colorContenido);
-    flex: 1 1 100%;
-    padding: 0% 0% 4% 0%;
 }
 /*Pie de pagina*/
 footer{
-    width: 100%;
-    margin-top:6%;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    display:flex;
-    justify-content:space-around;
-    background-color: var(--colorPieMenu);
-}
-footer>*{
-    flex: 1 1 0;
+    flex: 0 0 10%;
+    padding-top: 1%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }

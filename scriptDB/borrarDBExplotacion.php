@@ -1,7 +1,7 @@
 <?php
 require_once '../config/confDBPDO.php';
 require_once '../model/DBPDO.php';
-require_once('./model/ErrorApp.php');
+require_once('../model/ErrorApp.php');
 
 $conexion= new DBPDO( DSNMYSQL,USER,PASSWORD);
 

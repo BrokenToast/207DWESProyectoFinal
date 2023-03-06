@@ -22,17 +22,11 @@ if($ok){
     header("Location: ./index.php");
     exit;
 }else{
-    $okPassword = false;
-    if(empty(validacionFormularios::comprobarAlfaNumerico($_REQUEST['currentPassword']??null,16,3,1)) && !is_null(UsuarioPDO::validadUsuario($_SESSION['usuarioproyectofinal207']->codUsuario,$_REQUEST['currentPassword']))){
-        $okPassword = true;
-    }
-    if(isset($_REQUEST['changePassword']) && $okPassword){
+    if(isset($_REQUEST['changePassword'])){
         cambiarPagina('changepassword');
     }
-    if(isset($_REQUEST['borrar']) && $okPassword){
-        if(UsuarioPDO::borrarUsuario($_SESSION['usuarioproyectofinal207']->codUsuario)==1){
-            cambiarPagina('iniciopublico');
-        }
+    if(isset($_REQUEST['borrar'])){
+            cambiarPagina('borrarcuenta');
     }
 }
 if(isset($_REQUEST['volver'])){

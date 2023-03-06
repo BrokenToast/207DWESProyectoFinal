@@ -1,14 +1,16 @@
-main>section{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-main article{
-    margin: 1%;
-    display: flex;
-    flex: 1 1 300px;
-    flex-flow: column; 
+section{
+  display: flex;
+  flex-wrap: wrap;
 }
-footer input[name="tecnologias"]{
+article{
+  padding: 2%;
+  flex: 20%;
+  display: flex;
+  flex-flow: column;
+}
+.encabezadoMain{
+  flex:1 1 100%;
+}
+footer>form{
   display: none;
 }

@@ -3,19 +3,20 @@ $ok=true;
 if(isset($_REQUEST['cancelar'])){
     cambiarPagina('mtodepartamento');
 }else if(isset($_REQUEST['add'])){
-    $aError['codigo'] = (DepartamentoPDO::validaCodNoExiste($_REQUEST['codDepartamento']))?"": "El codigo existe";
     $aError['codigo'] = validacionFormularios::comprobarAlfabetico($_REQUEST['codDepartamento'], 3, 3, 1);
     $aError['descripcion'] = validacionFormularios::comprobarAlfabetico($_REQUEST['descDepartamento'], 255, 1, 1);
     $aError['volumenNegocio'] = validacionFormularios::comprobarFloat($_REQUEST['volumenNegocio'], 100000, 1, 1);
+    if(!DepartamentoPDO::validaCodNoExiste($_REQUEST['codDepartamento'])){
+        $aError['codigo'] = "El codigo existe";
+    }
     foreach($aError as $error){
         if(!empty($error)){
             $ok = false;
         }
     }
     if($ok){
-        DepartamentoPDO::altaDepartamento(new Departamento($_REQUEST['codDepartamento'],$_REQUEST['codDepartamento'],0,$_REQUEST['volumenNegocio']));
+        echo DepartamentoPDO::altaDepartamento(new Departamento($_REQUEST['codDepartamento'],$_REQUEST['descDepartamento'],0,preg_replace("/,/",".",$_REQUEST['volumenNegocio'])));
+        cambiarPagina('mtodepartamento');
     }
-    cambiarPagina('mtodepartamento');
-    
 }
 require_once $aVista['layout'];

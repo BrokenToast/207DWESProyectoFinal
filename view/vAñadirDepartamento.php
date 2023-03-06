@@ -16,17 +16,17 @@
             if(isset($aError)){
                 if(!empty($aError['codigo'])){
                     ?>  
-                    <p>Codigo Departamento:<?php echo $aError['codigo'] ?></p>
+                    <p class="textError">Codigo Departamento:<?php echo $aError['codigo'] ?></p>
                     <?php
                 }
                 if(!empty($aError['descripcion'])){
                     ?>  
-                    <p>Descripción del Departamento:<?php echo $aError['descripcion'] ?></p>
+                    <p class="textError">Descripción del Departamento:<?php echo $aError['descripcion'] ?></p>
                     <?php
                 }
                 if(!empty($aError['volumenNegocio'])){
                     ?>  
-                    <p>Volumen del Negocio:<?php echo $aError['volumenNegocio'] ?></p>
+                    <p class="textError">Volumen del Negocio:<?php echo $aError['volumenNegocio'] ?></p>
                     <?php
                 }
             }

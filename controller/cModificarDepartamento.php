@@ -19,8 +19,8 @@ if(isset($_REQUEST['cancelar'])){
         }
     }
     if($ok){
-        DepartamentoPDO::modificaDepartamento(new Departamento($_SESSION ['codDepartamentoEnCurso'],$_REQUEST['descDepartamento'],0,preg_replace("/,/",".",$_REQUEST['volumenNegocio']),$_SESSION ['codDepartamentoEnCurso']);
+        DepartamentoPDO::modificaDepartamento(new Departamento($_SESSION ['codDepartamentoEnCurso'],$_REQUEST['descDepartamento'],0,preg_replace("/,/",".",$_REQUEST['volumenNegocio']),0),$_SESSION ['codDepartamentoEnCurso']);
         cambiarPagina('mtodepartamento');
-    } 
+    }
 }
 require_once $aVista['layout'];

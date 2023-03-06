@@ -1,17 +1,13 @@
 <link rel="stylesheet" href="./webroot/style/detalle.css">
-<h2>Detalles</h2>
 <section>
-    <form action="./index.php" method="post">
-        <input type="submit" name="volver" class="button" value="volver">
-    </form>
+    <div class="encabezadoMain">
+        <h2>Detalles</h2>
+        <form action="./index.php" method="post">
+            <input type="submit" name="volver" class="button" value="volver">
+        </form>
+    </div>
     <article>
         <?php
-            /**
-            * Ejercicio 0
-            * @author: Luis Pérez Astorga
-            * @version: 1.0
-            * @since: 
-            */
             //Recorrido con un foreach la variable superglobal $_SERVER
             function printTable(array $dateTable, string $nameTable){
                 ?><table>

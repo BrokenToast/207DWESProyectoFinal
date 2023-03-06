@@ -8,12 +8,63 @@ Documento: RSS
     <channel>
         <title>ProyectoFinal-Luis Pérez Astorga</title>
         <link>http://daw207.ieslossauces.es/207DWESproyectoDWES/207DWESProyectoFinal/index.php</link>
-        <description>Canal RSS de los ejericios de lenguajes de marcas</description>
+        <description>Versiones de ProyectoFinal</description>
         <language>es</language>
         <item>
+            <title>1.5</title>
+            <link>http://daw207.ieslossauces.es/207DWESproyectoDWES/207DWESProyectoFinal/index.php</link>
+            <description>
+                Añadido
+
+                Mejorado la inserción de los Scripts SQL.
+                Separado en diferentes partes MtoDepartamento.
+                Añadido eliminar,cambiar contraseña y buscar por codigo en la api rest de los usuarios.
+                Añadido el RSS.
+                Añadidos el resto de planos.
+
+                Errores Reparados:
+
+                Problema con la coma en modificar departamento.
+                Problema con el registro y el captcha.
+                Problema de navegación de Tecnologias
+                Problema con el carusel.
+
+            </description>
+            <pubDate>2023-03-21T00:49:00-01:00</pubDate>
+            <author>@Luispatb</author>
+
+            <title>1.4.1</title>
+            <link>http://daw207.ieslossauces.es/207DWESproyectoDWES/207DWESProyectoFinal/index.php</link>
+            <description>Añadido el PHPDoc</description>
+            <pubDate>2022-03-21T00:49:00-01:00</pubDate>
+            <author>@Luispatb</author>
+
             <title>1.4</title>
             <link>http://daw207.ieslossauces.es/207DWESproyectoDWES/207DWESProyectoFinal/index.php</link>
-            <description>Inaguración de la versión 1.0 de la pagina</description>
+            <description>
+            General
+
+                Añadido casi todos los planos de la aplicación
+                Arregaldo el gestor de errores de la aplicación
+
+            MtoDepartamento
+
+                Paginación de la busqueda de departamentos
+                Añadido el confirmar de eliminar
+                Añadido el popup de información de uso.
+                Añadido el importar departamentos.
+
+            Rest
+
+                Reparado error al buscar algunas Estaciones
+
+            </description>
+            <pubDate>2022-03-21T00:49:00-01:00</pubDate>
+            <author>@Luispatb</author>
+
+            <title>1.3</title>
+            <link>http://daw207.ieslossauces.es/207DWESproyectoDWES/207DWESProyectoFinal/index.php</link>
+            <description></description>
             <pubDate>2022-03-21T00:49:00-01:00</pubDate>
             <author>@Luispatb</author>
         </item>

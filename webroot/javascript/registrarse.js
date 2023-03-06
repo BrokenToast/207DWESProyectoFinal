@@ -9,17 +9,18 @@ function erroreCorrecto(funcionValidacion,elemento,max,min) {
     }
 }
 
-let form=document.forms[0].elements;
+let form=document.forms[1].elements;
 let num1=document.getElementById("num1");
 let num2=document.getElementById("num2");
 let resultado=document.getElementById("resultado");
 let res1=document.getElementById("res1");
 let res2=document.getElementById("res2");
 let res3=document.getElementById("res3");
-let fUsuario=form.namedItem("usuario");
+let fUsuario=form.namedItem('usuario');
 let fPassword=form.namedItem("password");
 let fDescUsuario=form.namedItem("descUsuario");
 let registra=form.namedItem("registrar");
+console.log();
 
 fUsuario.addEventListener("blur",(event)=>{
     erroreCorrecto(Validadacion.validarAlfabetico,event.target,30,2);
@@ -34,7 +35,7 @@ function registrar(event) {
     event.preventDefault();
     if(document.querySelectorAll(".correcto").length==3){
         captchaCreate();
-        document.getElementById("captcha").style.display="table-cell";
+        document.getElementById("captcha").style.display="flex";
     }else{
         document.getElementById("captcha").style.display="none";
     }
@@ -95,7 +96,7 @@ resultado.addEventListener("drop",(event)=>{
         res2.attributes.removeNamedItem("draggable");
         res3.attributes.removeNamedItem("draggable");
         setTimeout(()=>{
-            document.forms[0].submit();
+            window.location.replace(`index.php?usuario=${fUsuario.value}&password=${fPassword.value}&descUsuario=${fDescUsuario.value}&registrar=1`);
         },2000);
     }else{
         event.target.classList.remove("correcto");

@@ -1,6 +1,7 @@
 <?php
-$ok = "";
-if(!empty($_REQUEST)){
+$ok=false;
+$aErrores=[];
+if(isset($_REQUEST['registrar'])){
     $ok = true;
     if(!UsuarioPDO::validarCodNoExiste($_REQUEST['usuario'])){
         $aErrores['usuario']="El usuario ya existe";

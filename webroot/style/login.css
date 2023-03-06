@@ -1,67 +1,9 @@
-/*Base*/
 header{
   display: none;
 }
-main{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/*Formulario global*/
-form{
-  width: 80%;
+h2{
   padding: 2%;
-  display: flex;
-  flex-flow: row wrap;
-  gap:5%;
 }
-fieldset{
-  border: 2px solid black;
-}
-legend{
-  font-size: 1.2em;
-  font-weight: bold;
-}
-/*Iniciar Sesión*/
-fieldset:nth-of-type(1){
-  flex: 1 1 35%;
-  display: flex;
-  flex-flow: column wrap;
-}
-fieldset:nth-of-type(1)>*:not(legend){
-  width: 60%;
-  align-self: center;
-}
-fieldset:nth-of-type(1)>label{
-  margin-top: 10px;
-}
-fieldset:nth-of-type(1)>input[name="iniciar"]{
-  margin:4% 0;
-  font-size: 1.4em;
-}
-/*Registrarse*/
-fieldset:nth-of-type(2){
-  box-sizing: border-box;
-  flex: 1 1 1 40%;
-  padding: 1%;
-  display:flex;
-  flex-flow:row wrap;
-}
-fieldset:nth-of-type(2)>p{
-  flex: 1 1 100%;
-  margin: 3%;
-  font-size: 1.1em;
-  font-weight: lighter;
-}
-fieldset:nth-of-type(2)>input{
-  flex: 1 1 100%;
-  padding: 0;
-  font-size: 1.4em;
-  font-weight: bold;
-}
-/*cancelar*/
-input[name="volver"]{
-  flex: 0 1 50%; 
-  margin-top: 4%;
-  font-size: 1.4em;
+main form{
+  margin-top: 10%;
 }

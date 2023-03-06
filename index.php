@@ -2,10 +2,10 @@
     ob_start();
     require_once('./config/confAPP.php');
     session_start();
-    function cambiarPagina(string $pagina){
+    function cambiarPagina(string $pagina,bool $modificar=true){
         $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
         $_SESSION['paginaEnCurso'] = $pagina;
-        header('Location: ./index.php');
+        header("Location: index.php");
         exit;
     }
     function objetosArrays(array $arrayObjetos){
@@ -22,11 +22,10 @@
     if(!isset($_SESSION['paginaEnCurso'])){
         $_SESSION['paginaEnCurso'] = "iniciopublico";
         $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+        $_REQUEST['pagina']="iniciopublico";
     }
     if(isset($_REQUEST['tecnologias'])){
-        $_SESSION['paginaEnCurso'] = "tecnologias";
-        header('Location: ./index.php');
-        exit;
+        cambiarPagina("tecnologias");
     }
     require_once $aControlador[$_SESSION['paginaEnCurso']];
     ob_end_flush();

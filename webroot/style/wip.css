@@ -1,0 +1,16 @@
+main{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+main h1{
+  font-size: 4em;
+}
+main h2{
+  font-size: 3em;
+}
+main .button{
+  margin-top: 30%;
+  font-size: 2em;
+}

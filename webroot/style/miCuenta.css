@@ -1,32 +1,6 @@
-main{
-    padding: 2%;
-  }
-  form>input{
-    padding: 1% !important;;
-    margin: 0.1% 0;
-  }
-  form>div{
-    display: flex;
-    flex-flow: row wrap;
-    gap: 2%;
-  }
-  fieldset{
-    flex: 1 1 50%;
-    padding: 1%;
-    border: 2px solid black;
-    margin: 2% 0;
-  }
-  fieldset:nth-of-type(2){
-    flex: 1 1 30%;
-    height: 30%
-  }
-  legend{
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-  input{
-    margin: 2% 0;
-  }
-  fieldset .buttom{
-    padding: 4%;
-  }
+#botones{
+  display: flex;
+}
+#botones>*{
+  margin: 2%;
+}

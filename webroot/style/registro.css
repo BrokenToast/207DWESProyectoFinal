@@ -1,52 +1,36 @@
-/*Global*/
-main{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-form{
-  width: 100%;
-  display: flex;
-  flex-flow: row wrap;
+.encabezadoMain{
+    flex: 100%;
 }
-/*Boton de volver*/
-input[name="volver"]{
-  padding: 1% 3%;
-  margin-bottom: 2%;
+article fieldset{
+    padding: 2%;
+    border: 2px solid black;
 }
-/*Formulario de registro*/
-fieldset{
-  flex: 1 1 100%;
-  border:2px solid black;
-  padding: 2%;
-  background-color:white;
+fieldset>*{
+    margin: 1%;
 }
-legend{
-  font-size: 1.5em;
-  font-weight: bold;
-}
-/*Captachar*/
+
+/*Captcha*/
 #captcha{
-  display: none;
-  padding: 3%;
+    display: none;
+    flex-flow: column;
 }
 #captcha>div{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
 }
-#captcha>div>div{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#captcha>div:nth-child(1)>*{
-  margin: 1%;
-}
-#captcha>div:nth-child(2)>*{
-  margin: 3.7%;
+#captcha>div:nth-of-type(2)>*{
+    margin-top: 1%;
+    margin-right: 13px;
 }
 .itemCaptcha{
-  width: 50px; height: 50px;
-  border: 3px solid gray;
+    width: 50px; height: 50px;
+    border:4px solid gray;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
