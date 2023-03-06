@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="webroot/style/modificarDepartamento.css">
 <section>
-    <h2>Eliminar departamento</h2>
+    <div class="encabezadoMain">
+        <h2>Eliminar departamento</h2>
+    </div>
     <form action="index.php" method="post">
         <label for="codDepartamento">Codigo Departamento</label>
         <input type="text" name="codDepartamento" id="codDepartamento" disabled placeholder="<?php echo $aRespuestaVista['codigo'] ?>">

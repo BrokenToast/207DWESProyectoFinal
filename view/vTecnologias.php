@@ -1,9 +1,11 @@
 <link rel="stylesheet" href="./webroot/style/tecnologias.css">
-<h2>Tecnologias</h2>
-<form action="index.php" method="post">
-    <input type="submit" name="volver" value="volver" class="button">
-</form>
 <section>
+    <div class="encabezadoMain">
+        <h2>Tecnologias</h2>
+        <form action="index.php" method="post">
+            <input type="submit" name="volver" value="volver" class="button">
+        </form>
+    </div>
     <article>
         <h3>Curso</h3>
         <a href="doc/Tema1_Teoria/Mis apuntes/DAW2/DWES/Unit_1/Estudio Tema 1.html" target="_blank">Teoria Tema1</a>

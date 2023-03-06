@@ -1,38 +1,39 @@
 <link rel="stylesheet" href="./webroot/style/cambiarContrasena.css">
-<h2>Cambiar Contraseña</h2>
 <section>
+    <div class="encabezadoMain">
+        <h2>Cambiar Contraseña</h2>
+        <form action="index.php" method="post">
+            <input type="submit" class="button" name="volver" value="volver">
+        </form>
+    </div>
     <article>
         <form action="./index.php" method="post">
-            <input type="submit" class="button" name="volver" value="volver">
             <fieldset>
                 <legend>Cambiar Contraseña</legend>
-                <table>
-                    <tr>
-                        <td>Nueva contraseña:</td>
-                        <td>
-                            <input type="password" name="newPassword" id="newPassword">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Repita la contraseña</td>
-                        <td>
-                            <input type="password" name="repitPassword" id="repitPassword">
-                        </td>
-                    </tr>
-                    <tr id="errores">
+                    <div>
+                        <label for="nowPassword">Introduce la contraseña actual:</label>
+                        <input type="password" name="nowPassword" id="nowPassword">
+                    </div>
+                    <div>
+                        <label for="newPassword">Nueva contraseña:</label>
+                        <input type="password" name="newPassword" id="newPassword">
+                    </div>
+                    <div>
+                        <label for="repitPassword">Repita la contraseña:</label>
+                        <input type="password" name="repitPassword" id="repitPassword">
+                    </div>
+                    <div id="errores">
                         <?php
                             foreach($aErrores as $error){
                                 ?> 
-                                <td>
+                                <p class="error">
                                     <?php echo $error;?>
-                                </td>
+                                </p>
                                 <?php
                             }
                         ?>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" class="button" name="cambiar" value="Cambiar Contraseña"></td>
-                    </tr>
+                    </div>
+                    <div><input type="submit" class="button" name="cambiar" value="Cambiar Contraseña"></div>
                 </table>
             </fieldset>
         </form>

@@ -1,9 +1,11 @@
 <link rel="stylesheet" href="./webroot/style/mtodepartamento.css">
-<form enctype="multipart/form-data" action="./index.php" method="post">
-    <input type="submit" class="button" name="boton" value="volver" id="volver">
-</form>
-<h2>Mantenimiento Usuario</h2>
-<form action="./index.php" method="post" id="busqueda">
+<div class="encabezadoMain">
+    <h2>Mantenimiento Usuario</h2>
+    <form action="./index.php" method="post">
+        <input type="submit" class="button" name="boton" value="volver" id="volver">
+    </form>
+</div>
+<form enctype="multipart/form-data" action="./index.php" method="post" id="busqueda">
     <label for="descDepartamento">Descripción</label>
     <input type="text" name="bdescripcion" id="descDepartamento" value="<?php echo (!empty($_SESSION['criterioBusquedaDepartamento']['descripcion'])? $_SESSION['criterioBusquedaDepartamento']['descripcion'] : "" )?>">
     <fieldset>
@@ -46,7 +48,7 @@
     }else{
             foreach ($aRespuestaMtoDepartamento['departamentos'] as $departamento) {
                 ?> 
-                <form action="./index.php" method="post" class="itemdep">
+                <form enctype="multipart/form-data" action="./index.php" method="post" class="itemdep">
                     <tr>
                         <td><?php echo $departamento[0];?></td>
                         <td><?php echo $departamento[1];?></td>

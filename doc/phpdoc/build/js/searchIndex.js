@@ -176,6 +176,11 @@ Search.appendIndex(
             "summary": "pedirEstacionesMeteo",
             "url": "classes/Rest.html#method_pedirEstacionesMeteo"
         },                {
+            "fqsen": "\\Rest\u003A\u003AgeneracionElectricaAyer\u0028\u0029",
+            "name": "generacionElectricaAyer",
+            "summary": "",
+            "url": "classes/Rest.html#method_generacionElectricaAyer"
+        },                {
             "fqsen": "\\Tiempo",
             "name": "Tiempo",
             "summary": "Tiempo",

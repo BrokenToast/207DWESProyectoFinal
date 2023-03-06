@@ -1,0 +1,12 @@
+article{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+article a{
+    margin: 2%;
+    font-size: 2em;
+}
+article iframe{
+    width: 60%;
+}

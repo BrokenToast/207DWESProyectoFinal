@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="webroot/style/modificarDepartamento.css">
 <section>
-    <h2>Modificar Departamento</h2>
+    <div class="encabezadoMain">
+        <h2>Modificar Departamento</h2>
+    </div>
     <form action="index.php" method="post">
         <label for="codDepartamento">Codigo Departamento</label>
         <input type="text" name="codDepartamento" id="codDepartamento" disabled placeholder="<?php echo $aRespuestaVista['codigo'] ?>">
@@ -16,12 +18,12 @@
             if(isset($aError)){
                 if(isset($aError['descripcion'])){
                     ?>  
-                    <p>Descripción del Departamento:<?php echo $aError['descripcion'] ?></p>
+                    <p class="textError">Descripción del Departamento:<?php echo $aError['descripcion'] ?></p>
                     <?php
                 }
                 if(isset($aError['volumenNegocio'])){
                     ?>  
-                    <p>Volumen del Negocio:<?php echo $aError['volumenNegocio'] ?></p>
+                    <p class="textError">Volumen del Negocio:<?php echo $aError['volumenNegocio'] ?></p>
                     <?php
                 }
             }

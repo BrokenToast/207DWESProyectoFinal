@@ -1,5 +1,9 @@
 .error{
     border: 2px solid red;
+    color:red;
+}
+.textError{
+    color:red;
 }
 .correcto{
     border: 2px solid green;
@@ -9,7 +13,7 @@
 /*======================*/
 /*Boton generico*/
 .button{
-    padding: 1%;
+    padding: 10px 30px ;
     border:none;
     border-radius: 20px;
     background-color:#134287;
@@ -39,4 +43,32 @@
 .itemMenu:hover{
     background-color: var(--colorSelecionado);
     color:white;
+}
+/*Formulario Estandar*/
+.formEstandar{
+    padding: 1%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: 2%;
+}
+.formEstandar>.button{
+    flex: 1 1 100%;
+    margin-top:2%;
+}
+.formEstandar>fieldset{
+    flex: 0 0 40%;
+    border: 2px solid black;
+    padding: 2%;
+    display: flex;
+    flex-flow: column;
+}
+.formEstandar>fieldset>*{
+    margin: 0.5% 0%;
+}
+/*Titulo*/
+.encabezadoMain{
+    padding: 0.5%;
+    display: flex;
+    justify-content: space-around;
 }

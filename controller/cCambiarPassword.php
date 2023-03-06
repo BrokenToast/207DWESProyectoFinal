@@ -8,6 +8,10 @@ $aErrores = [];
 $ok="";
 if(isset($_REQUEST['cambiar'])){
     $ok=true;
+    if(hash("sha256",$_REQUEST['nowPassword']) != $_SESSION['usuarioproyectofinal207']->password){
+        $aErrores['nowPassword'] = "Contraseña actual no concuerda";
+    }
+    $aErrores['nowPassword']=validacionFormularios::comprobarAlfaNumerico($_REQUEST['nowPassword'],16,3,1);
     $aErrores['newPassword']=validacionFormularios::comprobarAlfaNumerico($_REQUEST['newPassword'],16,3,1);
     $aErrores['repitPassword']=validacionFormularios::comprobarAlfaNumerico($_REQUEST['repitPassword'],16,3,1);
     if($_REQUEST['newPassword']!=$_REQUEST['repitPassword']){

@@ -1,5 +1,5 @@
 <?php
 if(isset($_REQUEST['volver'])){
-    cambiarPagina($_SESSION['paginaAnterior']);
+    cambiarPagina("iniciopublico");
 }
 require_once $aVista['layout'];

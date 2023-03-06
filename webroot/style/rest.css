@@ -1,24 +1,30 @@
-main{
+section{
   display: flex;
-  flex-flow: column;
-  align-items: center;
+  flex-wrap:wrap;
   justify-content: center;
-  gap: 4%;
-  position: relative;
+  gap:3%;
 }
-table{
-  margin-top:2%;
+section .encabezadoMain{
+  flex: 100%;
 }
-table tr td,th{
+section article{
+  flex: 0 1 40%;
+  padding: 2%;
   border: 2px solid black;
   background-color: white;
+  
 }
-td,th{
-  padding: 0.7% 1%;
+table tr td,th{
+  width: 100%;
+  border: 2px solid black;
 }
-.buttom{
-  padding: 0.7% 2%;
-  position: absolute;
-  top:1%;left: 1%;
-  font-size: 1.2em;
+article>*{
+  margin: 1%;
+}
+article label{
+  font-weight: bold;
+}
+article h3{
+  text-decoration: underline;
+  font-size: 2em;
 }

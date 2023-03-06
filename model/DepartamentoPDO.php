@@ -178,7 +178,8 @@ class DepartamentoPDO{
         if(!empty($archivo)){
             $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
             $fichero=fopen($archivo['tmp_name'],"r");
-            $contenido=json_decode(fread($fichero,$archivo['size']));
+            $contenido=(array)json_decode(fread($fichero,$archivo['size']));
+            
             foreach ($contenido as $departamento) {
                 if(self::validaCodNoExiste($departamento->T02_CodDepartamento)){
                     $oConexionDB->executeUDI("insert into T02_Departamento values('".$departamento->T02_CodDepartamento."','".$departamento->T02_DescDepartamento."',".$departamento->T02_FechaDeCreacionDepartamento.",".$departamento->T02_VolumenDeNegocio.",".($departamento->T02_FechaBajaDepartamento ?? 'null').")");
@@ -194,11 +195,12 @@ class DepartamentoPDO{
      */
     public static function exportarDepartamento(){
         $oConexionDB = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        $archivoJSON=tmpfile();
-        fwrite($archivoJSON,json_encode($oConexionDB->executeQuery("select * from T02_Departamento")));
-        header('Content-type: application/json');
-        header('Content-disposition: attachment; filename=departamento.json');
-        echo json_encode($oConexionDB->executeQuery("select * from T02_Departamento"));
-        exit();
+        $respuesta=$oConexionDB->executeQuery("select * from T02_Departamento");
+        if(!is_bool($respuesta)){
+            echo json_encode($respuesta);
+            header('Content-type: application/json');
+            header('Content-disposition: attachment; filename=departamento.json');
+            exit();
+        }
     }
 }

@@ -25,7 +25,7 @@
             <p>Luis Pérez Astorga® 2022-2023</p>
             <a href="../../index.html"><img src="./webroot/media/img/logo_Casa.png" alt="Pagina Creador" height="50" width="50"></a>
             <a href="doc/curriculum/curriculum.html" target="_blank"><img src="webroot/media/img/CV.png" alt="Mi curriculum" width="25"></a>
-            <form action="index.php" method="post">
+            <form action="./index.php" method="post">
                 <input type="submit" name="tecnologias" value="tecnologias">
             </form>
             <a href="doc/phpdoc/build/index.html">PHPDOC</a>

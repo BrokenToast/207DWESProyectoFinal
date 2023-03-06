@@ -4,7 +4,7 @@
     /*Config*/
     require_once('./config/confDBPDO.php');
     /*Modelo*/
-    require_once('./model/usuario.php');
+    require_once('./model/Usuario.php');
     require_once('./model/UsuarioPDO.php');
     require_once('./model/DBPDO.php');
     require_once('./model/ErrorApp.php');
@@ -21,6 +21,7 @@
         "registrarse"=>"./controller/cRegistrarse.php",
         "micuenta"=>"./controller/cMiCuenta.php",
         "changepassword"=>"./controller/cCambiarPassword.php",
+        "borrarcuenta"=>"./controller/cBorrarCuenta.php",
         "wip"=>"./controller/cWIP.php",
         "error"=>"./controller/cError.php",
         "rest"=>"./controller/cREST.php",
@@ -42,6 +43,7 @@
         "registrarse"=>"./view/vRegistrarse.php",
         "micuenta"=>"./view/vMiCuenta.php",
         "changepassword"=>"./view/vCambiarPassword.php",
+        "borrarcuenta"=>"./view/vBorrarCuenta.php",
         "wip"=>"./view/vWIP.php",
         "error"=>"./view/vError.php",
         "rest"=>"./view/vREST.php",
