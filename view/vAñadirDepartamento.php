@@ -3,11 +3,11 @@
     <h2>Añadir departamento</h2>
     <form action="index.php" method="post">
         <label for="codDepartamento">Codigo Departamento</label>
-        <input type="text" name="codDepartamento" id="codDepartamento">
+        <input type="text" name="codDepartamento" id="codDepartamento" value="<?php echo (empty($aError['codigo']))? $_REQUEST['codDepartamento'] ?? "" : ""?>">
         <label for="descDepartamento">Descripción del Departamento</label>
-        <input type="text" name="descDepartamento" id="descDepartamento">
+        <input type="text" name="descDepartamento" id="descDepartamento" value="<?php echo (empty($aError['descripcion']))? $_REQUEST['descDepartamento'] ?? "" : ""?>">
         <label for="volumenNegocio">Volumen del Negocio</label>
-        <input type="text" name="volumenNegocio" id="volumenNegocio">
+        <input type="text" name="volumenNegocio" id="volumenNegocio" value="<?php echo (empty($aError['volumenNegocio']))? $_REQUEST['volumenNegocio'] ?? "" : ""?>">
         <label for="fechaCreacion">Fecha de creación</label>
         <input type="text" name="fechaCreacion" id="fechaCreacion" disabled>
         <label for="fechaBaja">Fecha de baja</label> 

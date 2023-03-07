@@ -1,5 +1,6 @@
 import {Validadacion} from "./validacion.js";
 function erroreCorrecto(funcionValidacion,elemento,max,min) {
+    console.log(funcionValidacion(elemento.value,max,min));
     if(funcionValidacion(elemento.value,max,min)==null){
         elemento.classList.remove("error");
         elemento.classList.add("correcto");

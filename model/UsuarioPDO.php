@@ -99,16 +99,21 @@ class UsuarioPDO{
         $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
         return $conexion->executeUDI("update T01_Usuario set string T01_FechaHoraUltimaConexion='".time()."'  where T01_CodUsuario='$codUsuario'");
     }
-    public static function buscarUsuarioPorCod(string $codUsuario){
+    public static function buscarUsuarioPorDesc(string $descripcion){
         $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
-        $aUsuario=$conexion->executeQuery("select * from T01_Usuario where T01_CodUsuario='$codUsuario';");
+        $aRespuesta=$conexion->executeQuery("select * from T01_Usuario where T01_DescUsuario like '%$descripcion%';");
         $fechaUltimaConexion = time();
-        if(!$aUsuario){
+        if(!$aRespuesta){
             return "Usuario no existe";
         }else{
-            return new Usuario($aUsuario[0]['T01_CodUsuario'],$aUsuario[0]['T01_Password'],$aUsuario[0]['T01_DescUsuario'],$aUsuario[0]['T01_NumConexiones'],$fechaUltimaConexion,$aUsuario[0]['T01_FechaHoraUltimaConexion'],$aUsuario[0]['T01_Perfil']);
+            $aUsuarios=[];
+            foreach ($aRespuesta as $usuario) {
+                array_push($aUsuarios, new Usuario($usuario['T01_CodUsuario'],$usuario['T01_Password'],$usuario['T01_DescUsuario'],$usuario['T01_NumConexiones'],$fechaUltimaConexion,$usuario['T01_FechaHoraUltimaConexion'],$usuario['T01_Perfil']));
+            }
+            return $aUsuarios;
         }
     }
+
     public static function cambiarPasword(string $codUsuario,string $password){
         $conexion = new DBPDO(DSNMYSQL, USER, PASSWORD);
         return $conexion->executeUDI("update T01_Usuario set T01_Password=SHA2('$password',256)  where T01_CodUsuario='$codUsuario'");

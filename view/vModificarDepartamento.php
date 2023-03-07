@@ -7,9 +7,9 @@
         <label for="codDepartamento">Codigo Departamento</label>
         <input type="text" name="codDepartamento" id="codDepartamento" disabled placeholder="<?php echo $aRespuestaVista['codigo'] ?>">
         <label for="descDepartamento">Descripción del Departamento</label>
-        <input type="text" name="descDepartamento" id="descDepartamento" placeholder="<?php echo $aRespuestaVista['descripcion'] ?>">
+        <input type="text" name="descDepartamento" id="descDepartamento" placeholder="<?php echo $aRespuestaVista['descripcion'] ?>" value="<?php echo (empty($aError['descripcion']))? $_REQUEST['descDepartamento'] ?? "" : ""?>">
         <label for="volumenNegocio">Volumen del Negocio</label>
-        <input type="text" name="volumenNegocio" id="volumenNegocio" placeholder="<?php echo $aRespuestaVista['volumenNegocio'] ?>">
+        <input type="text" name="volumenNegocio" id="volumenNegocio" placeholder="<?php echo $aRespuestaVista['volumenNegocio'] ?>" value="<?php echo (empty($aError['volumenNegocio']))? $_REQUEST['volumenNegocio'] ?? "" : ""?>">
         <label for="fechaCreacion">Fecha de creación</label>
         <input type="text" name="fechaCreacion" id="fechaCreacion" disabled placeholder="<?php echo $aRespuestaVista['fechaCreacion'] ?>">
         <label for="fechaBaja">Fecha de baja</label>
