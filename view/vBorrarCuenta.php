@@ -12,18 +12,18 @@
                 <legend>Eliminar Usuario</legend>
                 <div>
                     <label for="nowpassword">Introduce la conseña</label>
-                    <input type="text" name="nowPassword" id="nowpassword">
+                    <input type="password" name="nowPassword" id="nowpassword">
                 </div>
                 <div>
                     <label for="repetpassword">Repite la contraseña</label>
-                    <input type="text" name="repetPassword" id="repetpassword">
+                    <input type="password" name="repetPassword" id="repetpassword">
                 </div>
                 <div class="errores">
                     <?php
                     if(!empty($aErrores)){
                         foreach ($aErrores as $error) {
                             ?> 
-                            <p class="error"><?php echo $error;?></p>
+                            <p class="textError"><?php echo $error;?></p>
                             <?php
                         }
                     }

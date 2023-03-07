@@ -173,7 +173,7 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
             return "El campo esta vacio";
         }else{
             if (!is_numeric($number)) {
-                return "El campo no es un decimal. (Debe llevar punto(.) entre la parte entera y la parte decimal)";
+                return "No es un numero";
             }else{
                 if($number>$max || $number<$min){
                     return "El numero debe de estar entre $max - $min.";

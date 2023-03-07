@@ -11,15 +11,16 @@ $aRespuestaVista=[
 if(isset($_REQUEST['cancelar'])){
     cambiarPagina('mtodepartamento');
 }else if(isset($_REQUEST['editar'])){
+    $_REQUEST['volumenNegocio']=preg_replace("/,/",".",$_REQUEST['volumenNegocio']);
     $aError['descripcion'] = validacionFormularios::comprobarAlfabetico($_REQUEST['descDepartamento'], 255, 1, 1);
-    $aError['volumenNegocio'] = validacionFormularios::comprobarFloat($_REQUEST['volumenNegocio'], 100000, 1, 1);
+    $aError['volumenNegocio'] = validacionFormularios::comprobarNumber($_REQUEST['volumenNegocio'], 100000, 1, 1);
     foreach($aError as $error){
         if(!empty($error)){
             $ok = false;
         }
     }
     if($ok){
-        DepartamentoPDO::modificaDepartamento(new Departamento($_SESSION ['codDepartamentoEnCurso'],$_REQUEST['descDepartamento'],0,preg_replace("/,/",".",$_REQUEST['volumenNegocio']),0),$_SESSION ['codDepartamentoEnCurso']);
+        DepartamentoPDO::modificaDepartamento(new Departamento($_SESSION ['codDepartamentoEnCurso'],$_REQUEST['descDepartamento'],0,$_REQUEST['volumenNegocio'],0),$_SESSION ['codDepartamentoEnCurso']);
         cambiarPagina('mtodepartamento');
     }
 }

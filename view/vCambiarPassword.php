@@ -12,21 +12,21 @@
                 <legend>Cambiar Contraseña</legend>
                     <div>
                         <label for="nowPassword">Introduce la contraseña actual:</label>
-                        <input type="password" name="nowPassword" id="nowPassword">
+                        <input type="password" name="nowPassword" id="nowPassword" value="<?php echo (empty($aErrores['nowPassword']))? $_REQUEST['nowPassword'] ?? "" : "" ?>">
                     </div>
                     <div>
                         <label for="newPassword">Nueva contraseña:</label>
-                        <input type="password" name="newPassword" id="newPassword">
+                        <input type="password" name="newPassword" id="newPassword" value="<?php echo (empty($aErrores['newPassword']) && empty($aErrores['iguales']))? $_REQUEST['newPassword'] ?? "" : "" ?>">
                     </div>
                     <div>
                         <label for="repitPassword">Repita la contraseña:</label>
-                        <input type="password" name="repitPassword" id="repitPassword">
+                        <input type="password" name="repitPassword" id="repitPassword" value="<?php echo (empty($aErrores['repitPassword']) && empty($aErrores['iguales']))? $_REQUEST['repitPassword'] ?? "" : "" ?>">
                     </div>
                     <div id="errores">
                         <?php
                             foreach($aErrores as $error){
                                 ?> 
-                                <p class="error">
+                                <p class="textError">
                                     <?php echo $error;?>
                                 </p>
                                 <?php
